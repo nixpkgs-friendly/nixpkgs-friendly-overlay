@@ -14,8 +14,10 @@ Use:
 - Lowercase
 - "-" as name separator
 - "_" as version separator
+
+
 Example: `package-name_1_2_3`
 
-- Use upstream package name. Indexes:
+Use upstream package name:
   - Python: `pypi.org`
   - OCaml: `opam.ocaml.org`
