@@ -1,9 +1,20 @@
-# First, Thank you!
+# Contributing
+
+First, Thank you!
 
 Your contribution is very welcomed!
 
-# Package naming conventions
+To contribute, either open a PR or request committer access.
 
-- Use lowercase for package names.
-- Python packages name follows `pypi.org`.
-- Name separator is "-". Version separator is "_". Like: `package-name_1_2_3`
+# Conventions
+
+## Package naming
+
+Only:
+- Lowercase
+- "-" as name separator
+  "_" as version separator
+  Example: `package-name_1_2_3`
+- Use upstream package name. Such as:
+  - Python: `pypi.org`
+  - OCaml: `opam.ocaml.org`
