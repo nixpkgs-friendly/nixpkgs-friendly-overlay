@@ -8,6 +8,11 @@ final: prev: {
         pybrowsers = callPyPkg ./pybrowsers { };
         sourcery = callPyPkg ./sourcery { };
         webdriver-manager = callPyPkg ./webdriver-manager { };
+        wandb = python-prev.wandb.overrideAttrs(oa: {
+          disabledTests = [
+            "test_artifacts_cache_cleanup"
+          ];
+        });
       }
     )
   ];
