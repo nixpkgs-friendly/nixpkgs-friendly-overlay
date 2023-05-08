@@ -5,6 +5,7 @@ final: prev: {
       {
         abstract-singleton = callPyPkg ./abstract-singleton { };
         auto-gpt-plugin-template = callPyPkg ./auto-gpt-plugin-template { };
+        composer = callPyPkg ./composer { };
         openapi-python-client = callPyPkg ./openapi-python-client { };
         sourcery = callPyPkg ./sourcery { };
         wandb = python-prev.wandb.overrideAttrs(oa: { disabledTests = [ "test_artifacts_cache_cleanup" ]; });
