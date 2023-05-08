@@ -19,5 +19,15 @@ python3.pkgs.buildPythonPackage rec {
     abstract-singleton
   ];
 
-  doCheck = false;
+  doCheck = false; # No tests
+
+  pythonImportsCheck = [ "auto_gpt_plugin_template" ];
+
+  meta = {
+    description = "The template plugin for Auto-GPT";
+    downloadPage = "https://pypi.org/project/auto-gpt-plugin-template/";
+    homepage = "https://github.com/Significant-Gravitas/Auto-GPT-Plugin-Template";
+    license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ ];
+  };
 }
