@@ -7,7 +7,7 @@
     let
       forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
       allSystemsPkgs = nixpkgs: value: forAllSystems (system:
-        let pkgs = 
+        let pkgs =
           import nixpkgs {
             inherit system;
             config.allowUnfree = true;
