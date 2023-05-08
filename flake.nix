@@ -17,7 +17,7 @@
           };
         in value pkgs
       );
-      usePkgs = value: allSystemsPkgs nixpkgs value;
+      usePkgs = allSystemsPkgs nixpkgs;
     in
     {
       overlays = {
