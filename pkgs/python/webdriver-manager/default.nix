@@ -14,6 +14,8 @@ python3.pkgs.buildPythonPackage rec {
     hash = "sha256-5fyzwoqbW5Nkt+YDltnHk+OizlZC7wpSNzmz8apEPu4=";
   };
 
+  # nativeBuildInputs = with python3.pkgs; [ ];
+
   propagatedBuildInputs = with python3.pkgs; [
     requests
     python-dotenv
@@ -21,16 +23,15 @@ python3.pkgs.buildPythonPackage rec {
     packaging
   ];
 
-  nativeBuildInputs = with python3.pkgs; [ ];
-
-  nativeCheckInputs = with python3.pkgs; [
-    pytestCheckHook
-    selenium
-    # browsers
-  ];
   doCheck = false;
 
-  # pythonImportsCheck = [ "" ];
+  # nativeCheckInputs = with python3.pkgs; [
+  #   pytestCheckHook
+  #   selenium
+  #   # browsers # Needs to be packaged.
+  # ];
+
+  pythonImportsCheck = [ "webdriver_manager" ];
 
   meta = {
     description = "A Python library that simplifies management of binary drivers for browsers";
