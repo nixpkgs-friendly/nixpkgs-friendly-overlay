@@ -8,6 +8,7 @@ final: prev: {
         composer = callPyPkg ./composer { };
         openapi-python-client = callPyPkg ./openapi-python-client { };
         sourcery = callPyPkg ./sourcery { };
+        torch-optimizer = callPyPkg ./torch-optimizer { };
         wandb = python-prev.wandb.overrideAttrs(oa: { disabledTests = [ "test_artifacts_cache_cleanup" ]; });
         webdriver-manager = callPyPkg ./webdriver-manager { };
       }
