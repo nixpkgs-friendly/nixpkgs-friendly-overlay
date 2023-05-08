@@ -1,4 +1,4 @@
-# nixpkgs-friendly-overlay 
+# nixpkgs-friendly-overlay
 
 This repository accumulates improvements in "overlay format" that could/should eventually be merged upstream.
 
