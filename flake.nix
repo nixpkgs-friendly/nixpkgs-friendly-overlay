@@ -30,6 +30,10 @@
       packages = usePkgs (pkgs: rec {
         pkgsDebug = pkgs; # Useful for building anything from pkgs, including nixpkgs-friendly-overlay
       });
+
+      devShells = usePkgs (pkgs: {
+        llm-foundry = pkgs.callPackage ./shells/mosaicml-llm-foundry { };
+      });
     };
 
 }
