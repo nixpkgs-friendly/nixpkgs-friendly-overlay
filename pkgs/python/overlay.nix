@@ -7,6 +7,7 @@ final: prev: {
         auto-gpt-plugin-template = callPyPkg ./auto-gpt-plugin-template { };
         composer = callPyPkg ./composer { };
         coolname = callPyPkg ./coolname { };
+        flake8-quotes = callPyPkg ./flake8-quotes { };
         openapi-python-client = callPyPkg ./openapi-python-client { };
         pytorch-ranger = callPyPkg ./pytorch-ranger { };
         sourcery = callPyPkg ./sourcery { };
