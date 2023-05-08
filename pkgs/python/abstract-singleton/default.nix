@@ -1,5 +1,6 @@
 { fetchPypi
 , python3
+, lib
 }:
 
 python3.pkgs.buildPythonPackage rec {
@@ -8,7 +9,7 @@ python3.pkgs.buildPythonPackage rec {
   format = "pyproject";
 
   src = fetchPypi {
-    pname = "abstract_singleton";
+    pname = lib.replaceStrings ["-"] ["_"] pname;
     inherit version;
     sha256 = "sha256-2X0m7Ly3Qi943xsLykigPfW6BM9YhExtoDOnhAvqroI=";
   };

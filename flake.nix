@@ -27,8 +27,9 @@
         ];
       };
 
-      # packages = usePkgs (pkgs: rec {
-      # });
+      packages = usePkgs (pkgs: rec {
+        pkgsDebug = pkgs; # Useful for building anything from pkgs, including nixpkgs-friendly-overlay
+      });
     };
 
 }

@@ -9,7 +9,7 @@ python3.pkgs.buildPythonPackage rec {
 
   src = fetchFromGitHub {
     owner = "SergeyPirogov";
-    repo = "webdriver_manager";
+    repo = lib.replaceStrings ["-"] ["_"] pname;
     rev = "v${version}";
     hash = "sha256-5fyzwoqbW5Nkt+YDltnHk+OizlZC7wpSNzmz8apEPu4=";
   };

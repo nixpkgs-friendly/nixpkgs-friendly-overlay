@@ -5,7 +5,6 @@ final: prev: {
       {
         abstract-singleton = callPyPkg ./abstract-singleton { };
         auto-gpt-plugin-template = callPyPkg ./auto-gpt-plugin-template { };
-        pybrowsers = callPyPkg ./pybrowsers { };
         sourcery = callPyPkg ./sourcery { };
         webdriver-manager = callPyPkg ./webdriver-manager { };
         wandb = python-prev.wandb.overrideAttrs(oa: {
