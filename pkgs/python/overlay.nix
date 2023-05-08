@@ -7,6 +7,7 @@ final: prev: {
         auto-gpt-plugin-template = callPyPkg ./auto-gpt-plugin-template { };
         composer = callPyPkg ./composer { };
         openapi-python-client = callPyPkg ./openapi-python-client { };
+        pytorch-ranger = callPyPkg ./pytorch-ranger { };
         sourcery = callPyPkg ./sourcery { };
         torch-optimizer = callPyPkg ./torch-optimizer { };
         wandb = python-prev.wandb.overrideAttrs(oa: { disabledTests = [ "test_artifacts_cache_cleanup" ]; });
