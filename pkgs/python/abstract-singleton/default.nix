@@ -18,5 +18,15 @@ python3.pkgs.buildPythonPackage rec {
     hatchling
   ];
 
-  doCheck = false;
+  doCheck = false; # No test
+
+  pythonImportsCheck = [ "abstract_singleton" ];
+
+  meta = {
+    description = "An abstract singleton class that enforces abstract methods are implemented";
+    downloadPage = "https://pypi.org/project/abstract-singleton/";
+    homepage = "https://github.com/BillSchumacher/Abstract-Singleton";
+    license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ ];
+  };
 }
