@@ -6,6 +6,7 @@ final: prev: {
         abstract-singleton = callPyPkg ./abstract-singleton { };
         auto-gpt-plugin-template = callPyPkg ./auto-gpt-plugin-template { };
         composer = callPyPkg ./composer { };
+        coolname = callPyPkg ./coolname { };
         openapi-python-client = callPyPkg ./openapi-python-client { };
         pytorch-ranger = callPyPkg ./pytorch-ranger { };
         sourcery = callPyPkg ./sourcery { };
