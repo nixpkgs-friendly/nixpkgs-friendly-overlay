@@ -14,6 +14,7 @@ final: prev: {
         torch-optimizer = callPyPkg ./torch-optimizer { };
         wandb = python-prev.wandb.overrideAttrs(oa: { disabledTests = [ "test_artifacts_cache_cleanup" ]; });
         webdriver-manager = callPyPkg ./webdriver-manager { };
+        xformers = callPyPkg ./xformers { };
       }
     )
   ];
