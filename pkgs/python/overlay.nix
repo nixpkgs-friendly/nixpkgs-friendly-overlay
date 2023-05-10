@@ -14,6 +14,7 @@ final: prev: {
         pyre-extensions = callPyPkg ./pyre-extensions { };
         pytorch-ranger = callPyPkg ./pytorch-ranger { };
         sourcery = callPyPkg ./sourcery { };
+        testslide = callPyPkg ./testslide { };
         torch-optimizer = callPyPkg ./torch-optimizer { };
         wandb = python-prev.wandb.overrideAttrs(oa: { disabledTests = [ "test_artifacts_cache_cleanup" ]; });
         webdriver-manager = callPyPkg ./webdriver-manager { };
