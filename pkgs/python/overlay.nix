@@ -8,6 +8,7 @@ final: prev: {
         composer = callPyPkg ./composer { };
         coolname = callPyPkg ./coolname { };
         flake8-quotes = callPyPkg ./flake8-quotes { };
+        loralib = callPyPkg ./loralib { };
         openapi-python-client = callPyPkg ./openapi-python-client { };
         pytorch-ranger = callPyPkg ./pytorch-ranger { };
         sourcery = callPyPkg ./sourcery { };
