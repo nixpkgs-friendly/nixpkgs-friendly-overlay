@@ -29,6 +29,7 @@
 
       packages = usePkgs (pkgs: rec {
         pkgsDebug = pkgs; # Useful for building anything from pkgs, including nixpkgs-friendly-overlay
+        dpy = pkgs.python3.pkgs;
       });
 
       devShells = usePkgs (pkgs: {
