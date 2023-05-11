@@ -21,6 +21,14 @@ let
     pynvml
     sentencepiece
     omegaconf
+
+    ###
+    transformers
+    loralib
+    sentencepiece
+    bitsandbytes
+    accelerate
+    xformers
   ];
 in
 
