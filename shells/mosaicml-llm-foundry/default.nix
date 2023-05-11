@@ -15,7 +15,7 @@ let
 
     ## OK versions:
     onnx
-    # slack-sdk # python3.10-databases-0.7.0 is broken
+    slack-sdk
     torch
     datasets
     pynvml
