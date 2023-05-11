@@ -11,6 +11,8 @@ final: prev: {
 
         coolname = callPyPkg ./coolname { };
 
+        ddtrace = callPyPkg ./ddtrace { };
+
         envier = callPyPkg ./envier { };
 
         flake8-quotes = callPyPkg ./flake8-quotes { };
