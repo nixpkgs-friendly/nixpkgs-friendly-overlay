@@ -2,6 +2,7 @@
 , fetchFromGitHub
 , setuptools-scm
 , lib
+, python3
 }:
 
 buildPythonPackage rec {
@@ -21,7 +22,20 @@ buildPythonPackage rec {
     setuptools-scm
   ];
 
-  doCheck = false;
+  doCheck = false; # Fix-Me: Needs work
+
+  # nativeCheckInputs = with python3.pkgs; [
+  #   pytestCheckHook
+  #   pytest-mypy-plugins
+  #   mypy-extensions
+  #   pytest-mypy
+  # ];
+
+  # checkInputs = with python3.pkgs; [
+  #   sphinx
+  #   mypy
+  #   mypy-extensions
+  # ];
 
   pythonImportsCheck = [ "envier" ];
 
