@@ -11,6 +11,8 @@ final: prev: {
 
         coolname = callPyPkg ./coolname { };
 
+        ddsketch = callPyPkg ./ddsketch { };
+
         ddtrace = callPyPkg ./ddtrace { };
 
         envier = callPyPkg ./envier { };
