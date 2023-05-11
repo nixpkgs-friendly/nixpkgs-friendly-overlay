@@ -11,6 +11,7 @@ final: prev: {
         flake8-quotes = callPyPkg ./flake8-quotes { };
         loralib = callPyPkg ./loralib { };
         openapi-python-client = callPyPkg ./openapi-python-client { };
+        opentelemetry-api = callPyPkg ./opentelemetry-api { };
         pyre-check = callPyPkg ./pyre-check { };
         pyre-extensions = callPyPkg ./pyre-extensions { };
         pytorch-ranger = callPyPkg ./pytorch-ranger { };
