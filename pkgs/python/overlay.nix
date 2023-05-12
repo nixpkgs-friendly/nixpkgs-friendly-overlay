@@ -35,6 +35,8 @@ final: prev: {
 
         sourcery = callPyPkg ./sourcery { };
 
+        tensorboard = python-prev.tensorboard.overrideAttrs(oa: { disabled = false; });
+
         testslide = callPyPkg ./testslide { };
 
         torch-optimizer = callPyPkg ./torch-optimizer { };
