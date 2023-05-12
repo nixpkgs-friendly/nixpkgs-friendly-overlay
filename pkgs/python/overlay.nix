@@ -41,6 +41,8 @@ final: prev: {
 
         torch-optimizer = callPyPkg ./torch-optimizer { };
 
+        torchaudio = callPyPkg ./torchaudio { };
+
         wandb = python-prev.wandb.overrideAttrs(oa: {
           disabledTests = [ "test_artifacts_cache_cleanup" ];
         });
