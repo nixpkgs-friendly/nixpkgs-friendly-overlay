@@ -35,7 +35,7 @@ final: prev: {
 
         sourcery = callPyPkg ./sourcery { };
 
-        # Remove PR 231669 lands nixos-unstable
+        # Remove after PR#231669 lands at nixos-unstable
         # https://nixpk.gs/pr-tracker.html?pr=231669
         # https://github.com/NixOS/nixpkgs/pull/231669
         tensorboard = python-prev.tensorboard.overrideAttrs(oa: { disabled = false; });
@@ -46,7 +46,7 @@ final: prev: {
 
         torchaudio = callPyPkg ./torchaudio { };
 
-        # Remove after PR 228803 lands nixos-unstable
+        # Remove after PR#228803 lands at nixos-unstable
         # https://github.com/NixOS/nixpkgs/pull/228803
         # https://nixpk.gs/pr-tracker.html?pr=228803
         wandb = python-prev.wandb.overrideAttrs(oa: {
