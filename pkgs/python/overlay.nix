@@ -35,6 +35,9 @@ final: prev: {
 
         sourcery = callPyPkg ./sourcery { };
 
+        # Remove PR 231669 lands nixos-unstable
+        # https://nixpk.gs/pr-tracker.html?pr=231669
+        # https://github.com/NixOS/nixpkgs/pull/231669
         tensorboard = python-prev.tensorboard.overrideAttrs(oa: { disabled = false; });
 
         testslide = callPyPkg ./testslide { };
