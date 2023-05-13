@@ -52,12 +52,7 @@ final: prev: {
 
         torchaudio = callPyPkg ./torchaudio { };
 
-        # Remove after PR#228803 lands at nixos-unstable
-        # https://github.com/NixOS/nixpkgs/pull/228803
-        # https://nixpk.gs/pr-tracker.html?pr=228803
-        wandb = python-prev.wandb.overrideAttrs(oa: {
-          disabledTests = [ "test_artifacts_cache_cleanup" ];
-        });
+        wandb = callPyPkg ./wandb { };
 
         webdriver-manager = callPyPkg ./webdriver-manager { };
 
