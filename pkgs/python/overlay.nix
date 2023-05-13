@@ -41,6 +41,13 @@ final: prev: {
 
         testslide = callPyPkg ./testslide { };
 
+        torch = callPyPkg ./torch {
+          cudaSupport = python-prev.config.cudaSupport or false;
+          inherit (python-prev.pkgs.darwin.apple_sdk.frameworks) Accelerate CoreServices;
+          inherit (python-prev.pkgs.darwin) libobjc;
+          inherit (python-prev.pkgs.llvmPackages_rocm) openmp;
+        };
+
         torch-optimizer = callPyPkg ./torch-optimizer { };
 
         torchaudio = callPyPkg ./torchaudio { };
