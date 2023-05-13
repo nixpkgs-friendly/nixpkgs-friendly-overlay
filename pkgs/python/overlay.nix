@@ -37,6 +37,8 @@ final: prev: {
 
         tensorboard = callPyPkg ./tensorboard { };
 
+        tensorboard-data-server = callPyPkg ./tensorboard-data-server { };
+
         testslide = callPyPkg ./testslide { };
 
         torch-optimizer = callPyPkg ./torch-optimizer { };
