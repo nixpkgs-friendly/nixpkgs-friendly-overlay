@@ -1,7 +1,10 @@
 final: prev: {
   pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
     (python-final: python-prev:
-      let callPyPkg = python-final.callPackage; in
+      let
+        fetchpatch2 = prev.fetchpatch2;
+        callPyPkg = python-final.callPackage;
+      in
       {
         abstract-singleton = callPyPkg ./abstract-singleton { };
 
@@ -32,6 +35,21 @@ final: prev: {
         pyre-extensions = callPyPkg ./pyre-extensions { };
 
         pytorch-ranger = callPyPkg ./pytorch-ranger { };
+
+        scikit-optimize = python-prev.scikit-optimize.overrideAttrs (oa: {
+          patches = [
+            # https://github.com/scikit-optimize/scikit-optimize/pull/1166
+            (fetchpatch2 {
+              url = "https://github.com/scikit-optimize/scikit-optimize/pull/1166.patch";
+              hash = "sha256-YCxA0IQIFOJ1nZ741lGIcGsFM08HMz80mb3OalGgM/M";
+            })
+            # https://github.com/scikit-optimize/scikit-optimize/pull/1150
+            (fetchpatch2 {
+              url = "https://github.com/scikit-optimize/scikit-optimize/pull/1150.patch";
+              hash = "sha256-4OL8rIkq5jYn2X7q8RsyyPXPqUvSxFqHcZ/zoiQR/SU=";
+            })
+          ];
+        });
 
         sourcery = callPyPkg ./sourcery { };
 
