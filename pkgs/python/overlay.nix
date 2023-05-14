@@ -26,6 +26,8 @@ final: prev: {
 
         loralib = callPyPkg ./loralib { };
 
+        ml-dtypes = callPyPkg ./ml-dtypes { };
+
         openapi-python-client = callPyPkg ./openapi-python-client { };
 
         opentelemetry-api = callPyPkg ./opentelemetry-api { };
