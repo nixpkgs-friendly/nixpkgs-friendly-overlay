@@ -25,7 +25,9 @@
     {
       overlays = {
         python = import ./pkgs/python/overlay.nix;
+        go = import ./pkgs/go/overlay.nix;
         default = nixpkgs.lib.composeManyExtensions [
+          self.overlays.go
           self.overlays.python
         ];
       };
