@@ -14,7 +14,9 @@ python3.pkgs.buildPythonPackage rec {
   };
 
   postPatch = ''
-    substituteInPlace setup.py --replace "packaging>=21.3.0,<23" "packaging"
+    substituteInPlace setup.py \
+      --replace "packaging>=21.3.0,<23" "packaging" \
+      --replace "torchmetrics>=0.10.0,<0.11.4" "torchmetrics"
   '';
 
   nativeBuildInputs = with python3.pkgs; [
