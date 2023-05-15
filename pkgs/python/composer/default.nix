@@ -13,6 +13,8 @@ python3.pkgs.buildPythonPackage rec {
     sha256 = "sha256-NwEZVZtlrUpLZ8Tr4CzAw54XtpbifjtlF3uzrE0K52g=";
   };
 
+  # torchmetrics pinning PR:
+  # https://github.com/mosaicml/composer/pull/2065
   postPatch = ''
     substituteInPlace setup.py \
       --replace "packaging>=21.3.0,<23" "packaging" \
