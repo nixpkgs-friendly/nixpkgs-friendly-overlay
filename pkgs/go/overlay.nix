@@ -5,6 +5,9 @@ let
   callPackage = final.callPackage;
 in
 rec {
+  etcd_3_5 = callPackage ./etcd/3_5 { };
+  etcd = etcd_3_5;
+
   fluxcd = callPackage ./fluxcd { };
 
   k3s_1_26 = callPackage ./k3s/1_26 { };
