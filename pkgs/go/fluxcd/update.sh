@@ -3,10 +3,13 @@
 
 set -x -eu -o pipefail
 
-NIXPKGS_PATH="$(git rev-parse --show-toplevel)"
+ROOT_PATH="$(git rev-parse --show-toplevel)"
 FLUXCD_PATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-OLD_VERSION="$(nix-instantiate --eval -E "with import $NIXPKGS_PATH {}; fluxcd.version or (builtins.parseDrvName fluxcd.name).version" | tr -d '"')"
+# OLD_VERSION="$(nix-instantiate --eval -E "with import $NIXPKGS_PATH {}; fluxcd.version or (builtins.parseDrvName fluxcd.name).version" | tr -d '"')"
+
+OLD_VERSION="nix eval --inputs-from /home/intj/git/nixpkgs-friendly-overlay .#pkgsDebug.fluxcd.version --quiet | tr -d '\"'"
+
 LATEST_TAG=$(curl ${GITHUB_TOKEN:+" -u \":$GITHUB_TOKEN\""} --silent https://api.github.com/repos/fluxcd/flux2/releases/latest | jq -r '.tag_name')
 LATEST_VERSION=$(echo ${LATEST_TAG} | sed 's/^v//')
 
@@ -24,7 +27,7 @@ if [ ! "$OLD_VERSION" = "$LATEST_VERSION" ]; then
     setKV vendorSha256 "0000000000000000000000000000000000000000000000000000" # The same as lib.fakeSha256
 
     set +e
-    VENDOR_SHA256=$(nix-build --no-out-link -A fluxcd $NIXPKGS_PATH 2>&1 >/dev/null | grep "got:" | cut -d':' -f2 | sed 's| ||g')
+    VENDOR_SHA256=$(nix build --no-link --inputs-from $ROOT_PATH .#pkgsDebug.fluxcd 2>&1 >/dev/null | grep "got:" | cut -d':' -f2 | sed 's| ||g')
     set -e
 
     if [ -n "${VENDOR_SHA256:-}" ]; then
