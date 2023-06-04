@@ -55,9 +55,9 @@ final: prev: {
 
         sourcery = callPyPkg ./sourcery { };
 
-        tensorboard = callPyPkg ./tensorboard { };
+        # tensorboard = callPyPkg ./tensorboard { };
 
-        tensorboard-data-server = callPyPkg ./tensorboard-data-server { };
+        # tensorboard-data-server = callPyPkg ./tensorboard-data-server { };
 
         testslide = callPyPkg ./testslide { };
 

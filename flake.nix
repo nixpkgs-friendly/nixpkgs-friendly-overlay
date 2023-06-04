@@ -35,6 +35,8 @@
       packages = usePkgs (pkgs: rec {
         pkgsDebug = pkgs; # Useful for building anything from pkgs, including nixpkgs-friendly-overlay
         dpy = pkgs.python3.pkgs;
+        dpy310 = pkgs.python310Packages;
+        dpy311 = pkgs.python311Packages;
       });
 
       devShells = usePkgs (pkgs: {
