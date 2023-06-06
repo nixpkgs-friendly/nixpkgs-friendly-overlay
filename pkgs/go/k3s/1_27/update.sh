@@ -6,7 +6,7 @@ set -x -eu -o pipefail
 WORKDIR=$(mktemp -d)
 trap "rm -rf ${WORKDIR}" EXIT
 
-REPO_ROOT="$(git rev-parse --show-toplevel)"/
+REPO_ROOT="$(git rev-parse --show-toplevel)"
 K3S_PATH=$(cd $(dirname ${BASH_SOURCE[0]}); pwd -P)/
 cd ${K3S_PATH}
 
@@ -102,11 +102,12 @@ setKV containerdSha256 ${CONTAINERD_SHA256}
 
 setKV criCtlVersion ${CRI_CTL_VERSION}
 
+set +e
 # Fix-Me: Improve workaround for K3S_VENDOR_SHA256
 # K3S_VENDOR_SHA256=$(nix-prefetch -I nixpkgs=${REPO_ROOT} "{ sha256 }: (import ${REPO_ROOT}. {}).k3s.go-modules.overrideAttrs (_: { vendorSha256 = sha256; })")
-
-set +e
-K3S_VENDOR_SHA256=$(nix build .#pkgsDebug.k3s_noVendorHash 2>&1 >/dev/null | grep "got:" | sed -e 's/ //g' -e 's/got://')
+K3S_VENDOR_SHA256=`nix build --impure --expr \
+    "(builtins.getFlake (toString "$REPO_ROOT")).packages.$(uname -m)-linux.pkgsDebug.k3s.go-modules.overrideAttrs (_: { vendorSha256 = \"\"; })" \
+    2>&1 >/dev/null | grep "got:" | sed -e 's/ //g' -e 's/got://'`
 set -e
 
 if [ -n "${K3S_VENDOR_SHA256:-}" ]; then
