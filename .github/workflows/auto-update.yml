@@ -2,11 +2,11 @@ name: Auto-update
 
 on:
   workflow_dispatch:
-  pull_request:
-    types:
-      - opened
-    paths:
-      - '.github/workflows/auto-update.yml'
+  # pull_request:
+  #   types:
+  #     - opened
+  #   paths:
+  #     - '.github/workflows/auto-update.yml'
   schedule: # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
     - cron: '* 6,10,14,18 * * *'
 jobs:
@@ -36,7 +36,7 @@ jobs:
         run: |
           git config --global user.name 'UpdateBot'
           git config --global user.email 'superherointj@users.noreply.github.com'
-          [ ! -z "$(git status --porcelain)" ] && (git add flake.lock; git commit -m "flake.lock updated"; git push) || echo "Nothing to commit."
+          [ ! -z "$(git status --porcelain)" ] && (git add flake.lock; git commit -m "flake.lock updated"; git push; echo "flake.lock update executed: $?") || echo "Nothing to commit."
 
 ##################################
 
