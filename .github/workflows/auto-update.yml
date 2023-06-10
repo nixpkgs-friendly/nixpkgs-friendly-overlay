@@ -8,7 +8,7 @@ on:
   #   paths:
   #     - '.github/workflows/auto-update.yml'
   schedule: # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
-    - cron: '* 6,10,14,18 * * *'
+    - cron: '* 0/2 * * *'
 jobs:
   update-sources:
     runs-on: ubuntu-latest
