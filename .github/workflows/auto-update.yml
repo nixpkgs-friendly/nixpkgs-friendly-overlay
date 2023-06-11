@@ -1,14 +1,14 @@
 name: Auto-update
 
 on:
-  workflow_dispatch:
+  # workflow_dispatch:
   # pull_request:
   #   types:
   #     - opened
   #   paths:
   #     - '.github/workflows/auto-update.yml'
   schedule: # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
-    - cron: '* 0/2 * * *'
+    - cron: '0 * * * *'
 jobs:
   update-sources:
     runs-on: ubuntu-latest
