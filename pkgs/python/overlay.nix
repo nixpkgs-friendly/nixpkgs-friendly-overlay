@@ -30,8 +30,6 @@ final: prev: {
 
         openapi-python-client = callPyPkg ./openapi-python-client { };
 
-        opentelemetry-api = callPyPkg ./opentelemetry-api { };
-
         pyre-check = callPyPkg ./pyre-check { };
 
         pyre-extensions = callPyPkg ./pyre-extensions { };
