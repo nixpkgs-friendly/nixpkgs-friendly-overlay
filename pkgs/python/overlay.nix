@@ -70,8 +70,6 @@ final: prev: {
 
         torchaudio = callPyPkg ./torchaudio { };
 
-        # wandb = callPyPkg ./wandb { };`
-
         webdriver-manager = callPyPkg ./webdriver-manager { };
 
         xformers = callPyPkg ./xformers { };
