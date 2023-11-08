@@ -30,4 +30,4 @@ let
     };
   };
 in
-  godot-export-templates-versions.${godot_4.version}
+  godot-export-templates-versions."4.1.3-stable" #${godot_4.version}
