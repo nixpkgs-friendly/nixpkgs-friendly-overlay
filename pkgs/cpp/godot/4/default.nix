@@ -45,13 +45,13 @@ in
 stdenv.mkDerivation rec {
   pname = "godot";
   version = "4.2.0-beta"; # Synced to master in 2023-Nov-08
-  commitHash = "d1381bbca264794eb3ba470789217ab6f5c91d3f";
+  commitHash = "2b987d1c54b77a394d302a89118274538726bcf1";
 
   src = fetchFromGitHub {
     owner = "godotengine";
     repo = "godot";
     rev = commitHash;
-    hash = "sha256-PGttRb0hs8AbF2V3W4FmjydJcPr4UfdFZjGjrnKom0k=";
+    hash = "sha256-Evn9EiwfS6cAbluFXLwVjVovY/UaDKwfH3GFRWlVcaU=";
   };
 
   nativeBuildInputs = [
