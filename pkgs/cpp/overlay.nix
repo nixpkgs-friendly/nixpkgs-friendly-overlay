@@ -33,4 +33,50 @@ rec {
     extension = "zip";
   };
 
+  godot_4_1_3_stable =
+    let commitHash = "fc79201851a16215f9554884aa242ed957801b10"; in
+      godot_4.overrideAttrs(oa: {
+        version = "4.1.3-stable";
+        src = final.fetchFromGitHub {
+          owner = "godotengine";
+          repo = "godot";
+          rev = commitHash;
+          hash = "sha256-z5JRPhdEO20AodS12MApgur0BMHGToUjo2r2eI77nNc=";
+        };
+        preConfigure = ''
+          mkdir -p .git
+          echo ${commitHash} > .git/HEAD
+        '';
+      });
+  godot_4_1_3_stable-debug = godot_4_1_3_stable.override({ withDebug = true; });
+  godot_4_1_3_stable-export-templates = final.fetchzip {
+    url = "https://github.com/godotengine/godot/releases/download/4.1.3-stable/Godot_v4.1.3-stable_export_templates.tpz";
+    hash = "sha256-P3CkOyR+IT/KDuV6WpL8yOd97jOTYuRGGhLo4ObsDvM=";
+    name = "godot-export-templates";
+    extension = "zip";
+  };
+
+  godot_4_master =
+    let
+      commitHash = "bdd9034ad05e1824ff5d9c750acd87caeafe6dca";
+      shortHash = builtins.substring 0 7 commitHash;
+    in
+    godot_4.overrideAttrs(oa: {
+      version = "4.2-master-${shortHash}";
+      src = final.fetchFromGitHub {
+        owner = "godotengine";
+        repo = "godot";
+        # Hash from: https://github.com/godotengine/godot/commits/master
+        rev = commitHash;
+        hash = "sha256-zXjUVs0LbIeKlj+D+C0pPV8P6iN0+zrAF9Gen3LHzV0=";
+      };
+      GODOT_VERSION_STATUS="master-${shortHash}";
+      preConfigure = ''
+        mkdir -p .git
+        echo ${commitHash} > .git/HEAD
+      '';
+    });
+  godot_4_master-debug = godot_4_master.override({ withDebug = true; });
+  godot_4_master-export-templates = godot_4_2_beta5-export-templates; # Fix-Me
+
 }
