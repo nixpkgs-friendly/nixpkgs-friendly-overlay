@@ -3,10 +3,36 @@ final: prev:
 let
   callPackage = final.callPackage;
 in
+
 rec {
   godot_4 = callPackage ./godot/4 { };
   godot_4-debug = godot_4.override({ withDebug = true; });
   godot_4-export-templates = callPackage ./godot/4/export-templates.nix { };
+
+  godot_4_2_beta6 =
+    let commitHash = "64150060f89677eaf11229813ae6c5cf8a873802"; in
+    godot_4.overrideAttrs(oa: {
+      version = "4.2-beta6";
+      src = final.fetchFromGitHub {
+        owner = "godotengine";
+        repo = "godot";
+        # Hash from: https://github.com/godotengine/godot-builds/releases/tag/4.2-beta6
+        rev = commitHash;
+        hash = "sha256-Q7OmQIbvHx+Re4vlov4ylmWzhWJL4GWzr2AYkSk0fiQ=";
+      };
+      GODOT_VERSION_STATUS="beta6";
+      preConfigure = ''
+        mkdir -p .git
+        echo ${commitHash} > .git/HEAD
+      '';
+    });
+  godot_4_2_beta6-debug = godot_4_2_beta6.override({ withDebug = true; });
+  godot_4_2_beta6-export-templates = final.fetchzip {
+    url = "https://github.com/godotengine/godot-builds/releases/download/4.2-beta6/Godot_v4.2-beta6_export_templates.tpz";
+    hash = "sha256-3Qi6lIHIvJ8DMDL8AdmOa/xasphnCYGoGIdNjXHZH2o=";
+    name = "godot-export-templates";
+    extension = "zip";
+  };
 
   godot_4_2_beta5 =
     let commitHash = "4c96e9676b66d0cc9a25022b019b78f4c20ddc60"; in
