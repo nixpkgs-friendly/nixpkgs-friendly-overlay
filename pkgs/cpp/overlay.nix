@@ -43,6 +43,10 @@ let
         godot_4 = callPackage ./godot/4 { };
         godot_4-debug = self.godot_4.override({ withDebug = true; });
         godot_4-export-templates = callPackage ./godot/4/export-templates.nix { };
+
+        godot_4_beta = final.godot_4_2_beta6;
+        godot_4_beta-debug = final.godot_4_2_beta6-debug;
+        godot_4_beta-export-templates = final.godot_4_2_beta6-export-templates;
       } //
       (mergeGenericAttrs [
         {
