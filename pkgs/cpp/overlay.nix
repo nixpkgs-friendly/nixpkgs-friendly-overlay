@@ -4,7 +4,9 @@ let
   callPackage = final.callPackage;
 
   self = (self:
-    let generic = { majorMinorVersion, versionStatus, commit, hash, exportTemplatesHash }:
+    let
+      mergeGenericAttrs = l: prev.lib.foldr (item: acc: acc // generic(item)) {} l;
+      generic = { majorMinorVersion, versionStatus, commit, hash, exportTemplatesHash }:
       let
         versionDerivation = majorMinorVersion + "-" + versionStatus;
         nameToplevel = "godot_" + (prev.lib.replaceStrings [ "." ] [ "_" ] majorMinorVersion) + "_" + versionStatus;
@@ -42,7 +44,7 @@ let
         godot_4-debug = self.godot_4.override({ withDebug = true; });
         godot_4-export-templates = callPackage ./godot/4/export-templates.nix { };
       } //
-      (prev.lib.foldr (item: acc: acc // generic(item)) {} [
+      (mergeGenericAttrs [
         {
           majorMinorVersion = "4.2";
           versionStatus = "beta6";
