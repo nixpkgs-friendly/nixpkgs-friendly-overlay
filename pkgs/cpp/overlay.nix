@@ -55,7 +55,7 @@ let
           versionStatus = "rc1";
           commit = "ad72de508363ca8d10c6b148be44a02cdf12be13";
           hash = "sha256-6iSZ+30EuhGIS7FPOicIOO8ZdYgMD7K/6X1lq/M09Ec=";
-          exportTemplatesHash = "";
+          exportTemplatesHash = "sha256-/Y0Mja+1ODfZLSecm6GuDvS6LXvMWV0VRqWFwpEt1G0=";
         }
         {
           majorMinorVersion = "4.2";
