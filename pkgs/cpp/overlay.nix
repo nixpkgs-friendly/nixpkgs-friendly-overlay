@@ -51,6 +51,13 @@ let
       } //
       (mergeGenericAttrs [
         {
+          versionStatus = "master";
+          commit = "b5779cc5c0c0d11aa95fb8afe1c1640412ce2351";
+          majorMinorVersion = "4.2";
+          hash = "sha256-NbTxn3wy6fV15ujzgYUoGnkOnFONhbkcMSxiIpKaE+E=";
+          exportTemplatesHash = ""; # Fix-Me: Generate templates from sources
+        }
+        {
           majorMinorVersion = "4.2";
           versionStatus = "rc1";
           commit = "ad72de508363ca8d10c6b148be44a02cdf12be13";
@@ -78,13 +85,20 @@ let
           hash = "sha256-z5JRPhdEO20AodS12MApgur0BMHGToUjo2r2eI77nNc=";
           exportTemplatesHash = "sha256-P3CkOyR+IT/KDuV6WpL8yOd97jOTYuRGGhLo4ObsDvM=";
         }
-        # {
-        #   commit = "bdd9034ad05e1824ff5d9c750acd87caeafe6dca";
-        #   majorMinorVersion = "4.2";
-        #   versionStatus = "master";
-        #   hash = "sha256-zXjUVs0LbIeKlj+D+C0pPV8P6iN0+zrAF9Gen3LHzV0=";
-        #   # exportTemplatesHash = "";
-        # }
+        {
+          majorMinorVersion = "4.1.2";
+          versionStatus = "stable";
+          commit = "399c9dc393f6f84c0b4e4d4117906c70c048ecf2";
+          hash = "sha256-MmGjzVgFudYpjZDKQ0zkhT0SYekaMx1v93vKa2c+oP4=";
+          exportTemplatesHash = "sha256-jItuAlhqneMGIw+qnYDMAJrxTYy/ET2vy9XXcKji0Q0=";
+        }
+        {
+          majorMinorVersion = "4.1.1";
+          versionStatus = "stable";
+          commit = "bd6af8e0ea69167dd0627f3bd54f9105bda0f8b5";
+          hash = "sha256-0CErsMTrBC/zYcabAtjYn8BWAZ1HxgozKdgiqdsn3q8=";
+          exportTemplatesHash = "sha256-J2TjDvduHqB5LgTH3n3XV4/gIavnvu4ZB666DLEEuSg=";
+        }
       ])
     )
   ) self; in self
