@@ -44,9 +44,9 @@ let
         godot_4-debug = self.godot_4.override({ withDebug = true; });
         godot_4-export-templates = callPackage ./godot/4/export-templates.nix { };
 
-        godot_4_latest = final.godot_4_2_rc1;
-        godot_4_latest-debug = final.godot_4_2_rc1-debug;
-        godot_4_latest-export-templates = final.godot_4_2_rc1-export-templates;
+        godot_4_latest = final.godot_4_2_rc2;
+        godot_4_latest-debug = final.godot_4_2_rc2-debug;
+        godot_4_latest-export-templates = final.godot_4_2_rc2-export-templates;
 
       } //
       (mergeGenericAttrs [
@@ -56,6 +56,13 @@ let
           majorMinorVersion = "4.2";
           hash = "sha256-NbTxn3wy6fV15ujzgYUoGnkOnFONhbkcMSxiIpKaE+E=";
           exportTemplatesHash = ""; # Fix-Me: Generate templates from sources
+        }
+        {
+          majorMinorVersion = "4.2";
+          versionStatus = "rc2";
+          commit = "1ba920fada9efc8c4476ded50fe673b8db541366";
+          hash = "sha256-wd1BNrgmuAj1zj+qQqIbQ244TdwkZrBdGcbBJzodxnc";
+          exportTemplatesHash = "sha256-055/I9zPp0x/+KCi9a8yYyS2y+9a6R9STxClGnWylAE=";
         }
         {
           majorMinorVersion = "4.2";
