@@ -30,7 +30,7 @@
         cpp = import ./pkgs/cpp/overlay.nix;
         default = nixpkgs.lib.composeManyExtensions [
           self.overlays.cpp
-          # self.overlays.go
+          self.overlays.go
           # self.overlays.python
           # self.overlays.misc
         ];
