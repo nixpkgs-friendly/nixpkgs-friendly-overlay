@@ -11,4 +11,5 @@ rec {
   }) k3s_1_28;
   k3s = k3s_1_28;
 
+  kubevela = callPackage ./kubevela { };
 }
