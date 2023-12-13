@@ -11,8 +11,8 @@
           import nixpkgs {
             inherit system;
             config = {
-              allowUnfree = true;
-              cudaSupport = true;
+              #allowUnfree = true;
+              #cudaSupport = true;
             };
             overlays = [
               self.overlays.default
@@ -43,9 +43,9 @@
         dpy311 = pkgs.python311Packages;
       });
 
-      devShells = usePkgs (pkgs: {
-        llm-foundry = pkgs.callPackage ./shells/mosaicml-llm-foundry { };
-      });
+      #devShells = usePkgs (pkgs: {
+      #  llm-foundry = pkgs.callPackage ./shells/mosaicml-llm-foundry { };
+      #});
     };
 
 }
