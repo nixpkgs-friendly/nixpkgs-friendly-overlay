@@ -32,7 +32,7 @@
           self.overlays.cpp
           self.overlays.go
           # self.overlays.python
-          # self.overlays.misc
+          self.overlays.misc
         ];
       };
 
