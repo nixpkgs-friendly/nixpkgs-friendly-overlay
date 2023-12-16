@@ -3,6 +3,9 @@
 , installShellFiles
 , lib
 , stdenv
+, testers
+, kubevela
+, nix-update-script
 }:
 
 buildGoModule rec {
@@ -27,7 +30,8 @@ buildGoModule rec {
 
   CGO_ENABLED = 0;
 
-  HOME = "$TMPDIR"; # Workaround for permission issue in shell completion
+  # Workaround for permission issue in shell completion
+  HOME = "$TMPDIR";
 
   installPhase = ''
     runHook preInstall
@@ -42,11 +46,19 @@ buildGoModule rec {
       --zsh <($out/bin/vela completion zsh)
   '';
 
+  passthru.tests.version = testers.testVersion {
+    package = kubevela;
+    command = "kubevela --version";
+  };
+
+  passthru.updateScript = nix-update-script { };
+
   meta = {
     description = "An application delivery platform to deploy and operate applications in hybrid, multi-cloud environments";
     downloadPage = "https://github.com/kubevela/kubevela";
     homepage = "https://kubevela.io/";
     license = lib.licenses.asl20;
     maintainers = [ ];
+    mainProgram = "vela";
   };
 }
