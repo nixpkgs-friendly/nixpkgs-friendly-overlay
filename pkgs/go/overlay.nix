@@ -14,7 +14,7 @@ let
           then newp
           else
             (if (newp.version == oldp.version)
-              then builtins.trace "deprecated: override of ${newp.pname} (${newp.version}) has reached version parity. Consider removing it."
+              then builtins.trace "deprecated: override of ${newp.pname} (${newp.version}) has reached version parity in upstream. Consider removing it."
               else builtins.trace "deprecated: override of ${newp.pname} (${newp.version}) is outdated, current version is ${oldp.version}. Consider removing it."
             ) oldp;
 in
