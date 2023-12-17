@@ -4,4 +4,4 @@ stages:
 build:
   stage: build
   script:
-    - echo "Has executed."
+    - echo "Has executed. From GitHub?"
