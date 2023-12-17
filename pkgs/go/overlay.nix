@@ -20,7 +20,7 @@ rec {
       src = prev.fetchFromGitHub {
         owner = "loft-sh";
         repo = "vcluster";
-        rev = "v0.18.1"; # ${version}
+        rev = "v${version}";
         hash = "sha256-TJjMB7x8MOlr3GexsnOZBFPJovVkf4ByRn1aGprvZFQ=";
       };
       ldflags = [
