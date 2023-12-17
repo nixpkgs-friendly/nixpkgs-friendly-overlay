@@ -2,6 +2,7 @@ final: prev:
 
 let
   callPackage = final.callPackage;
+  pickLatest = (import ../../utils.nix).pickLatest; # Fix-Me
 in
 rec {
 
@@ -25,9 +26,7 @@ rec {
       ];
     });
     in
-      if (builtins.compareVersions newCorectrl.version prev.corectrl.version) > 0
-        then newCorectrl
-        else prev.corectrl;
+      pickLatest newCorectrl prev.corectrl;
 
   #yandex-browser-stable = callPackage ./yandex-browser { };
   #yandex-browser-beta = yandex-browser.override({

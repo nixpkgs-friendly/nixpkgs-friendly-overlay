@@ -1,9 +1,12 @@
-final: prev: {
+final: prev:
+
+ {
   pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
     (python-final: python-prev:
       let
         fetchpatch2 = prev.fetchpatch2;
         callPyPkg = python-final.callPackage;
+        pickLatest = (import ../../utils.nix).pickLatest;
       in
       {
         abstract-singleton = callPyPkg ./abstract-singleton { };
@@ -68,7 +71,7 @@ final: prev: {
 
         torch-optimizer = callPyPkg ./torch-optimizer { };
 
-        torchaudio = callPyPkg ./torchaudio { };
+        torchaudio = pickLatest (callPyPkg ./torchaudio { }) python-prev.torchaudio;
 
         webdriver-manager = callPyPkg ./webdriver-manager { };
 
