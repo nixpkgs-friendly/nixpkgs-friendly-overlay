@@ -4,13 +4,14 @@ stages:
 
 sync-to-github:
   stage: fetch
+  image: ${CONTAINER_REGISTRY_URL}nix-flakes-cache:0
   rules:
     - if: '($CI_PIPELINE_SOURCE == "pipeline" && $CI_COMMIT_BRANCH == "master")'
   script:
     - git remote -v
     - git remote add github https://github.com/nixpkgs-friendly/nixpkgs-friendly-overlay.git
     - git fetch github
-    - git pull github/master
+    - git pull github master
 
 build:
   stage: build
