@@ -5,3 +5,5 @@ build:
   stage: build
   script:
     - echo "Has executed. From GitHub?"
+    - git remote -v
+    - git pull
