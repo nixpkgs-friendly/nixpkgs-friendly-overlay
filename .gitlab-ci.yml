@@ -27,10 +27,28 @@ pull-from-github:
     - git push gitlab HEAD:master
 
 
-build:
+build-nix-k3s:
   stage: build
   rules:
     - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "master")'
   image: ${CONTAINER_REGISTRY_URL}nix-flakes-cache:0
   script:
     - nix copy .#pkgsDebug.k3s --to $NIX_CACHE_S3_URL
+
+
+build-nix-fluxcd:
+  stage: build
+  rules:
+    - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "master")'
+  image: ${CONTAINER_REGISTRY_URL}nix-flakes-cache:0
+  script:
+    - nix copy .#pkgsDebug.fluxcd --to $NIX_CACHE_S3_URL
+
+
+build-nix-kubevela:
+  stage: build
+  rules:
+    - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "master")'
+  image: ${CONTAINER_REGISTRY_URL}nix-flakes-cache:0
+  script:
+    - nix copy .#pkgsDebug.kubevela --to $NIX_CACHE_S3_URL
