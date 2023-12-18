@@ -26,6 +26,7 @@ sync-to-github:
     - git pull github master
     - git push gitlab master
 
+
 build:
   stage: build
   rules:
