@@ -35,10 +35,6 @@ build-nix-k3s:
   image: ${CONTAINER_REGISTRY_URL}nix-flakes-cache:0
   timeout: 2h
   script:
-    - 'echo "AWS_SHARED_CREDENTIALS_FILE: $AWS_SHARED_CREDENTIALS_FILE"'
-    - cat /awscreds
-    - 'echo "AWS_CONFIG_FILE: $AWS_CONFIG_FILE"'
-    - cat /awsconf
     - nix copy .#pkgsDebug.k3s --to $NIX_CACHE_S3_URL
 
 
