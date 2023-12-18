@@ -1,9 +1,21 @@
 stages:
+  - fetch
   - build
+
+sync-to-github:
+  stage: fetch
+  rules:
+    - if: '($CI_PIPELINE_SOURCE == "pipeline" && $CI_COMMIT_BRANCH == "master")'
+  script:
+    - git remote -v
+    - git remote add github https://github.com/nixpkgs-friendly/nixpkgs-friendly-overlay.git
+    - git fetch github
+    - git pull github/master
 
 build:
   stage: build
+  rules:
+    - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "master")'
+  image: ${CONTAINER_REGISTRY_URL}nix-flakes-cache:0
   script:
-    - echo "Has executed. From GitHub?"
-    - git remote -v
-    - git pull
+    - echo "Will build here"
