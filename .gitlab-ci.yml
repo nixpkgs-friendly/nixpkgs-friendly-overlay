@@ -59,18 +59,8 @@ build-nix-kubevela:
 deploy-trigger-mynixos:
   stage: deploy
   rules:
-    # - if: '($CI_PIPELINE_SOURCE == "schedule" && $SCHEDULED_HOURLY == "1")'
     - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "master")'
-      # changes:
-      #   - .gitlab-ci.yaml
-      #   - flake.nix
-      #   - flake.lock
-  # needs:
-  #   - job: nix_flake_update
-  #     artifacts: false
-  #     optional: true
   variables:
     PARENT_PIPELINE_ID: $CI_PIPELINE_ID
-    # NIX_FLAKE_UPDATED: "true"
   trigger:
     project: 'superherointj/mynixos'
