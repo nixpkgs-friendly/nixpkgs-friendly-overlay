@@ -37,7 +37,7 @@ build-nix-k3s:
   script:
     - 'echo "AWS_SHARED_CREDENTIALS_FILE: $AWS_SHARED_CREDENTIALS_FILE"'
     - cat /awscreds
-    - 'echo "AWS_CONFIG_FILE: $AWS_CONFIG_FILE'
+    - 'echo "AWS_CONFIG_FILE: $AWS_CONFIG_FILE"'
     - cat /awsconf
     - nix copy .#pkgsDebug.k3s --to $NIX_CACHE_S3_URL
 
