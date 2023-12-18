@@ -24,7 +24,7 @@ pull-from-github:
     - git fetch github
     - git fetch gitlab
     - git pull github master
-    - git push -u gitlab/master
+    - git push gitlab HEAD:master
 
 
 build:
