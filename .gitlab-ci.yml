@@ -6,7 +6,7 @@ pull-from-github:
   stage: fetch
   image: ${CONTAINER_REGISTRY_URL}nix-flakes-cache:0
   rules:
-    - if: '($CI_PIPELINE_SOURCE == "pipeline" && $CI_COMMIT_BRANCH == "master")'
+    - if: '($CI_PIPELINE_SOURCE == "trigger" && $CI_COMMIT_BRANCH == "master")'
   script:
     - mkdir -p ~/.ssh/;
       chmod 700 ~/.ssh;
