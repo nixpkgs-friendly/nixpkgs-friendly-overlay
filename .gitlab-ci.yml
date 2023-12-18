@@ -1,6 +1,7 @@
 stages:
   - fetch
   - build
+  - deploy
 
 pull-from-github:
   stage: fetch
@@ -52,3 +53,23 @@ build-nix-kubevela:
   image: ${CONTAINER_REGISTRY_URL}nix-flakes-cache:0
   script:
     - nix copy .#pkgsDebug.kubevela --to $NIX_CACHE_S3_URL
+
+
+deploy-trigger-mynixos:
+  stage: deploy
+  rules:
+    # - if: '($CI_PIPELINE_SOURCE == "schedule" && $SCHEDULED_HOURLY == "1")'
+    - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "master")'
+      # changes:
+      #   - ci/gitlab-ci/nix-flake-update.yaml
+      #   - flake.nix
+      #   - flake.lock
+  # needs:
+  #   - job: nix_flake_update
+  #     artifacts: false
+  #     optional: true
+  variables:
+    PARENT_PIPELINE_ID: $CI_PIPELINE_ID
+    # NIX_FLAKE_UPDATED: "true"
+  trigger:
+    project: 'superherointj/mynixos'
