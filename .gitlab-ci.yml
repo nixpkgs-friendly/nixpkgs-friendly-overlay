@@ -33,6 +33,7 @@ build-nix-k3s:
   rules:
     - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "master")'
   image: ${CONTAINER_REGISTRY_URL}nix-flakes-cache:0
+  timeout: 2h
   script:
     - nix copy .#pkgsDebug.k3s --to $NIX_CACHE_S3_URL
 
@@ -61,7 +62,7 @@ deploy-trigger-mynixos:
     # - if: '($CI_PIPELINE_SOURCE == "schedule" && $SCHEDULED_HOURLY == "1")'
     - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "master")'
       # changes:
-      #   - ci/gitlab-ci/nix-flake-update.yaml
+      #   - .gitlab-ci.yaml
       #   - flake.nix
       #   - flake.lock
   # needs:
