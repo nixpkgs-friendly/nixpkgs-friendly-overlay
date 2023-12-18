@@ -33,4 +33,4 @@ build:
     - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "master")'
   image: ${CONTAINER_REGISTRY_URL}nix-flakes-cache:0
   script:
-    - echo "Will build here"
+    - echo "If this executes automatically. It's game on!"
