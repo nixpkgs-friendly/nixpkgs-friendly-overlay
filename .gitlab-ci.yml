@@ -38,34 +38,6 @@ build-nixpkgs-friendly-pkgs:
     - nix copy .#nixpkgsFriendlyPkgs --to $NIX_CACHE_S3_URL
 
 
-# build-nix-k3s:
-#   stage: build
-#   rules:
-#     - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "master")'
-#   image: ${CONTAINER_REGISTRY_URL}nix-flakes-cache:0
-#   timeout: 2h
-#   script:
-#     - nix copy .#pkgsDebug.k3s --to $NIX_CACHE_S3_URL
-
-
-# build-nix-kubevela:
-#   stage: build
-#   rules:
-#     - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "master")'
-#   image: ${CONTAINER_REGISTRY_URL}nix-flakes-cache:0
-#   script:
-#     - nix copy .#pkgsDebug.kubevela --to $NIX_CACHE_S3_URL
-
-
-# build-nix-vcluster:
-#   stage: build
-#   rules:
-#     - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "master")'
-#   image: ${CONTAINER_REGISTRY_URL}nix-flakes-cache:0
-#   script:
-#     - nix copy .#pkgsDebug.vcluster --to $NIX_CACHE_S3_URL
-
-
 deploy-trigger-mynixos:
   stage: deploy
   rules:
