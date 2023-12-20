@@ -38,15 +38,6 @@ build-nix-k3s:
     - nix copy .#pkgsDebug.k3s --to $NIX_CACHE_S3_URL
 
 
-build-nix-fluxcd:
-  stage: build
-  rules:
-    - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "master")'
-  image: ${CONTAINER_REGISTRY_URL}nix-flakes-cache:0
-  script:
-    - nix copy .#pkgsDebug.fluxcd --to $NIX_CACHE_S3_URL
-
-
 build-nix-kubevela:
   stage: build
   rules:
@@ -63,15 +54,6 @@ build-nix-vcluster:
   image: ${CONTAINER_REGISTRY_URL}nix-flakes-cache:0
   script:
     - nix copy .#pkgsDebug.vcluster --to $NIX_CACHE_S3_URL
-
-
-build-nix-corectrl:
-  stage: build
-  rules:
-    - if: '($CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "master")'
-  image: ${CONTAINER_REGISTRY_URL}nix-flakes-cache:0
-  script:
-    - nix copy .#pkgsDebug.corectrl --to $NIX_CACHE_S3_URL
 
 
 deploy-trigger-mynixos:
