@@ -41,6 +41,16 @@
         dpy = pkgs.python3.pkgs;
         dpy310 = pkgs.python310Packages;
         dpy311 = pkgs.python311Packages;
+        nixpkgsFriendlyPkgs = pkgs.symlinkJoin {
+          name = "nixpkgs-friendly-all-packages";
+          paths = with pkgs; [
+            k3s
+            fluxcd
+            kubevela
+            vcluster
+          ];
+        };
+
       });
 
       #devShells = usePkgs (pkgs: {
