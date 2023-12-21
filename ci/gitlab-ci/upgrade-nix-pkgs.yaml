@@ -7,18 +7,18 @@ upgrade-nix-pkgs:
   timeout: 2h
   script:
     # Refresh flake.lock
-    # - mkdir -p ~/.ssh/;
-    #   chmod 700 ~/.ssh;
-    #   git config --global user.email "$CI_GIT_EMAIL";
-    #   git config --global user.name "$CI_GIT_NAME";
-    #   echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config;
-    #   echo "$CI_SSH_PRIVATE_KEY" > ~/.ssh/id_rsa;
-    #   echo "$CI_SSH_PUBLIC_KEY" > ~/.ssh/id_rsa.pub;
-    #   chmod 600 ~/.ssh/id_rsa;
-    #   eval `ssh-agent -s`;
-    #   ssh-add ~/.ssh/id_rsa;
-    #   git remote add upstream git@gitlab.com:superherointj/nixpkgs-friendly-pkgs.git
-    # - nix flake update
+    - mkdir -p ~/.ssh/;
+      chmod 700 ~/.ssh;
+      git config --global user.email "$CI_GIT_EMAIL";
+      git config --global user.name "$CI_GIT_NAME";
+      echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config;
+      echo "$CI_SSH_PRIVATE_KEY" > ~/.ssh/id_rsa;
+      echo "$CI_SSH_PUBLIC_KEY" > ~/.ssh/id_rsa.pub;
+      chmod 600 ~/.ssh/id_rsa;
+      eval `ssh-agent -s`;
+      ssh-add ~/.ssh/id_rsa;
+      git remote add upstream git@gitlab.com:superherointj/nixpkgs-friendly-pkgs.git
+    - nix flake update
     - nix build .#pkgsDebug.kubevela
     - nix copy .#pkgsDebug.kubevela --to $NIX_CACHE_S3_URL
     # # Build packages
