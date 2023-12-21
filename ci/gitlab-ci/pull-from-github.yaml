@@ -1,0 +1,23 @@
+pull-from-github:
+  stage: fetch
+  image: ${CONTAINER_REGISTRY_URL}nix-flakes-cache:0
+  rules:
+    - if: '($CI_PIPELINE_SOURCE == "trigger" && $CI_COMMIT_BRANCH == "master")'
+  script:
+    - mkdir -p ~/.ssh/;
+      chmod 700 ~/.ssh;
+      git config --global user.email "$CI_GIT_EMAIL";
+      git config --global user.name "$CI_GIT_NAME"
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - echo "$CI_SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - echo "$CI_SSH_PUBLIC_KEY" > ~/.ssh/id_rsa.pub
+    - chmod 600 ~/.ssh/id_rsa;
+      eval `ssh-agent -s`;
+      ssh-add ~/.ssh/id_rsa
+    - git remote add gitlab git@gitlab.com:superherointj/nixpkgs-friendly-overlay.git
+    - git remote add github https://github.com/nixpkgs-friendly/nixpkgs-friendly-overlay.git
+    - git remote -v
+    - git fetch github
+    - git fetch gitlab
+    - git pull github master
+    - git push gitlab HEAD:master
