@@ -19,13 +19,11 @@ upgrade-nix-pkgs:
       ssh-add ~/.ssh/id_rsa;
       git remote add upstream git@gitlab.com:superherointj/nixpkgs-friendly-pkgs.git
     - nix flake update
-    - nix build .#pkgsDebug.kubevela
-    - nix copy .#pkgsDebug.kubevela --to $NIX_CACHE_S3_URL
-    # # Build packages
-    # - nix build .#nixpkgsFriendlyPkgs
-    # - nix copy .#nixpkgsFriendlyPkgs --to $NIX_CACHE_S3_URL
-    # # Commit flake.lock
-    # - '[ ! -z "$(git status --porcelain)" ] && (git add flake.lock; git commit -m "flake.lock updated $(date -u +%Y-%m-%d/%H:%M:%S-%Z)"; git push upstream HEAD:master; echo "flake.lock update executed: $?") || echo "Nothing to commit."'
+    # Build packages
+    - 'nix build .#nixpkgsFriendlyPkgs'
+    - 'nix copy .#nixpkgsFriendlyPkgs --to $NIX_CACHE_S3_URL'
+    # Commit flake.lock
+    - '[ ! -z "$(git status --porcelain)" ] && (git add flake.lock; git commit -m "flake.lock updated $(date -u +%Y-%m-%d/%H:%M:%S-%Z)"; git push upstream HEAD:master; echo "flake.lock update executed: $?") || echo "Nothing to commit."'
 
 
 deploy-trigger-mynixos:
