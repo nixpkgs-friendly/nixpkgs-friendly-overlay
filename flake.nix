@@ -47,7 +47,6 @@
             k3s
             fluxcd
             kubevela
-            vcluster
           ];
         };
 

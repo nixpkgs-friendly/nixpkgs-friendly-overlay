@@ -16,5 +16,5 @@ rec {
 
   kubevela = pickLatest (callPackage ./kubevela { }) (prev.kubevela or null);
 
-  vcluster = pickLatest ((import ./vcluster) final prev) prev.vcluster;
+  # vcluster = pickLatest ((import ./vcluster) final prev) prev.vcluster;
 }
