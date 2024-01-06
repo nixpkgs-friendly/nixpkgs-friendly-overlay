@@ -8,7 +8,7 @@ let
 in
 
 rec {
-  etcd = callPackage ./etcd { };
+  #etcd = callPackage ./etcd { };
 
   # fluxcd = pickLatest (callPackage ./fluxcd { }) prev.fluxcd;
 
