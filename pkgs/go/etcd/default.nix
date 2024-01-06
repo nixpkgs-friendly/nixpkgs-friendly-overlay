@@ -47,6 +47,8 @@ let
 
     inherit CGO_ENABLED meta src version;
 
+    ETCD_UNSUPPORTED_ARCH = lib.optionalString stdenv.isAarch64 "arm64";
+
     vendorHash = "sha256-AMN8iWTIFeT0HLqxYrp7sieT0nEKBNwFXV9mZG3xG5I=";
 
     modRoot = "./etcdutl";
@@ -56,6 +58,8 @@ let
     pname = "etcdctl";
 
     inherit CGO_ENABLED meta src version;
+
+    ETCD_UNSUPPORTED_ARCH = lib.optionalString stdenv.isAarch64 "arm64";
 
     vendorHash = "sha256-zwafVpNBvrRUbL0qkDK9TOyo8KCiGjpZhvdUrgklG5Y=";
 
