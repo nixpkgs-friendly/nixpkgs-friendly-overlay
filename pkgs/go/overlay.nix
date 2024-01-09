@@ -8,6 +8,8 @@ let
 in
 
 rec {
+  dagger = callPackage ./dagger { };
+
   #etcd = callPackage ./etcd { };
 
   # fluxcd = pickLatest (callPackage ./fluxcd { }) prev.fluxcd;
