@@ -7,9 +7,7 @@ in
 
 rec {
   java-service-wrapper = callPackage ./java-service-wrapper { };
+
+  i2p = callPackage ./i2p { };
 }
 
-
-### Notes
-# fluxcd = pickLatest (callPackage ./fluxcd { }) prev.fluxcd;
-# k3s_1_28 = pickLatest (callPackage ./k3s { buildGoModule = buildGo120Module; }).k3s_1_28 (prev.k3s_1_28 or null);
