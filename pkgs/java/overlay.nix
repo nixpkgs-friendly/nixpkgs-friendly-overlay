@@ -7,6 +7,5 @@ in
 
 rec {
 
-  i2p = callPackage ./i2p { };
 }
 
