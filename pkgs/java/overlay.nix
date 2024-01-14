@@ -6,7 +6,6 @@ let
 in
 
 rec {
-  java-service-wrapper = callPackage ./java-service-wrapper { };
 
   i2p = callPackage ./i2p { };
 }
