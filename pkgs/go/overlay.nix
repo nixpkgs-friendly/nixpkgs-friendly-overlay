@@ -16,7 +16,7 @@ rec {
 
   # k3s_1_28 = pickLatest (callPackage ./k3s { buildGoModule = buildGo120Module; }).k3s_1_28 (prev.k3s_1_28 or null);
   # k3s_1_29 = pickLatest (callPackage ./k3s { buildGoModule = buildGo121Module; }).k3s_1_29 (prev.k3s_1_29 or null);
-  # k3s = pickLatest k3s_1_29 prev.k3s;
+  k3s = pickLatest prev.k3s_1_29 prev.k3s;
 
   # vcluster = pickLatest ((import ./vcluster) final prev) prev.vcluster;
 }
