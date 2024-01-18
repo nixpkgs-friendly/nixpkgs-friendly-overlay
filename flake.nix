@@ -51,8 +51,7 @@
           name = "nixpkgs-friendly-all-packages";
           paths = with pkgs; [
             k3s
-            fluxcd
-            kubevela
+            # fluxcd
           ];
         };
 
@@ -66,13 +65,10 @@
         let pkgsD = self.packages.${system}.pkgsDebug; in
         {
           dagger =  pkgsD.dagger;
-          # hello = pkgsD.hello;
+          fluxcd = pkgsD.fluxcd;
           k3s = pkgsD.k3s;
-          pkgsMusl-erlang_nox = pkgsD.pkgsMusl.erlang_nox;
-          # pkgsMusl = pkgsD.pkgsMusl;
         });
 
     };
 
 }
-
