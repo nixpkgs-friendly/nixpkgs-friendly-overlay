@@ -61,7 +61,8 @@
       #});
 
       hydraJobs = {
-        packages.${system} = self.packages;
+        inherit (self) packages;
+        # xxxx.${system} = derivation;
       };
     };
 
