@@ -71,7 +71,7 @@
       hydraJobs = builtins.listToAttrs (map
         (system: {
           name = system;
-          value = import ./ci/hydra.nix {
+          value = import ./ci/hydra/hydra.nix {
             inherit system;
             pkgs = self.legacyPackages.${system};
           };
