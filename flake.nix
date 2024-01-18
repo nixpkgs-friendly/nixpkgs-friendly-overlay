@@ -59,6 +59,10 @@
       #devShells = usePkgs (pkgs: {
       #  llm-foundry = pkgs.callPackage ./shells/mosaicml-llm-foundry { };
       #});
+
+      hydraJobs = {
+        inherit (self) packages;
+      };
     };
 
 }
