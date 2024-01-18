@@ -5,7 +5,11 @@
 
   outputs = { self, nixpkgs }:
     let
-      forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
+      supportedSystems = [ "x86_64-linux" "i686-linux" "aarch64-linux" ];
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+
+
+      # forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
       # systems = [ "x86_64-linux" "aarch64-linux" ];
       # forEachSystem = nixpkgs.lib.genAttrs systems;
       allSystemsPkgs = nixpkgs: value: forAllSystems (system:
@@ -68,16 +72,21 @@
       #   # pkgsMusl.${system}
       # };
 
-      hydraJobs = builtins.listToAttrs (map
-        (system: {
-          name = system;
-          value = import ./ci/hydra/hydra.nix {
-            inherit system;
-            pkgs = self.legacyPackages.${system};
-          };
-        })
-        [ "x86_64-linux" "aarch64-linux"  ]);
+      hydraJobs = {
+        build = forAllSystems (system: self.packages.${system}.pkgsDebug.dagger);
+      };
+
+      # builtins.listToAttrs (map
+      #   (system: {
+      #     name = system;
+      #     value = import ./ci/hydra/hydra.nix {
+      #       inherit system;
+      #       pkgs = self.legacyPackages.${system};
+      #     };
+      #   })
+      #   [ "x86_64-linux" "aarch64-linux"  ]);
 
     };
 
 }
+
