@@ -8,10 +8,6 @@
       supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 
-
-      # forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
-      # systems = [ "x86_64-linux" "aarch64-linux" ];
-      # forEachSystem = nixpkgs.lib.genAttrs systems;
       allSystemsPkgs = nixpkgs: value: forAllSystems (system:
         let pkgs =
           import nixpkgs {
@@ -66,28 +62,15 @@
       #  llm-foundry = pkgs.callPackage ./shells/mosaicml-llm-foundry { };
       #});
 
-      # hydraJobs = {
-      #   inherit (self) packages;
-      #   # xxxx.${system} = derivation;
-      #   # pkgsMusl.${system}
-      # };
-
-      hydraJobs = {
-        dagger = forAllSystems (system: self.packages.${system}.pkgsDebug.dagger);
-        hello = forAllSystems (system: self.packages.${system}.pkgsDebug.hello);
-        k3s = forAllSystems (system: self.packages.${system}.pkgsDebug.k3s);
-        # pkgsMusl = forAllSystems (system: self.packages.${system}.pkgsDebug.pkgsMusl);
-      };
-
-      # builtins.listToAttrs (map
-      #   (system: {
-      #     name = system;
-      #     value = import ./ci/hydra/hydra.nix {
-      #       inherit system;
-      #       pkgs = self.legacyPackages.${system};
-      #     };
-      #   })
-      #   [ "x86_64-linux" "aarch64-linux"  ]);
+      hydraJobs = forAllSystems (system:
+        let pkgsD = self.packages.${system}.pkgsDebug; in
+        {
+          dagger =  pkgsD.dagger;
+          # hello = pkgsD.hello;
+          k3s = pkgsD.k3s;
+          pkgsMusl-erlang_nox = pkgsD.pkgsMusl.erlang_nox;
+          # pkgsMusl = pkgsD.pkgsMusl;
+        });
 
     };
 
