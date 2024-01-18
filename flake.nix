@@ -6,6 +6,8 @@
   outputs = { self, nixpkgs }:
     let
       forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
+      # systems = [ "x86_64-linux" "aarch64-linux" ];
+      # forEachSystem = nixpkgs.lib.genAttrs systems;
       allSystemsPkgs = nixpkgs: value: forAllSystems (system:
         let pkgs =
           import nixpkgs {
@@ -60,10 +62,22 @@
       #  llm-foundry = pkgs.callPackage ./shells/mosaicml-llm-foundry { };
       #});
 
-      hydraJobs = {
-        inherit (self) packages;
-        # xxxx.${system} = derivation;
-      };
+      # hydraJobs = {
+      #   inherit (self) packages;
+      #   # xxxx.${system} = derivation;
+      #   # pkgsMusl.${system}
+      # };
+
+      hydraJobs = builtins.listToAttrs (map
+        (system: {
+          name = system;
+          value = import ./ci/hydra.nix {
+            inherit system;
+            pkgs = self.legacyPackages.${system};
+          };
+        })
+        [ "x86_64-linux" "aarch64-linux"  ]);
+
     };
 
 }
