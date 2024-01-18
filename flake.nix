@@ -75,7 +75,8 @@
       hydraJobs = {
         dagger = forAllSystems (system: self.packages.${system}.pkgsDebug.dagger);
         hello = forAllSystems (system: self.packages.${system}.pkgsDebug.hello);
-        pkgsMusl = forAllSystems (system: self.packages.${system}.pkgsDebug.pkgsMusl);
+        k3s = forAllSystems (system: self.packages.${system}.pkgsDebug.k3s);
+        # pkgsMusl = forAllSystems (system: self.packages.${system}.pkgsDebug.pkgsMusl);
       };
 
       # builtins.listToAttrs (map
