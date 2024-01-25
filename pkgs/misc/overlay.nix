@@ -29,6 +29,8 @@ rec {
 
   firefox-extensions = callPackage ./firefox-extensions { };
 
+  vimPlugins = import ./vim-plugins/default.nix final prev;
+
   #yandex-browser-stable = callPackage ./yandex-browser { };
   #yandex-browser-beta = yandex-browser.override({
   #  channel = "beta";
