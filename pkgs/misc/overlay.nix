@@ -5,7 +5,6 @@ let
   pickLatest = (import ../../utils.nix).pickLatest; # Fix-Me
 in
 rec {
-
   # Fix-Me: Remove after https://github.com/NixOS/nixpkgs/pull/273564/ reaches nixos-unstable.
   # https://nixpk.gs/pr-tracker.html?pr=273564
   # corectrl = let newCorectrl = prev.corectrl.overrideAttrs(oa: rec {
@@ -27,6 +26,8 @@ rec {
   #   });
   #   in
   #     pickLatest newCorectrl prev.corectrl;
+
+  firefox-extensions = callPackage ./firefox-extensions { };
 
   #yandex-browser-stable = callPackage ./yandex-browser { };
   #yandex-browser-beta = yandex-browser.override({
