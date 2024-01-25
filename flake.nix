@@ -26,18 +26,18 @@
     in
     {
       overlays = {
-        python = import ./pkgs/python/overlay.nix;
-        go = import ./pkgs/go/overlay.nix;
-        java = import ./pkgs/java/overlay.nix;
-        misc = import ./pkgs/misc/overlay.nix;
         cpp = import ./pkgs/cpp/overlay.nix;
         default = nixpkgs.lib.composeManyExtensions [
           self.overlays.cpp
-          self.overlays.java
           self.overlays.go
-          # self.overlays.python
+          self.overlays.java
           self.overlays.misc
+          # self.overlays.python
         ];
+        go = import ./pkgs/go/overlay.nix;
+        java = import ./pkgs/java/overlay.nix;
+        misc = import ./pkgs/misc/overlay.nix;
+        # python = import ./pkgs/python/overlay.nix;
       };
 
       nixosModules.default = import ./modules/default.nix;
