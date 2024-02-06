@@ -1,10 +1,7 @@
 {
   inputs = {
-    # Use nixos-unstable-small until:
-    # - https://nixpk.gs/pr-tracker.html?pr=279268
-    # - https://nixpk.gs/pr-tracker.html?pr=286058
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    #nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
   };
 
   outputs = { self, nixpkgs }:
