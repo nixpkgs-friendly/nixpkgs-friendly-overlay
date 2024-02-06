@@ -69,6 +69,7 @@
           fluxcd = pkgsD.fluxcd;
           etcd = pkgsD.etcd;
           k3s = pkgsD.k3s;
+          go = pkgsD.go;
         });
 
     };
