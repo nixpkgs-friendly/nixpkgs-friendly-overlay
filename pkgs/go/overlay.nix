@@ -10,7 +10,7 @@ in
 rec {
   dagger = callPackage ./dagger { };
 
-  etcd = callPackage ./etcd { };
+  etcd_3_5 = pickLatest (callPackage ./etcd { }) prev.etcd_3_5;
 
   fluxcd = pickLatest (callPackage ./fluxcd { }) prev.fluxcd;
 
