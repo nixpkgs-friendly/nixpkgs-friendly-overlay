@@ -6,5 +6,6 @@ let
 in
 
 {
+  godot_4-export-templates = callPackage ./godot/4/export-templates.nix { };
 
 }

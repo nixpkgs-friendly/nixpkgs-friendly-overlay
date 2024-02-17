@@ -28,9 +28,9 @@
     in
     {
       overlays = {
-        # cpp = import ./pkgs/cpp/overlay.nix;
+        cpp = import ./pkgs/cpp/overlay.nix;
         default = nixpkgs.lib.composeManyExtensions [
-          # self.overlays.cpp
+          self.overlays.cpp
           self.overlays.go
           self.overlays.java
           self.overlays.misc
