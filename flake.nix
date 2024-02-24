@@ -64,13 +64,21 @@
       #});
 
       hydraJobs = forAllSystems (system:
-        let pkgsD = self.packages.${system}.pkgsDebug; in
+        let p = self.packages.${system}.pkgsDebug; in
         {
-          dagger =  pkgsD.dagger;
-          fluxcd = pkgsD.fluxcd;
-          etcd = pkgsD.etcd;
-          k3s = pkgsD.k3s;
-          go = pkgsD.go;
+          dagger = p.dagger;
+          fluxcd = p.fluxcd;
+          etcd = p.etcd;
+          k3s = p.k3s;
+          go = p.go;
+          musl-erlang_nox = p.pkgsMusl.erlang_nox;
+          musl-erlang = p.pkgsMusl.erlang;
+          musl-elixir = p.pkgsMusl.elixir;
+          musl-beam_nox = p.pkgsMusl.beam_nox;
+          musl-beam_minimal = p.pkgsMusl.beam_minimal;
+          musl-go = p.pkgsMusl.go;
+          musl-node = p.pkgsMusl.nodejs;
+          musl-ruby = p.pkgsMusl.ruby;
         });
 
     };
