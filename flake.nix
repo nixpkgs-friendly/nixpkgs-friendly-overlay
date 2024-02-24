@@ -71,14 +71,14 @@
           etcd = p.etcd;
           k3s = p.k3s;
           go = p.go;
-          musl-erlang_nox = p.pkgsMusl.erlang_nox;
-          musl-erlang = p.pkgsMusl.erlang;
-          musl-elixir = p.pkgsMusl.elixir;
-          musl-beam_nox = p.pkgsMusl.beam_nox;
-          musl-beam_minimal = p.pkgsMusl.beam_minimal;
-          musl-go = p.pkgsMusl.go;
-          musl-node = p.pkgsMusl.nodejs;
-          musl-ruby = p.pkgsMusl.ruby;
+          # musl-erlang_nox = p.pkgsMusl.erlang_nox;
+          # musl-erlang = p.pkgsMusl.erlang;
+          # musl-elixir = p.pkgsMusl.elixir;
+          # musl-beam_nox = p.pkgsMusl.beam_nox;
+          # musl-beam_minimal = p.pkgsMusl.beam_minimal;
+          # musl-go = p.pkgsMusl.go;
+          # musl-node = p.pkgsMusl.nodejs;
+          # musl-ruby = p.pkgsMusl.ruby;
         });
 
     };
