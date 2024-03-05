@@ -67,10 +67,10 @@
         let p = self.packages.${system}.pkgsDebug; in
         {
           dagger = p.dagger;
-          fluxcd = p.fluxcd;
           etcd = p.etcd;
-          k3s = p.k3s;
+          fluxcd = p.fluxcd;
           go = p.go;
+          k3s = p.k3s;
           # musl-erlang_nox = p.pkgsMusl.erlang_nox;
           # musl-erlang = p.pkgsMusl.erlang;
           # musl-elixir = p.pkgsMusl.elixir;
@@ -79,6 +79,7 @@
           # musl-go = p.pkgsMusl.go;
           # musl-node = p.pkgsMusl.nodejs;
           # musl-ruby = p.pkgsMusl.ruby;
+          vcluster = p.vcluster;
         });
 
     };
