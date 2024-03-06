@@ -66,6 +66,7 @@
       hydraJobs = forAllSystems (system:
         let p = self.packages.${system}.pkgsDebug; in
         {
+          biglybt = p.biglybt;
           dagger = p.dagger;
           etcd = p.etcd;
           fluxcd = p.fluxcd;

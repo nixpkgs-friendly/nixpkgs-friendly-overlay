@@ -6,6 +6,5 @@ let
 in
 
 rec {
-
+  biglybt = pickLatest (callPackage ./biglybt { }) (prev.biglybt or null);
 }
-
