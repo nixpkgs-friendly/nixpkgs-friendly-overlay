@@ -15,8 +15,8 @@
           import nixpkgs {
             inherit system;
             config = {
-              #allowUnfree = true;
-              #cudaSupport = true;
+              allowUnfree = true;
+              cudaSupport = true;
             };
             overlays = [
               self.overlays.default
@@ -64,14 +64,20 @@
       #});
 
       hydraJobs = forAllSystems (system:
-        let p = self.packages.${system}.pkgsDebug; in
+        let
+          p = self.packages.${system}.pkgsDebug;
+          py = p.python3Packages;
+        in
         {
           biglybt = p.biglybt;
+          ### Go / Cloud Native ###
           dagger = p.dagger;
           etcd = p.etcd;
           fluxcd = p.fluxcd;
           go = p.go;
           k3s = p.k3s;
+          vcluster = p.vcluster;
+          ### Musl ###
           # musl-erlang_nox = p.pkgsMusl.erlang_nox;
           # musl-erlang = p.pkgsMusl.erlang;
           # musl-elixir = p.pkgsMusl.elixir;
@@ -80,7 +86,22 @@
           # musl-go = p.pkgsMusl.go;
           # musl-node = p.pkgsMusl.nodejs;
           # musl-ruby = p.pkgsMusl.ruby;
-          vcluster = p.vcluster;
+          ### Python Packages ###
+          abstract-singleton = py.abstract-singleton;
+          auto-gpt-plugin-template = py.auto-gpt-plugin-template;
+          coolname = py.coolname;
+          ddsketch = py.ddsketch;
+          ddtrace = py.ddtrace;
+          envier = py.envier;
+          flake8-quotes = py.flake8-quotes;
+          loralib = py.loralib;
+          openapi-python-client = py.openapi-python-client;
+          pyre-check = py.pyre-check;
+          pyre-extensions = py.pyre-extensions;
+          pytorch-ranger = py.pytorch-ranger;
+          sourcery = py.sourcery;
+          testslide = py.testslide;
+          torch-optimizer = py.torch-optimizer;
         });
 
     };
