@@ -27,8 +27,6 @@ final: prev:
 
         loralib = pickLatest (callPyPkg ./loralib { }) (python-prev.loralib or null);
 
-        ml-dtypes = pickLatest (callPyPkg ./ml-dtypes { }) (python-prev.ml-dtypes or null);
-
         openapi-python-client = pickLatest (callPyPkg ./openapi-python-client { }) (python-prev.openapi-python-client or null);
 
         pyre-check = pickLatest (callPyPkg ./pyre-check { }) (python-prev.pyre-check or null);
