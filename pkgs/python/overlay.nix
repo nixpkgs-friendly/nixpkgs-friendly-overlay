@@ -69,8 +69,6 @@ final: prev:
 
         torch-optimizer = pickLatest (callPyPkg ./torch-optimizer { }) (python-prev.torch-optimizer or null);
 
-        torchaudio = pickLatest (callPyPkg ./torchaudio { }) python-prev.torchaudio;
-
         webdriver-manager = pickLatest (callPyPkg ./webdriver-manager { }) (python-prev.webdriver-manager or null);
 
         xformers = pickLatest (callPyPkg ./xformers { }) (python-prev.xformers or null);
