@@ -17,8 +17,6 @@ final: prev:
 
         coolname = callPyPkg ./coolname { };
 
-        databases = callPyPkg ./databases { };
-
         ddsketch = callPyPkg ./ddsketch { };
 
         ddtrace = callPyPkg ./ddtrace { };
