@@ -34,12 +34,12 @@
           self.overlays.go
           self.overlays.java
           self.overlays.misc
-          # self.overlays.python
+          self.overlays.python
         ];
         go = import ./pkgs/go/overlay.nix;
         java = import ./pkgs/java/overlay.nix;
         misc = import ./pkgs/misc/overlay.nix;
-        # python = import ./pkgs/python/overlay.nix;
+        python = import ./pkgs/python/overlay.nix;
       };
 
       nixosModules.default = import ./modules/default.nix;
