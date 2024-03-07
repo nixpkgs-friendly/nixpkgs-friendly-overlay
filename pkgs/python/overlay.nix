@@ -33,20 +33,20 @@ final: prev:
 
         pytorch-ranger = pickLatest (callPyPkg ./pytorch-ranger { }) (python-prev.pytorch-ranger or null);
 
-        scikit-optimize = python-prev.scikit-optimize.overrideAttrs (oa: {
-          patches = [
-            # https://github.com/scikit-optimize/scikit-optimize/pull/1166
-            (fetchpatch2 {
-              url = "https://github.com/scikit-optimize/scikit-optimize/pull/1166.patch";
-              hash = "sha256-YCxA0IQIFOJ1nZ741lGIcGsFM08HMz80mb3OalGgM/M";
-            })
-            # https://github.com/scikit-optimize/scikit-optimize/pull/1150
-            (fetchpatch2 {
-              url = "https://github.com/scikit-optimize/scikit-optimize/pull/1150.patch";
-              hash = "sha256-4OL8rIkq5jYn2X7q8RsyyPXPqUvSxFqHcZ/zoiQR/SU=";
-            })
-          ];
-        });
+        # scikit-optimize = python-prev.scikit-optimize.overrideAttrs (oa: {
+        #   patches = [
+        #     # https://github.com/scikit-optimize/scikit-optimize/pull/1166
+        #     (fetchpatch2 {
+        #       url = "https://github.com/scikit-optimize/scikit-optimize/pull/1166.patch";
+        #       hash = "sha256-YCxA0IQIFOJ1nZ741lGIcGsFM08HMz80mb3OalGgM/M";
+        #     })
+        #     # https://github.com/scikit-optimize/scikit-optimize/pull/1150
+        #     (fetchpatch2 {
+        #       url = "https://github.com/scikit-optimize/scikit-optimize/pull/1150.patch";
+        #       hash = "sha256-4OL8rIkq5jYn2X7q8RsyyPXPqUvSxFqHcZ/zoiQR/SU=";
+        #     })
+        #   ];
+        # });
 
         sourcery = pickLatest (callPyPkg ./sourcery { }) (python-prev.sourcery or null);
 
