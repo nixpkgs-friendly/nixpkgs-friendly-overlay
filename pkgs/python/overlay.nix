@@ -65,7 +65,8 @@ final: prev:
 
         torch-optimizer = pickLatest (callPyPkg ./torch-optimizer { }) (python-prev.torch-optimizer or null);
 
-        xformers = pickLatest (callPyPkg ./xformers { }) (python-prev.xformers or null);
+        # xformers may benefit from improvements from here.
+        # xformers = pickLatest (callPyPkg ./xformers { }) (python-prev.xformers or null);
       }
     )
   ];
