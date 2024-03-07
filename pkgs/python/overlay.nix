@@ -31,8 +31,6 @@ final: prev:
 
         pyre-check = pickLatest (callPyPkg ./pyre-check { }) (python-prev.pyre-check or null);
 
-        pyre-extensions = pickLatest (callPyPkg ./pyre-extensions { }) (python-prev.pyre-extensions or null);
-
         pytorch-ranger = pickLatest (callPyPkg ./pytorch-ranger { }) (python-prev.pytorch-ranger or null);
 
         scikit-optimize = python-prev.scikit-optimize.overrideAttrs (oa: {
