@@ -9,33 +9,33 @@ final: prev:
         pickLatest = (import ../../utils.nix).pickLatest;
       in
       {
-        abstract-singleton = callPyPkg ./abstract-singleton { };
+        abstract-singleton = pickLatest (callPyPkg ./abstract-singleton { }) (python-prev.abstract-singleton or null);
 
-        auto-gpt-plugin-template = callPyPkg ./auto-gpt-plugin-template { };
+        auto-gpt-plugin-template = pickLatest (callPyPkg ./auto-gpt-plugin-template { }) (python-prev.auto-gpt-plugin-template or null);
 
-        composer = callPyPkg ./composer { };
+        composer = pickLatest (callPyPkg ./composer { }) (python-prev.composer or null);
 
-        coolname = callPyPkg ./coolname { };
+        coolname = pickLatest (callPyPkg ./coolname { }) (python-prev.coolname or null);
 
-        ddsketch = callPyPkg ./ddsketch { };
+        ddsketch = pickLatest (callPyPkg ./ddsketch { }) (python-prev.ddsketch or null);
 
-        ddtrace = callPyPkg ./ddtrace { };
+        ddtrace = pickLatest (callPyPkg ./ddtrace { }) (python-prev.ddtrace or null);
 
-        envier = callPyPkg ./envier { };
+        envier = pickLatest (callPyPkg ./envier { }) (python-prev.envier or null); # Needs upstream
 
-        flake8-quotes = callPyPkg ./flake8-quotes { };
+        flake8-quotes = pickLatest (callPyPkg ./flake8-quotes { }) (python-prev.flake8-quotes or null);
 
-        loralib = callPyPkg ./loralib { };
+        loralib = pickLatest (callPyPkg ./loralib { }) (python-prev.loralib or null);
 
-        ml-dtypes = callPyPkg ./ml-dtypes { };
+        ml-dtypes = pickLatest (callPyPkg ./ml-dtypes { }) (python-prev.ml-dtypes or null);
 
-        openapi-python-client = callPyPkg ./openapi-python-client { };
+        openapi-python-client = pickLatest (callPyPkg ./openapi-python-client { }) (python-prev.openapi-python-client or null);
 
-        pyre-check = callPyPkg ./pyre-check { };
+        pyre-check = pickLatest (callPyPkg ./pyre-check { }) (python-prev.pyre-check or null);
 
-        pyre-extensions = callPyPkg ./pyre-extensions { };
+        pyre-extensions = pickLatest (callPyPkg ./pyre-extensions { }) (python-prev.pyre-extensions or null);
 
-        pytorch-ranger = callPyPkg ./pytorch-ranger { };
+        pytorch-ranger = pickLatest (callPyPkg ./pytorch-ranger { }) (python-prev.pytorch-ranger or null);
 
         scikit-optimize = python-prev.scikit-optimize.overrideAttrs (oa: {
           patches = [
@@ -52,13 +52,13 @@ final: prev:
           ];
         });
 
-        sourcery = callPyPkg ./sourcery { };
+        sourcery = pickLatest (callPyPkg ./sourcery { }) (python-prev.sourcery or null);
 
         # tensorboard = callPyPkg ./tensorboard { };
 
         # tensorboard-data-server = callPyPkg ./tensorboard-data-server { };
 
-        testslide = callPyPkg ./testslide { };
+        testslide = pickLatest (callPyPkg ./testslide { }) (python-prev.testslide or null);
 
         # torch = callPyPkg ./torch {
         #   cudaSupport = python-prev.config.cudaSupport or false;
@@ -67,13 +67,13 @@ final: prev:
         #   inherit (python-prev.pkgs.llvmPackages_rocm) openmp;
         # };
 
-        torch-optimizer = callPyPkg ./torch-optimizer { };
+        torch-optimizer = pickLatest (callPyPkg ./torch-optimizer { }) (python-prev.torch-optimizer or null);
 
         torchaudio = pickLatest (callPyPkg ./torchaudio { }) python-prev.torchaudio;
 
-        webdriver-manager = callPyPkg ./webdriver-manager { };
+        webdriver-manager = pickLatest (callPyPkg ./webdriver-manager { }) (python-prev.webdriver-manager or null);
 
-        xformers = callPyPkg ./xformers { };
+        xformers = pickLatest (callPyPkg ./xformers { }) (python-prev.xformers or null);
       }
     )
   ];
