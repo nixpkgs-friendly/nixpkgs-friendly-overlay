@@ -21,6 +21,8 @@ final: prev:
 
         ddtrace = pickLatest (callPyPkg ./ddtrace { }) (python-prev.ddtrace or null);
 
+        dspy-ai = pickLatest (callPyPkg ./dspy-ai { }) (python-prev.dspy-ai or null);
+
         envier = pickLatest (callPyPkg ./envier { }) (python-prev.envier or null); # Needs upstream
 
         flake8-quotes = pickLatest (callPyPkg ./flake8-quotes { }) (python-prev.flake8-quotes or null);
