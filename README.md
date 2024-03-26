@@ -6,3 +6,7 @@ Code drift is bad. Upstreaming code is encouraged.
 
 For non-overlay contributions, contribute to:
 https://github.com/nixpkgs-friendly/nixpkgs-friendly
+
+# Formatting
+
+Use `nixfmt` as formatter.

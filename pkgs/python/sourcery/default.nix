@@ -1,7 +1,4 @@
-{ fetchFromGitHub
-, lib
-, python3
-}:
+{ fetchFromGitHub, lib, python3 }:
 
 python3.pkgs.buildPythonPackage rec {
   pname = "sourcery";
@@ -15,14 +12,13 @@ python3.pkgs.buildPythonPackage rec {
     hash = "sha256-KQLTOCMLczUwO6E3uZCdTUfvnr1D3sl4Bw6lWjPXkh8=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [
-    setuptools
-  ];
+  nativeBuildInputs = with python3.pkgs; [ setuptools ];
 
   doCheck = false;
 
   meta = {
-    description = "A Python library that automatically reviews and improves Python code";
+    description =
+      "A Python library that automatically reviews and improves Python code";
     homepage = "https://github.com/sourcery-ai/sourcery";
     license = lib.licenses.mit;
     maintainers = with lib.maintainers; [ ];

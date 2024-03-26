@@ -1,7 +1,4 @@
-{ fetchPypi
-, python3
-, lib
-}:
+{ fetchPypi, python3, lib }:
 
 python3.pkgs.buildPythonPackage rec {
   pname = "testslide";
@@ -22,11 +19,7 @@ python3.pkgs.buildPythonPackage rec {
   #   # setuptools
   # ];
 
-  propagatedBuildInputs = with python3.pkgs; [
-    typeguard
-    pygments
-    psutil
-  ];
+  propagatedBuildInputs = with python3.pkgs; [ typeguard pygments psutil ];
 
   doCheck = false; # Tests exist but wasn't triggered.
 
@@ -37,7 +30,8 @@ python3.pkgs.buildPythonPackage rec {
   pythonImportsCheck = [ "testslide" ];
 
   meta = {
-    description = "A test framework for Python that enable unit testing / TDD / BDD to be productive and enjoyable";
+    description =
+      "A test framework for Python that enable unit testing / TDD / BDD to be productive and enjoyable";
     downloadPage = "";
     homepage = "https://github.com/facebook/TestSlide";
     license = lib.licenses.mit;

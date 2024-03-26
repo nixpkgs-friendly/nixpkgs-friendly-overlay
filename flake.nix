@@ -10,23 +10,20 @@
       supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 
-      allSystemsPkgs = nixpkgs: value: forAllSystems (system:
-        let pkgs =
-          import nixpkgs {
-            inherit system;
-            config = {
-              allowUnfree = true;
-              cudaSupport = true;
+      allSystemsPkgs = nixpkgs: value:
+        forAllSystems (system:
+          let
+            pkgs = import nixpkgs {
+              inherit system;
+              config = {
+                allowUnfree = true;
+                cudaSupport = true;
+              };
+              overlays = [ self.overlays.default ];
             };
-            overlays = [
-              self.overlays.default
-            ];
-          };
-        in value pkgs
-      );
+          in value pkgs);
       usePkgs = allSystemsPkgs nixpkgs;
-    in
-    {
+    in {
       overlays = {
         cpp = import ./pkgs/cpp/overlay.nix;
         default = nixpkgs.lib.composeManyExtensions [
@@ -45,16 +42,18 @@
       nixosModules.default = import ./modules/default.nix;
 
       packages = usePkgs (pkgs: rec {
-        pkgsDebug = pkgs; # Useful for building anything from pkgs, including nixpkgs-friendly-overlay
+        pkgsDebug =
+          pkgs; # Useful for building anything from pkgs, including nixpkgs-friendly-overlay
         dpy = pkgs.python3.pkgs;
         dpy310 = pkgs.python310Packages;
         dpy311 = pkgs.python311Packages;
         nixpkgsFriendlyPkgs = pkgs.symlinkJoin {
           name = "nixpkgs-friendly-all-packages";
-          paths = with pkgs; [
-            k3s
-            # fluxcd
-          ];
+          paths = with pkgs;
+            [
+              k3s
+              # fluxcd
+            ];
         };
 
       });
@@ -67,8 +66,7 @@
         let
           p = self.packages.${system}.pkgsDebug;
           py = p.python3Packages;
-        in
-        {
+        in {
           biglybt = p.biglybt;
           ### Go / Cloud Native ###
           dagger = p.dagger;

@@ -1,31 +1,12 @@
-{ pkgs
-, stdenv
-, buildPythonPackage
-, fetchPypi
-, cython
-, setuptools-scm
-, ddsketch
-, packaging
-, protobuf
-, tenacity
-, attrs
-, cattrs
-, six
-, typing-extensions
-, jsonschema
-, xmltodict
-, envier
-, opentelemetry-api
-, callPackage
+{ pkgs, stdenv, buildPythonPackage, fetchPypi, cython, setuptools-scm, ddsketch
+, packaging, protobuf, tenacity, attrs, cattrs, six, typing-extensions
+, jsonschema, xmltodict, envier, opentelemetry-api, callPackage
 #, libddwaf
-, bytecode
-, ... }:
+, bytecode, ... }:
 
-let
-  libddwaf = pkgs.callPackage ./libddwaf.nix { };
-in
+let libddwaf = pkgs.callPackage ./libddwaf.nix { };
 
-buildPythonPackage rec {
+in buildPythonPackage rec {
   pname = "ddtrace";
   version = "1.11.1";
 

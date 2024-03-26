@@ -1,9 +1,5 @@
 { pkgs, system }:
 
-let
-  inherit (pkgs) lib stdenv;
-in
+let inherit (pkgs) lib stdenv;
 
-{
-  pkgsMusl =  pkgs.pkgsMusl;
-}
+in { pkgsMusl = pkgs.pkgsMusl; }

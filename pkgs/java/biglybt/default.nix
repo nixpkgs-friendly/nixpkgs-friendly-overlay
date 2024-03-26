@@ -1,16 +1,12 @@
-{ lib
-, stdenv
-, fetchurl
-, jre
-, wrapGAppsHook
-}:
+{ lib, stdenv, fetchurl, jre, wrapGAppsHook }:
 
 stdenv.mkDerivation rec {
   pname = "biglybt";
   version = "3.5.0.0";
 
   src = fetchurl {
-    url = "https://github.com/BiglySoftware/BiglyBT/releases/download/v${version}/GitHub_BiglyBT_unix.tar.gz";
+    url =
+      "https://github.com/BiglySoftware/BiglyBT/releases/download/v${version}/GitHub_BiglyBT_unix.tar.gz";
     hash = "sha256-ToTCIjunj/ABi3wVSmeddLGBdQlv+CfK2jGRjixJd0w=";
   };
 

@@ -1,7 +1,4 @@
-{ fetchPypi
-, python3
-, lib
-}:
+{ fetchPypi, python3, lib }:
 
 python3.pkgs.buildPythonPackage rec {
   pname = "flake8-quotes";
@@ -12,15 +9,11 @@ python3.pkgs.buildPythonPackage rec {
     sha256 = "sha256-biaJK2MtrLpRe/JyGcRZqDltz6wPXoIEkExaS6m0gOE=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [
-    flake8
-  ];
+  nativeBuildInputs = with python3.pkgs; [ flake8 ];
 
   doCheck = true;
 
-  nativeCheckInputs = with python3.pkgs; [
-    pytestCheckHook
-  ];
+  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
 
   pythonImportsCheck = [ "flake8_quotes" ];
 

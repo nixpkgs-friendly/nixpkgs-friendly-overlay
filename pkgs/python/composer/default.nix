@@ -1,7 +1,4 @@
-{ fetchPypi
-, python3
-, lib
-}:
+{ fetchPypi, python3, lib }:
 
 python3.pkgs.buildPythonPackage rec {
   pname = "composer";
@@ -21,9 +18,7 @@ python3.pkgs.buildPythonPackage rec {
       --replace "torchmetrics>=0.10.0,<0.11.4" "torchmetrics"
   '';
 
-  nativeBuildInputs = with python3.pkgs; [
-    setuptools
-  ];
+  nativeBuildInputs = with python3.pkgs; [ setuptools ];
 
   propagatedBuildInputs = with python3.pkgs; [
     torchvision
@@ -88,7 +83,8 @@ python3.pkgs.buildPythonPackage rec {
   pythonImportsCheck = [ "composer" ];
 
   meta = {
-    description = "Composer is a PyTorch library that enables you to train neural networks faster, at lower cost, and to higher accuracy";
+    description =
+      "Composer is a PyTorch library that enables you to train neural networks faster, at lower cost, and to higher accuracy";
     license = lib.licenses.asl20;
     homepage = "https://github.com/mosaicml/composer";
     maintainers = with lib.maintainers; [ ];

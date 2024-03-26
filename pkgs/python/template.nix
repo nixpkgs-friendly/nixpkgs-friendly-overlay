@@ -1,12 +1,12 @@
 { fetchPypi
-, python3
-, lib
-}:
+# , fetchFromGitHub
+, python3, lib }:
 
 python3.pkgs.buildPythonPackage rec {
   pname = "";
   version = "";
   # format = "pyproject";
+  # format = "setuptools";
 
   src = fetchPypi {
     # pname = lib.replaceStrings ["-"] ["_"] pname;
@@ -14,16 +14,23 @@ python3.pkgs.buildPythonPackage rec {
     sha256 = "";
   };
 
+  # src = fetchFromGitHub {
+  #   owner = "";
+  #   repo = "";
+  #   rev = "v${version}";
+  #   hash = "";
+  # };
+
   # postPatch = ''
   #   substituteInPlace setup.py --replace "" ""
   # '';
 
-  nativeBuildInputs = with python3.pkgs; [
-    # setuptools
-  ];
+  nativeBuildInputs = with python3.pkgs;
+    [
+      # setuptools
+    ];
 
-  propagatedBuildInputs = with python3.pkgs; [
-  ];
+  propagatedBuildInputs = with python3.pkgs; [ ];
 
   doCheck = false;
 
@@ -38,6 +45,6 @@ python3.pkgs.buildPythonPackage rec {
     downloadPage = "";
     homepage = "";
     # license = lib.licenses.asl20;
-    maintainers = with lib.maintainers; [ ];
+    maintainers = with lib.maintainers; [ superherointj ];
   };
 }

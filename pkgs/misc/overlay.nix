@@ -3,8 +3,7 @@ final: prev:
 let
   callPackage = final.callPackage;
   pickLatest = (import ../../utils.nix).pickLatest; # Fix-Me
-in
-rec {
+in rec {
   # Fix-Me: Remove after https://github.com/NixOS/nixpkgs/pull/273564/ reaches nixos-unstable.
   # https://nixpk.gs/pr-tracker.html?pr=273564
   # corectrl = let newCorectrl = prev.corectrl.overrideAttrs(oa: rec {

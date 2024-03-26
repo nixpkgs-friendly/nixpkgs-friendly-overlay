@@ -5,9 +5,8 @@ let
   buildGo120Module = final.buildGo120Module;
   buildGo121Module = final.buildGo121Module;
   pickLatest = (import ../../utils.nix).pickLatest; # Fix-Me
-in
 
-rec {
+in rec {
   # dagger = callPackage ./dagger { };
 
   #etcd_3_5 = pickLatest (callPackage ./etcd { }) prev.etcd_3_5;

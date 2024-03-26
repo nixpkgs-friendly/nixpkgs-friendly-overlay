@@ -1,7 +1,4 @@
-{ fetchPypi
-, python3
-, lib
-}:
+{ fetchPypi, python3, lib }:
 
 python3.pkgs.buildPythonPackage rec {
   pname = "pytorch-ranger";
@@ -9,21 +6,20 @@ python3.pkgs.buildPythonPackage rec {
   format = "setuptools";
 
   src = fetchPypi {
-    pname = lib.replaceStrings ["-"] ["_"] pname;
+    pname = lib.replaceStrings [ "-" ] [ "_" ] pname;
     inherit version;
     sha256 = "sha256-qnEVQxzvEbV9fde8hucwKpEdrkZ/YuxdCxDh/3RIdds=";
   };
 
-  propagatedBuildInputs = with python3.pkgs; [
-    torch
-  ];
+  propagatedBuildInputs = with python3.pkgs; [ torch ];
 
   doCheck = false; # No tests
 
   pythonImportsCheck = [ "pytorch_ranger" ];
 
   meta = {
-    description = "Ranger - a synergistic optimizer using RAdam (Rectified Adam) and LookAhead in one codebase";
+    description =
+      "Ranger - a synergistic optimizer using RAdam (Rectified Adam) and LookAhead in one codebase";
     downloadPage = "https://pypi.org/project/pytorch-ranger/";
     homepage = "https://github.com/mpariente/Ranger-Deep-Learning-Optimizer";
     license = lib.licenses.asl20;

@@ -1,27 +1,20 @@
 lib:
 {
-  # git tag
-  k3sVersion,
-  # commit hash
-  k3sCommit,
-  k3sRepoSha256 ? lib.fakeHash,
-  k3sVendorHash ? lib.fakeHash,
-  # taken from ./scripts/version.sh VERSION_ROOT https://github.com/k3s-io/k3s/blob/v1.23.3%2Bk3s1/scripts/version.sh#L47
-  k3sRootVersion,
-  k3sRootSha256 ? lib.fakeHash,
-  # Based on the traefik charts here: https://github.com/k3s-io/k3s/blob/d71ab6317e22dd34673faa307a412a37a16767f6/scripts/download#L29-L32
-  # see also https://github.com/k3s-io/k3s/blob/d71ab6317e22dd34673faa307a412a37a16767f6/manifests/traefik.yaml#L8
-  chartVersions,
-  # taken from ./scripts/version.sh VERSION_CNIPLUGINS https://github.com/k3s-io/k3s/blob/v1.23.3%2Bk3s1/scripts/version.sh#L45
-  k3sCNIVersion,
-  k3sCNISha256 ? lib.fakeHash,
-  # taken from ./scripts/version.sh VERSION_CONTAINERD
-  containerdVersion,
-  containerdSha256 ? lib.fakeHash,
-  # run `grep github.com/kubernetes-sigs/cri-tools go.mod | head -n1 | awk '{print $4}'` in the k3s repo at the tag
-  criCtlVersion,
-  updateScript ? null,
-}:
+# git tag
+k3sVersion,
+# commit hash
+k3sCommit, k3sRepoSha256 ? lib.fakeHash, k3sVendorHash ? lib.fakeHash,
+# taken from ./scripts/version.sh VERSION_ROOT https://github.com/k3s-io/k3s/blob/v1.23.3%2Bk3s1/scripts/version.sh#L47
+k3sRootVersion, k3sRootSha256 ? lib.fakeHash,
+# Based on the traefik charts here: https://github.com/k3s-io/k3s/blob/d71ab6317e22dd34673faa307a412a37a16767f6/scripts/download#L29-L32
+# see also https://github.com/k3s-io/k3s/blob/d71ab6317e22dd34673faa307a412a37a16767f6/manifests/traefik.yaml#L8
+chartVersions,
+# taken from ./scripts/version.sh VERSION_CNIPLUGINS https://github.com/k3s-io/k3s/blob/v1.23.3%2Bk3s1/scripts/version.sh#L45
+k3sCNIVersion, k3sCNISha256 ? lib.fakeHash,
+# taken from ./scripts/version.sh VERSION_CONTAINERD
+containerdVersion, containerdSha256 ? lib.fakeHash,
+# run `grep github.com/kubernetes-sigs/cri-tools go.mod | head -n1 | awk '{print $4}'` in the k3s repo at the tag
+criCtlVersion, updateScript ? null, }:
 
 # builder.nix contains a "builder" expression that, given k3s version and hash
 # variables, creates a package for that version.
@@ -29,33 +22,10 @@ lib:
 # currently.
 # It is likely we will have to split out additional builders for additional
 # versions in the future, or customize this one further.
-{ lib
-, makeWrapper
-, socat
-, iptables
-, iproute2
-, ipset
-, bridge-utils
-, btrfs-progs
-, conntrack-tools
-, buildGoModule
-, runc
-, rsync
-, kmod
-, libseccomp
-, pkg-config
-, ethtool
-, util-linux
-, fetchFromGitHub
-, fetchurl
-, fetchzip
-, fetchgit
-, zstd
-, yq-go
-, sqlite
-, nixosTests
-, pkgsBuildBuild
-}:
+{ lib, makeWrapper, socat, iptables, iproute2, ipset, bridge-utils, btrfs-progs
+, conntrack-tools, buildGoModule, runc, rsync, kmod, libseccomp, pkg-config
+, ethtool, util-linux, fetchFromGitHub, fetchurl, fetchzip, fetchgit, zstd
+, yq-go, sqlite, nixosTests, pkgsBuildBuild }:
 
 # k3s is a kinda weird derivation. One of the main points of k3s is the
 # simplicity of it being one binary that can perform several tasks.
@@ -93,7 +63,9 @@ let
   # https://github.com/k3s-io/k3s/blob/5fb370e53e0014dc96183b8ecb2c25a61e891e76/scripts/build#L19-L40
   versionldflags = [
     "-X github.com/rancher/k3s/pkg/version.Version=v${k3sVersion}"
-    "-X github.com/rancher/k3s/pkg/version.GitCommit=${lib.substring 0 8 k3sCommit}"
+    "-X github.com/rancher/k3s/pkg/version.GitCommit=${
+      lib.substring 0 8 k3sCommit
+    }"
     "-X k8s.io/client-go/pkg/version.gitVersion=v${k3sVersion}"
     "-X k8s.io/client-go/pkg/version.gitCommit=${k3sCommit}"
     "-X k8s.io/client-go/pkg/version.gitTreeState=clean"
@@ -122,7 +94,8 @@ let
   # k3s binary.
   k3sRoot = fetchzip {
     # Note: marked as apache 2.0 license
-    url = "https://github.com/k3s-io/k3s-root/releases/download/v${k3sRootVersion}/k3s-root-amd64.tar";
+    url =
+      "https://github.com/k3s-io/k3s-root/releases/download/v${k3sRootVersion}/k3s-root-amd64.tar";
     sha256 = k3sRootSha256;
     stripRoot = false;
   };
@@ -212,7 +185,8 @@ let
     '';
 
     meta = baseMeta // {
-      description = "The various binaries that get packaged into the final k3s binary";
+      description =
+        "The various binaries that get packaged into the final k3s binary";
     };
   };
   # Only used for the shim since
@@ -231,8 +205,7 @@ let
     subPackages = [ "cmd/containerd-shim-runc-v2" ];
     ldflags = versionldflags;
   };
-in
-buildGoModule rec {
+in buildGoModule rec {
   pname = "k3s";
   version = k3sVersion;
 
@@ -278,19 +251,10 @@ buildGoModule rec {
 
   buildInputs = k3sRuntimeDeps;
 
-  nativeBuildInputs = [
-    makeWrapper
-    rsync
-    yq-go
-    zstd
-  ];
+  nativeBuildInputs = [ makeWrapper rsync yq-go zstd ];
 
   # embedded in the final k3s cli
-  propagatedBuildInputs = [
-    k3sCNIPlugins
-    k3sContainerd
-    k3sServer
-  ];
+  propagatedBuildInputs = [ k3sCNIPlugins k3sContainerd k3sServer ];
 
   # We override most of buildPhase due to peculiarities in k3s's build.
   # Specifically, it has a 'go generate' which runs part of the package. See
@@ -342,13 +306,14 @@ buildGoModule rec {
   passthru.updateScript = updateScript;
 
   passthru.mkTests = version:
-    let k3s_version = "k3s_" + lib.replaceStrings ["."] ["_"] (lib.versions.majorMinor version);
+    let
+      k3s_version = "k3s_"
+        + lib.replaceStrings [ "." ] [ "_" ] (lib.versions.majorMinor version);
     in {
       single-node = nixosTests.k3s.single-node.${k3s_version};
       multi-node = nixosTests.k3s.multi-node.${k3s_version};
     };
   passthru.tests = passthru.mkTests k3sVersion;
-
 
   meta = baseMeta;
 }

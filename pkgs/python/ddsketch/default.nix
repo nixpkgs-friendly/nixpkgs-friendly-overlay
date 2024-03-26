@@ -1,10 +1,4 @@
-{ buildPythonPackage
-, fetchFromGitHub
-, lib
-, protobuf
-, six
-, setuptools-scm
-}:
+{ buildPythonPackage, fetchFromGitHub, lib, protobuf, six, setuptools-scm }:
 
 buildPythonPackage rec {
   pname = "ddsketch";
@@ -22,17 +16,15 @@ buildPythonPackage rec {
 
   SETUPTOOLS_SCM_PRETEND_VERSION = version;
 
-  buildInputs = [
-    protobuf
-    six
-  ];
+  buildInputs = [ protobuf six ];
 
   doCheck = false;
 
   checkPythonImports = [ "ddsketch" ];
 
   meta = {
-    description = "Python implementations of the distributed quantile sketch algorithm DDSketch";
+    description =
+      "Python implementations of the distributed quantile sketch algorithm DDSketch";
     homepage = "https://github.com/datadog/sketches-py";
     license = lib.licenses.asl20;
   };

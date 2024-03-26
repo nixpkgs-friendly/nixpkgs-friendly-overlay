@@ -1,7 +1,4 @@
-{ fetchPypi
-, python3
-, lib
-}:
+{ fetchPypi, python3, lib }:
 
 python3.pkgs.buildPythonPackage rec {
   pname = "openapi-python-client";
@@ -9,7 +6,7 @@ python3.pkgs.buildPythonPackage rec {
   format = "pyproject";
 
   src = fetchPypi {
-    pname = lib.replaceStrings ["-"] ["_"] pname;
+    pname = lib.replaceStrings [ "-" ] [ "_" ] pname;
     inherit version;
     sha256 = "sha256-R/mG9DSUogNSHqAeBfdxL2HUvkHNu9kMJuFcu6G7kLs=";
   };

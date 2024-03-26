@@ -1,11 +1,5 @@
-{ buildPythonPackage
-, fetchFromGitHub
-, setuptools-scm
-, lib
-, python3
-, hatchling
-, hatch-vcs
-}:
+{ buildPythonPackage, fetchFromGitHub, setuptools-scm, lib, python3, hatchling
+, hatch-vcs }:
 
 buildPythonPackage rec {
   pname = "envier";
@@ -21,14 +15,9 @@ buildPythonPackage rec {
 
   SETUPTOOLS_SCM_PRETEND_VERSION = version;
 
-  nativeBuildInputs = [
-    setuptools-scm
-  ];
+  nativeBuildInputs = [ setuptools-scm ];
 
-  propagatedBuildInputs = [
-    hatchling
-    hatch-vcs
-  ];
+  propagatedBuildInputs = [ hatchling hatch-vcs ];
 
   doCheck = false; # Fix-Me: Needs work
 
@@ -51,7 +40,8 @@ buildPythonPackage rec {
   pythonImportsCheck = [ "envier" ];
 
   meta = {
-    description = "A Python library for extracting configuration from environment variables in a declarative and (eventually) 12-factor-app-compliant way";
+    description =
+      "A Python library for extracting configuration from environment variables in a declarative and (eventually) 12-factor-app-compliant way";
     homepage = "https://github.com/DataDog/envier";
     license = lib.licenses.mit;
   };

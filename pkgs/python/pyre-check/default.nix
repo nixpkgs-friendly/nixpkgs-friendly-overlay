@@ -1,7 +1,4 @@
-{ fetchPypi
-, python3
-, lib
-}:
+{ fetchPypi, python3, lib }:
 
 python3.pkgs.buildPythonPackage rec {
   pname = "pyre-check";
@@ -17,9 +14,10 @@ python3.pkgs.buildPythonPackage rec {
   #   substituteInPlace setup.py --replace "" ""
   # '';
 
-  nativeBuildInputs = with python3.pkgs; [
-    # setuptools
-  ];
+  nativeBuildInputs = with python3.pkgs;
+    [
+      # setuptools
+    ];
 
   propagatedBuildInputs = with python3.pkgs; [
     pyre-extensions
