@@ -41,7 +41,7 @@
 
       nixosModules.default = import ./modules/default.nix;
 
-      packages = usePkgs (pkgs: rec {
+      packages = usePkgs (pkgs: {
         pkgsDebug =
           pkgs; # Useful for building anything from pkgs, including nixpkgs-friendly-overlay
         dpy = pkgs.python3.pkgs;
