@@ -1,4 +1,8 @@
-{ fetchPypi, python3, lib }:
+{
+  fetchPypi,
+  python3,
+  lib,
+}:
 
 python3.pkgs.buildPythonPackage rec {
   pname = "composer";
@@ -83,8 +87,7 @@ python3.pkgs.buildPythonPackage rec {
   pythonImportsCheck = [ "composer" ];
 
   meta = {
-    description =
-      "Composer is a PyTorch library that enables you to train neural networks faster, at lower cost, and to higher accuracy";
+    description = "Composer is a PyTorch library that enables you to train neural networks faster, at lower cost, and to higher accuracy";
     license = lib.licenses.asl20;
     homepage = "https://github.com/mosaicml/composer";
     maintainers = with lib.maintainers; [ ];

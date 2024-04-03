@@ -1,6 +1,9 @@
-{ fetchPypi
-# , fetchFromGitHub
-, python3, lib }:
+{
+  fetchPypi,
+  # , fetchFromGitHub
+  python3,
+  lib,
+}:
 
 python3.pkgs.buildPythonPackage rec {
   pname = "";
@@ -25,10 +28,9 @@ python3.pkgs.buildPythonPackage rec {
   #   substituteInPlace setup.py --replace "" ""
   # '';
 
-  nativeBuildInputs = with python3.pkgs;
-    [
-      # setuptools
-    ];
+  nativeBuildInputs = with python3.pkgs; [
+    # setuptools
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [ ];
 

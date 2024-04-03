@@ -1,6 +1,17 @@
-{ pkgs, stdenv, cmake, fetchFromGitHub, git, libinjection
-# , libutf8proc
-, rapidjson, callPackage, autoPatchelfHook, fetchurl, ... }:
+{
+  pkgs,
+  stdenv,
+  cmake,
+  fetchFromGitHub,
+  git,
+  libinjection,
+  # , libutf8proc
+  rapidjson,
+  callPackage,
+  autoPatchelfHook,
+  fetchurl,
+  ...
+}:
 
 # let
 #   libutf8proc = callPackage ../../../applications/networking/browsers/netsurf/libutf8proc.nix;
@@ -43,5 +54,4 @@ stdenv.mkDerivation rec {
 
     runHook postInstall
   '';
-
 }

@@ -1,4 +1,9 @@
-{ fetchPypi, fetchFromGitHub, python3, lib }:
+{
+  fetchPypi,
+  fetchFromGitHub,
+  python3,
+  lib,
+}:
 
 python3.pkgs.buildPythonPackage rec {
   pname = "dspy-ai";
@@ -38,11 +43,13 @@ python3.pkgs.buildPythonPackage rec {
 
   doCheck = false;
 
-  pythonImportsCheck = [ "dsp" "dspy" ];
+  pythonImportsCheck = [
+    "dsp"
+    "dspy"
+  ];
 
   meta = {
-    description =
-      "A framework for algorithmically optimizing LM prompts and weights, especially when LMs are used one or more times within a pipeline";
+    description = "A framework for algorithmically optimizing LM prompts and weights, especially when LMs are used one or more times within a pipeline";
     downloadPage = "https://pypi.org/project/dspy-ai/";
     homepage = "https://github.com/stanfordnlp/dspy";
     license = lib.licenses.mit;

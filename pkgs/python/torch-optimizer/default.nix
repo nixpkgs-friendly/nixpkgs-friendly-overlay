@@ -1,4 +1,10 @@
-{ fetchPypi, python3, lib, fetchpatch2, fetchFromGitHub }:
+{
+  fetchPypi,
+  python3,
+  lib,
+  fetchpatch2,
+  fetchFromGitHub,
+}:
 
 python3.pkgs.buildPythonPackage rec {
   pname = "torch-optimizer";
@@ -26,7 +32,10 @@ python3.pkgs.buildPythonPackage rec {
 
   nativeBuildInputs = with python3.pkgs; [ setuptools ];
 
-  propagatedBuildInputs = with python3.pkgs; [ torch pytorch-ranger ];
+  propagatedBuildInputs = with python3.pkgs; [
+    torch
+    pytorch-ranger
+  ];
 
   doCheck = false; # 15 failures
 
@@ -105,8 +114,7 @@ python3.pkgs.buildPythonPackage rec {
   pythonImportsCheck = [ "torch_optimizer" ];
 
   meta = {
-    description =
-      "A collection of optimizers for PyTorch compatible with optim module";
+    description = "A collection of optimizers for PyTorch compatible with optim module";
     homepage = "https://github.com/jettify/pytorch-optimizer";
     license = lib.licenses.asl20;
     maintainers = with lib.maintainers; [ ];

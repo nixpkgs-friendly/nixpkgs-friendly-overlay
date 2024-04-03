@@ -1,4 +1,8 @@
-{ fetchPypi, python3, lib }:
+{
+  fetchPypi,
+  python3,
+  lib,
+}:
 
 python3.pkgs.buildPythonPackage rec {
   pname = "loralib";
@@ -16,8 +20,7 @@ python3.pkgs.buildPythonPackage rec {
   pythonImportsCheck = [ "loralib" ];
 
   meta = {
-    description =
-      "PyTorch implementation of low-rank adaptation (LoRA), a parameter-efficient approach to adapt a large pre-trained deep learning model which obtains performance on-par with full model fine-tuning";
+    description = "PyTorch implementation of low-rank adaptation (LoRA), a parameter-efficient approach to adapt a large pre-trained deep learning model which obtains performance on-par with full model fine-tuning";
     downloadPage = "https://pypi.org/project/loralib/";
     homepage = "https://github.com/microsoft/LoRA";
     license = lib.licenses.mit;

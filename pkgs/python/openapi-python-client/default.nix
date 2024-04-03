@@ -1,4 +1,8 @@
-{ fetchPypi, python3, lib }:
+{
+  fetchPypi,
+  python3,
+  lib,
+}:
 
 python3.pkgs.buildPythonPackage rec {
   pname = "openapi-python-client";

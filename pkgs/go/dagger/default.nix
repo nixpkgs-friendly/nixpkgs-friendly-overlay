@@ -1,4 +1,10 @@
-{ system ? builtins.currentSystem, pkgs, lib, fetchurl, installShellFiles }:
+{
+  system ? builtins.currentSystem,
+  pkgs,
+  lib,
+  fetchurl,
+  installShellFiles,
+}:
 let
   shaMap = {
     x86_64-linux = "sha256-/ZNXcnkLYYyHgq4QV7pD2DDH4EU7T5l2HCZMEeGw7tM=";
@@ -8,16 +14,13 @@ let
   };
 
   urlMap = {
-    x86_64-linux =
-      "https://dl.dagger.io/dagger/releases/0.9.5/dagger_v0.9.5_linux_amd64.tar.gz";
-    aarch64-linux =
-      "https://dl.dagger.io/dagger/releases/0.9.5/dagger_v0.9.5_linux_arm64.tar.gz";
-    x86_64-darwin =
-      "https://dl.dagger.io/dagger/releases/0.9.5/dagger_v0.9.5_darwin_amd64.tar.gz";
-    aarch64-darwin =
-      "https://dl.dagger.io/dagger/releases/0.9.5/dagger_v0.9.5_darwin_arm64.tar.gz";
+    x86_64-linux = "https://dl.dagger.io/dagger/releases/0.9.5/dagger_v0.9.5_linux_amd64.tar.gz";
+    aarch64-linux = "https://dl.dagger.io/dagger/releases/0.9.5/dagger_v0.9.5_linux_arm64.tar.gz";
+    x86_64-darwin = "https://dl.dagger.io/dagger/releases/0.9.5/dagger_v0.9.5_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://dl.dagger.io/dagger/releases/0.9.5/dagger_v0.9.5_darwin_arm64.tar.gz";
   };
-in pkgs.stdenv.mkDerivation {
+in
+pkgs.stdenv.mkDerivation {
   pname = "dagger";
   version = "0.9.5";
   src = fetchurl {
@@ -44,12 +47,15 @@ in pkgs.stdenv.mkDerivation {
   system = system;
 
   meta = {
-    description =
-      "A programmable CI/CD engine that runs your pipelines in containers";
+    description = "A programmable CI/CD engine that runs your pipelines in containers";
     homepage = "https://dagger.io";
     license = lib.licenses.asl20;
 
-    platforms =
-      [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+    platforms = [
+      "x86_64-linux"
+      "aarch64-linux"
+      "x86_64-darwin"
+      "aarch64-darwin"
+    ];
   };
 }

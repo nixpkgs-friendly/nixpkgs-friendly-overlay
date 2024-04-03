@@ -1,4 +1,8 @@
-{ fetchPypi, python3, lib }:
+{
+  fetchPypi,
+  python3,
+  lib,
+}:
 
 python3.pkgs.buildPythonPackage rec {
   pname = "abstract-singleton";
@@ -18,8 +22,7 @@ python3.pkgs.buildPythonPackage rec {
   pythonImportsCheck = [ "abstract_singleton" ];
 
   meta = {
-    description =
-      "An abstract singleton class that enforces abstract methods are implemented";
+    description = "An abstract singleton class that enforces abstract methods are implemented";
     downloadPage = "https://pypi.org/project/abstract-singleton/";
     homepage = "https://github.com/BillSchumacher/Abstract-Singleton";
     license = lib.licenses.mit;

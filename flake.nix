@@ -5,13 +5,19 @@
     #nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
   };
 
-  outputs = { self, nixpkgs }:
+  outputs =
+    { self, nixpkgs }:
     let
-      supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
+      supportedSystems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 
-      allSystemsPkgs = nixpkgs: value:
-        forAllSystems (system:
+      allSystemsPkgs =
+        nixpkgs: value:
+        forAllSystems (
+          system:
           let
             pkgs = import nixpkgs {
               inherit system;
@@ -21,9 +27,12 @@
               };
               overlays = [ self.overlays.default ];
             };
-          in value pkgs);
+          in
+          value pkgs
+        );
       usePkgs = allSystemsPkgs nixpkgs;
-    in {
+    in
+    {
       overlays = {
         cpp = import ./pkgs/cpp/overlay.nix;
         default = nixpkgs.lib.composeManyExtensions [
@@ -42,31 +51,30 @@
       nixosModules.default = import ./modules/default.nix;
 
       packages = usePkgs (pkgs: {
-        pkgsDebug =
-          pkgs; # Useful for building anything from pkgs, including nixpkgs-friendly-overlay
+        pkgsDebug = pkgs; # Useful for building anything from pkgs, including nixpkgs-friendly-overlay
         dpy = pkgs.python3.pkgs;
         dpy310 = pkgs.python310Packages;
         dpy311 = pkgs.python311Packages;
         nixpkgsFriendlyPkgs = pkgs.symlinkJoin {
           name = "nixpkgs-friendly-all-packages";
-          paths = with pkgs;
-            [
-              k3s
-              # fluxcd
-            ];
+          paths = with pkgs; [
+            k3s
+            # fluxcd
+          ];
         };
-
       });
 
       #devShells = usePkgs (pkgs: {
       #  llm-foundry = pkgs.callPackage ./shells/mosaicml-llm-foundry { };
       #});
 
-      hydraJobs = forAllSystems (system:
+      hydraJobs = forAllSystems (
+        system:
         let
           p = self.packages.${system}.pkgsDebug;
           py = p.python3Packages;
-        in {
+        in
+        {
           biglybt = p.biglybt;
           ### Go / Cloud Native ###
           dagger = p.dagger;
@@ -100,8 +108,7 @@
           sourcery = py.sourcery;
           testslide = py.testslide;
           torch-optimizer = py.torch-optimizer;
-        });
-
+        }
+      );
     };
-
 }

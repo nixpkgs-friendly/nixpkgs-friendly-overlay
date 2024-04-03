@@ -13,4 +13,3 @@ vimUtils.buildVimPluginFrom2Nix {
 
   meta.homepage = "https://github.com/jordwalke/vim-taste";
 }
-

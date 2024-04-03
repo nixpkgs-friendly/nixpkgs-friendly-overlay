@@ -3,7 +3,8 @@ final: prev:
 let
   callPackage = final.callPackage;
   pickLatest = (import ../../utils.nix).pickLatest; # Fix-Me
-in rec {
+in
+rec {
   # Fix-Me: Remove after https://github.com/NixOS/nixpkgs/pull/273564/ reaches nixos-unstable.
   # https://nixpk.gs/pr-tracker.html?pr=273564
   # corectrl = let newCorectrl = prev.corectrl.overrideAttrs(oa: rec {
@@ -37,5 +38,4 @@ in rec {
   #  hash = "sha256-ngtwrq8vDEt39Zd5jpBadouN1V8ly03la69M0AUyhGM=";
   #});
   #yandex-browser = yandex-browser-stable;
-
 }

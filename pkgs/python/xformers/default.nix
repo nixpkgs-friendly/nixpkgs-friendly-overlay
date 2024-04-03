@@ -1,4 +1,10 @@
-{ fetchFromGitHub, python3, lib, git, which }:
+{
+  fetchFromGitHub,
+  python3,
+  lib,
+  git,
+  which,
+}:
 
 let
   flash-attention = fetchFromGitHub {
@@ -14,8 +20,8 @@ let
     rev = "v3.0.0";
     hash = "sha256-YPD5Sy6SvByjIcGtgeGH80TEKg2BtqJWSg46RvnJChY=";
   };
-
-in python3.pkgs.buildPythonPackage rec {
+in
+python3.pkgs.buildPythonPackage rec {
   pname = "xformers";
   version = "0.0.19";
 
@@ -43,7 +49,11 @@ in python3.pkgs.buildPythonPackage rec {
 
   nativeBuildInputs = with python3.pkgs; [ which ];
 
-  propagatedBuildInputs = with python3.pkgs; [ torch numpy pyre-extensions ];
+  propagatedBuildInputs = with python3.pkgs; [
+    torch
+    numpy
+    pyre-extensions
+  ];
 
   doCheck = false; # Fix-Me
 

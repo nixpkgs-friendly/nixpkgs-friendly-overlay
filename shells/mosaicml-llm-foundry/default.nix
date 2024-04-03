@@ -1,8 +1,12 @@
-{ callPackage, mkShellNoCC, python3 }:
+{
+  callPackage,
+  mkShellNoCC,
+  python3,
+}:
 
 let
-  pythonPackages = p:
-    with p; [
+  pythonPackages =
+    p: with p; [
       composer
       # mosaicml     # [nlp,streaming,wandb]>=0.14.0,<0.15' # https://pypi.org/project/mosaicml/ #actual name is `composer`
       # mosaicml-cli # >=0.3,<1' # https://pypi.org/project/mosaicml-cli/
@@ -28,8 +32,8 @@ let
       accelerate
       xformers
     ];
-
-in mkShellNoCC rec {
+in
+mkShellNoCC rec {
   pname = "mosaicml-llm-foundry";
   version = "0.0.1"; # bogus development version
 
