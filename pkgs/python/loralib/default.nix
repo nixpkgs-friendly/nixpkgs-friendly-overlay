@@ -25,5 +25,6 @@ python3.pkgs.buildPythonPackage rec {
     homepage = "https://github.com/microsoft/LoRA";
     license = lib.licenses.mit;
     maintainers = with lib.maintainers; [ ];
+    broken = true; # 2024-04-10
   };
 }
