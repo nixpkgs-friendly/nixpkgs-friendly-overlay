@@ -26,5 +26,7 @@ python3.pkgs.buildPythonPackage rec {
     downloadPage = "https://pypi.org/project/pytorch-ranger/";
     homepage = "https://github.com/mpariente/Ranger-Deep-Learning-Optimizer";
     license = lib.licenses.asl20;
+    broken = true; # 2024-04-10
+    # Could not find nvcc executable in path specified by CUDAToolkit_ROOT
   };
 }
