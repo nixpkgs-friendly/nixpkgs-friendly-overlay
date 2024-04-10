@@ -118,5 +118,6 @@ python3.pkgs.buildPythonPackage rec {
     homepage = "https://github.com/jettify/pytorch-optimizer";
     license = lib.licenses.asl20;
     maintainers = with lib.maintainers; [ ];
+    broken = true; # 2024-04-10
   };
 }
