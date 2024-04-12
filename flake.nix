@@ -99,11 +99,10 @@
           ddtrace = py.ddtrace;
           envier = py.envier;
           flake8-quotes = py.flake8-quotes;
-          loralib = py.loralib;
-          openapi-python-client = py.openapi-python-client;
+          #loralib = py.loralib;
+          #openapi-python-client = py.openapi-python-client;
           pyre-check = py.pyre-check;
           pyre-extensions = py.pyre-extensions;
-          pytorch-ranger = py.pytorch-ranger;
           sourcery = py.sourcery;
           testslide = py.testslide;
         }
