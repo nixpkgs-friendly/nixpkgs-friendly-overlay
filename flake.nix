@@ -77,7 +77,6 @@
         {
           biglybt = p.biglybt;
           ### Go / Cloud Native ###
-          dagger = p.dagger;
           etcd = p.etcd;
           fluxcd = p.fluxcd;
           go = p.go;
