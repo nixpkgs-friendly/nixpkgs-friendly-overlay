@@ -107,7 +107,6 @@
           pytorch-ranger = py.pytorch-ranger;
           sourcery = py.sourcery;
           testslide = py.testslide;
-          torch-optimizer = py.torch-optimizer;
         }
       );
     };
