@@ -1,8 +1,8 @@
 {
   inputs = {
     # Whenever friendly repository doesn't have patches, we default to using nixpkgs/nixos-unstable.
-    #nixpkgs.url = "github:nixpkgs-friendly/nixpkgs-friendly/friendly";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixpkgs-friendly/nixpkgs-friendly/friendly";
+    #nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     #nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
   };
 
