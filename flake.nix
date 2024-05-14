@@ -76,7 +76,6 @@
           py = p.python3Packages;
         in
         {
-          biglybt = p.biglybt;
           ### Go / Cloud Native ###
           etcd = p.etcd;
           fluxcd = p.fluxcd;
