@@ -36,8 +36,10 @@
     {
       overlays = {
         cpp = import ./pkgs/cpp/overlay.nix;
+        dotnet = import ./pkgs/dotnet/overlay.nix;
         default = nixpkgs.lib.composeManyExtensions [
           self.overlays.cpp
+          self.overlays.dotnet
           self.overlays.go
           self.overlays.java
           self.overlays.misc
