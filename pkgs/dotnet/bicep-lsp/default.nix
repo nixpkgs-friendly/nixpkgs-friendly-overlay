@@ -9,7 +9,8 @@
   patchelf,
   icu,
   openssl,
-  coreutils
+  coreutils,
+  libkrb5
 }:
 
 buildDotnetModule rec {
@@ -31,7 +32,14 @@ buildDotnetModule rec {
 
   dotnet-runtime = dotnetCorePackages.runtime_8_0;
 
-  nativeBuildInputs = lib.optionals stdenv.isLinux [ patchelf ]; # autoPatchelfHook 
+  nativeBuildInputs = lib.optionals stdenv.isLinux [ autoPatchelfHook ]; # autoPatchelfHook  patchelf
+
+  buildInputs = lib.optionals stdenv.isLinux [
+    stdenv.cc.cc.lib 
+    openssl
+    libkrb5
+    icu
+  ];
 
   #doCheck = !(stdenv.isDarwin && stdenv.isAarch64); # mono is not available on aarch64-darwin
   # 1 test fails: Verify_snippet_cache
@@ -52,37 +60,38 @@ buildDotnetModule rec {
 
 
 
-  postPatch =
-    ''
-      patchelf_add_icu_as_needed() {
-        declare elf="''${1?}"
-        declare icu_major_v="${lib.head (lib.splitVersion (lib.getVersion icu.name))}"
+  # postPatch =
+  #   ''
+  #     patchelf_add_icu_as_needed() {
+  #       declare elf="''${1?}"
+  #       declare icu_major_v="${lib.head (lib.splitVersion (lib.getVersion icu.name))}"
 
-        for icu_lib in icui18n icuuc icudata; do
-          patchelf --add-needed "lib''${icu_lib}.so.$icu_major_v" "$elf"
-        done
-      }
+  #       for icu_lib in icui18n icuuc icudata; do
+  #         patchelf --add-needed "lib''${icu_lib}.so.$icu_major_v" "$elf"
+  #       done
+  #     }
 
-      patchelf_common() {
-        declare elf="''${1?}"
+  #     patchelf_common() {
+  #       declare elf="''${1?}"
 
-        patchelf_add_icu_as_needed "$elf"
-        patchelf --add-needed "libssl.so" "$elf"
-        patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-          --set-rpath "${
-            lib.makeLibraryPath [
-              stdenv.cc.cc
-              openssl
-              icu.out
-            ]
-          }:\$ORIGIN" \
-          "$elf"
-      }
+  #       patchelf_add_icu_as_needed "$elf"
+  #       patchelf --add-needed "libssl.so" "$elf"
+  #       patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
+  #         --set-rpath "${
+  #           lib.makeLibraryPath [
+  #             stdenv.cc.cc
+  #             openssl
+  #             libkrb5
+  #             icu.out
+  #           ]
+  #         }:\$ORIGIN" \
+  #         "$elf"
+  #     }
 
-      # substituteInPlace dist/extension.js \
-      #   --replace 'uname -m' '${lib.getExe' coreutils "uname"} -m'
+  #     # substituteInPlace dist/extension.js \
+  #     #   --replace 'uname -m' '${lib.getExe' coreutils "uname"} -m'
 
-    '';
+  #   '';
     # + (lib.concatStringsSep "\n" (
     #   map (bin: ''
     #     chmod +x "${bin}"
