@@ -1,10 +1,11 @@
-{ autoPatchelfHook
-, lib
-, stdenv
-, buildDotnetModule
-, fetchFromGitHub
-, dotnetCorePackages
-, mono
+{
+  autoPatchelfHook,
+  lib,
+  stdenv,
+  buildDotnetModule,
+  fetchFromGitHub,
+  dotnetCorePackages,
+  mono,
 }:
 
 buildDotnetModule rec {
@@ -45,13 +46,10 @@ buildDotnetModule rec {
   #     $out/lib/bicep-lsp/libSystem.IO.Ports.Native.so
   # '';
 
-
-#libSystem.IO.Ports.Native.so
-#	linux-vdso.so.1 (0x00007ffe06aad000)
-#	libc.so.6 => /nix/store/k7zgvzp2r31zkg9xqgjim7mbknryv6bs-glibc-2.39-52/lib/libc.so.6 (0x00007f770e02d000)
-#	/nix/store/k7zgvzp2r31zkg9xqgjim7mbknryv6bs-glibc-2.39-52/lib64/ld-linux-x86-64.so.2 (0x00007f770e222000)
-
-
+  #libSystem.IO.Ports.Native.so
+  #	linux-vdso.so.1 (0x00007ffe06aad000)
+  #	libc.so.6 => /nix/store/k7zgvzp2r31zkg9xqgjim7mbknryv6bs-glibc-2.39-52/lib/libc.so.6 (0x00007f770e02d000)
+  #	/nix/store/k7zgvzp2r31zkg9xqgjim7mbknryv6bs-glibc-2.39-52/lib64/ld-linux-x86-64.so.2 (0x00007f770e222000)
 
   meta = {
     broken = stdenv.isDarwin;
