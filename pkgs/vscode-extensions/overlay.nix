@@ -16,6 +16,14 @@ in
       hash = "sha256-WOMfwxyeDLoSwF0xz9tbntDVrUWycJ4bW0rZjfLSzgM=";
     };
 
+    jeff-hykin.better-nix-syntax = extensionFromVscodeMarketplace {
+      # https://marketplace.visualstudio.com/items?itemName=jeff-hykin.better-nix-syntax
+      publisher = "jeff-hykin";
+      name = "better-nix-syntax";
+      version = "1.1.5";
+      hash = "sha256-9V+ziWk9V4LyQiVNSC6DniJDun+EvcK30ykPjyNsvp0=";
+    };
+
     ms-azuretools.vscode-bicep = callPackage ./ms-azuretools.vscode-bicep { };
 
     npruehs.pony = extensionFromVscodeMarketplace {
