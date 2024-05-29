@@ -41,12 +41,12 @@ buildDotnetModule rec {
     icu
   ];
 
-  #doCheck = !(stdenv.isDarwin && stdenv.isAarch64); # mono is not available on aarch64-darwin
+  doCheck = false; #!(stdenv.isDarwin && stdenv.isAarch64); # mono is not available on aarch64-darwin
   # 1 test fails: Verify_snippet_cache
 
-  #nativeCheckInputs = [ mono ];
+  # nativeCheckInputs = [ mono ];
 
-  #testProjectFile = "src/Bicep.LangServer.UnitTests/Bicep.LangServer.UnitTests.csproj";
+  # testProjectFile = "src/Bicep.LangServer.UnitTests/Bicep.LangServer.UnitTests.csproj";
 
   #passthru.updateScript = ./updater.sh;
 
