@@ -44,11 +44,13 @@
           self.overlays.java
           self.overlays.misc
           self.overlays.python
+          self.overlays.vscode-extensions
         ];
         go = import ./pkgs/go/overlay.nix;
         java = import ./pkgs/java/overlay.nix;
         misc = import ./pkgs/misc/overlay.nix;
         python = import ./pkgs/python/overlay.nix;
+        vscode-extensions = import ./pkgs/vscode-extensions/overlay.nix;
       };
 
       nixosModules.default = import ./modules/default.nix;
