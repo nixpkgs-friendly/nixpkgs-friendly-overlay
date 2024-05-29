@@ -6,6 +6,8 @@ let
 in
 {
   vscode-extensions = prev.vscode-extensions // {
-    #x = pickLatest (callPackage ./x { }) (prev.x or null);
+    ms-azuretools.vscode-bicep = callPackage ./ms-azuretools.vscode-bicep { };
   };
 }
+
+#x = pickLatest (callPackage ./x { }) (prev.x or null);
