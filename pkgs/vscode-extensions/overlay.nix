@@ -26,6 +26,8 @@ in
 
     ms-azuretools.vscode-bicep = callPackage ./ms-azuretools.vscode-bicep { };
 
+    ms-dotnettools.csdevkit = callPackage ./ms-dotnettools.csdevkit { };
+
     npruehs.pony = extensionFromVscodeMarketplace {
       # https://marketplace.visualstudio.com/items?itemName=npruehs.pony
       publisher = "npruehs";
