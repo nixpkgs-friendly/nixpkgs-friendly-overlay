@@ -28,6 +28,8 @@ in
 
     ms-dotnettools.csdevkit = callPackage ./ms-dotnettools.csdevkit { };
 
+    ms-dotnettools.csharp = callPackage ./ms-dotnettools.csharp { };
+
     npruehs.pony = extensionFromVscodeMarketplace {
       # https://marketplace.visualstudio.com/items?itemName=npruehs.pony
       publisher = "npruehs";
