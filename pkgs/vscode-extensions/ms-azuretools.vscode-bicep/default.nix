@@ -11,8 +11,8 @@ vscode-utils.buildVscodeMarketplaceExtension {
   mktplcRef = {
     publisher = "ms-azuretools";
     name = "vscode-bicep";
-    version = "0.27.1";
-    hash = "sha256-ERPqYb/dGoH8DD+tRFgDcwmxuIgErA8+0cX+/6r7CtU=";
+    version = "0.28.1";
+    hash = "sha256-js512zMxA0kNxbvR6Kgbezcn9o6AygyQN2P2bXyNiaM=";
   };
 
   #buildNativeInputs = [ gnused ];
