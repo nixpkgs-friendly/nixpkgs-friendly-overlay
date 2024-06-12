@@ -61,6 +61,8 @@ final: prev:
 
         sourcery = pickLatest (callPyPkg ./sourcery { }) (python-prev.sourcery or null);
 
+        streamcontroller-plugin-tools = pickLatest (callPyPkg ./streamcontroller-plugin-tools { }) (python-prev.streamcontroller-plugin-tools or null);
+
         # tensorboard = callPyPkg ./tensorboard { };
 
         # tensorboard-data-server = callPyPkg ./tensorboard-data-server { };
