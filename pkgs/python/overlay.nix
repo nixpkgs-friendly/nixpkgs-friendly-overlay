@@ -38,6 +38,8 @@ final: prev:
           python-prev.openapi-python-client or null
         );
 
+        prusalinkpy = pickLatest (callPyPkg ./prusalinkpy { }) (python-prev.prusalinkpy or null);
+
         pyre-check = pickLatest (callPyPkg ./pyre-check { }) (python-prev.pyre-check or null);
 
         pytorch-ranger = pickLatest (callPyPkg ./pytorch-ranger { }) (python-prev.pytorch-ranger or null);
