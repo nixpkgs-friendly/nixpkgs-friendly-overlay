@@ -78,6 +78,8 @@ final: prev:
           python-prev.torch-optimizer or null
         );
 
+        usb-monitor = pickLatest (callPyPkg ./usb-monitor { }) (python-prev.usb-monitor or null);
+
         # xformers may benefit from improvements from here.
         # xformers = pickLatest (callPyPkg ./xformers { }) (python-prev.xformers or null);
       }
