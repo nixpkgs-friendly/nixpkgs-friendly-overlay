@@ -42,6 +42,21 @@ final: prev:
 
         pyre-check = pickLatest (callPyPkg ./pyre-check { }) (python-prev.pyre-check or null);
 
+        # Drop when StreamController uses the new levenshtein package
+        python-levenshtein = python-prev.levenshtein.overrideAttrs (o: rec {
+          pname = "python-Levenshtein";
+
+          src = prev.fetchFromGitHub {
+            owner = "rapidfuzz";
+            repo = pname;
+            rev = "refs/tags/v${o.version}";
+            hash = "sha256-GBpYxwLdEuxnkxXTdTLv0ezmVtB4uLjMeTcEP8gMNNA=";
+            fetchSubmodules = true; # # for vendored `rapidfuzz-cpp`
+          };
+
+          pythonImportsCheck = [ pname ];
+        });
+
         pytorch-ranger = pickLatest (callPyPkg ./pytorch-ranger { }) (python-prev.pytorch-ranger or null);
 
         # scikit-optimize = python-prev.scikit-optimize.overrideAttrs (oa: {
