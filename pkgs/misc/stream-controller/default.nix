@@ -21,6 +21,8 @@ python3.pkgs.buildPythonApplication rec {
     memray
     patchelf
     gtk4
+    libadwaita
+    libportal-gtk4
     gobject-introspection
     wrapGAppsHook4
   ]) ++ (with python3.pkgs; [
@@ -52,7 +54,7 @@ python3.pkgs.buildPythonApplication rec {
     imageio
     imageio-ffmpeg
     indexed-bzip2
-    # install==1.3.5
+    # install
     jinja2
     joblib
     kiwisolver
@@ -121,6 +123,7 @@ python3.pkgs.buildPythonApplication rec {
     tinycss2
     tqdm
     types-setuptools
+    setuptools
     typing-extensions
     uc-micro-py
     urllib3
@@ -167,11 +170,10 @@ python3.pkgs.buildPythonApplication rec {
 
   pythonRemoveDeps = [
     "pipenv"
-    "install"
     "req2flatpak"
     "patchelf"
     "pip-review"
-
+    "install" # seems not used
     "opencv-python" # opencv4 ?
     "py-gcode-metadata" # This should only be needed for 3D printing
     "python-Levenshtein" # levenshtein?
@@ -179,6 +181,11 @@ python3.pkgs.buildPythonApplication rec {
   ];
 
   format = "pyproject";
+
+  postPatch = ''
+    substituteInPlace src/windows/Store/StoreBackend.py \
+      --replace-fail "from install import install" ""
+  '';
 
   preBuild = ''
     cat > setup.py << EOF
@@ -207,13 +214,13 @@ EOF
 
   postInstall = ''
     cp -r ./ $out/lib/python3.11/site-packages/
-
-    # sed -i 's/\x0//g' $out/lib/python3.11/site-packages/src/app.py
   '';
 
-  postFixup = ''
-    # sed -i 's/\x0//g' $out/bin/{.main.py-wrapped,..StreamController-wrapped-wrapped}
+  dontWrapGApps = true;
+  preFixup = ''
+    makeWrapperArgs+=("''${gappsWrapperArgs[@]}")
   '';
+
 
   meta = {
     description = "StreamController is an elegant Linux application designed for the Elgato Stream Deck, offering advanced features like plug-ins and automatic page switching to enhance your streaming and productivity setup";
