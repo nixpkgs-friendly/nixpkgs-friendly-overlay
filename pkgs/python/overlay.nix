@@ -38,7 +38,24 @@ final: prev:
           python-prev.openapi-python-client or null
         );
 
+        prusalinkpy = pickLatest (callPyPkg ./prusalinkpy { }) (python-prev.prusalinkpy or null);
+
         pyre-check = pickLatest (callPyPkg ./pyre-check { }) (python-prev.pyre-check or null);
+
+        # Drop when StreamController uses the new levenshtein package
+        python-levenshtein = python-prev.levenshtein.overrideAttrs (o: rec {
+          pname = "python-Levenshtein";
+
+          src = prev.fetchFromGitHub {
+            owner = "rapidfuzz";
+            repo = pname;
+            rev = "refs/tags/v${o.version}";
+            hash = "sha256-GBpYxwLdEuxnkxXTdTLv0ezmVtB4uLjMeTcEP8gMNNA=";
+            fetchSubmodules = true; # # for vendored `rapidfuzz-cpp`
+          };
+
+          pythonImportsCheck = [ pname ];
+        });
 
         pytorch-ranger = pickLatest (callPyPkg ./pytorch-ranger { }) (python-prev.pytorch-ranger or null);
 
@@ -59,6 +76,8 @@ final: prev:
 
         sourcery = pickLatest (callPyPkg ./sourcery { }) (python-prev.sourcery or null);
 
+        streamcontroller-plugin-tools = pickLatest (callPyPkg ./streamcontroller-plugin-tools { }) (python-prev.streamcontroller-plugin-tools or null);
+
         # tensorboard = callPyPkg ./tensorboard { };
 
         # tensorboard-data-server = callPyPkg ./tensorboard-data-server { };
@@ -75,6 +94,8 @@ final: prev:
         torch-optimizer = pickLatest (callPyPkg ./torch-optimizer { }) (
           python-prev.torch-optimizer or null
         );
+
+        usb-monitor = pickLatest (callPyPkg ./usb-monitor { }) (python-prev.usb-monitor or null);
 
         # xformers may benefit from improvements from here.
         # xformers = pickLatest (callPyPkg ./xformers { }) (python-prev.xformers or null);

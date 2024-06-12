@@ -10,3 +10,9 @@ https://github.com/nixpkgs-friendly/nixpkgs-friendly
 # Formatting
 
 Use `nixfmt` as formatter.
+
+# Adding packages
+
+...
+
+To test a package that you're adding you can use `nix build .#pkgsDebug.<your_package_here>`
