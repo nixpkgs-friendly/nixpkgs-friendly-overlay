@@ -185,6 +185,10 @@ python3.pkgs.buildPythonApplication rec {
   postPatch = ''
     substituteInPlace src/windows/Store/StoreBackend.py \
       --replace-fail "from install import install" ""
+
+    substituteInPlace main.py --replace-fail \
+        "os.path.join(\"locales\", \"locales.csv\")" \
+        "os.path.join(os.path.dirname(__file__), \"locales\", \"locales.csv\")"
   '';
 
   preBuild = ''
@@ -214,6 +218,7 @@ EOF
 
   postInstall = ''
     cp -r ./ $out/lib/python3.11/site-packages/
+    cp -r $src/locales $out/bin/locales
   '';
 
   dontWrapGApps = true;
