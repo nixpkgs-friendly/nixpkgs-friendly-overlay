@@ -7,5 +7,7 @@ in
 {
   firefox-extensions = callPackage ./firefox-extensions { };
 
+  stream-controller = callPackage ./stream-controller { };
+
   vimPlugins = import ./vim-plugins/default.nix final prev;
 }
