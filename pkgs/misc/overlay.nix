@@ -9,5 +9,11 @@ in
 
   stream-controller = callPackage ./stream-controller { };
 
+  stream-controller-with-plugins = (callPackage ./stream-controller/plugins { }) [ final.stream-controller-plugins.counter ];
+
+  stream-controller-plugins = {
+    counter = callPackage ./stream-controller/plugins/counter { };
+  };
+
   vimPlugins = import ./vim-plugins/default.nix final prev;
 }

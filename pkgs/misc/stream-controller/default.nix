@@ -13,8 +13,8 @@ python3.pkgs.buildPythonApplication rec {
   src = fetchFromGitHub {
     owner = pname;
     repo = pname;
-    rev = version;
-    hash = "sha256-8vSM6j/IftwChWFTPNrURar+gzc5dYzFYqCYAFuc+aU=";
+    rev = "cacab50464210f83f1702592aa5a5ddc2c98f45c"; # main
+    hash = "sha256-WXy6wHsCym1GY7g23slDIq7HifBr/VFBFULy0rYzJ0s=";
   };
 
   propagatedBuildInputs = (with pkgs; [
@@ -25,6 +25,8 @@ python3.pkgs.buildPythonApplication rec {
     libportal-gtk4
     gobject-introspection
     wrapGAppsHook4
+    gusb
+    hidapi
   ]) ++ (with python3.pkgs; [
     annotated-types
     async-lru
@@ -183,12 +185,16 @@ python3.pkgs.buildPythonApplication rec {
   format = "pyproject";
 
   postPatch = ''
-    substituteInPlace src/windows/Store/StoreBackend.py \
+    substituteInPlace src/backend/Store/StoreBackend.py \
       --replace-fail "from install import install" ""
 
     substituteInPlace main.py --replace-fail \
         "os.path.join(\"locales\", \"locales.csv\")" \
         "os.path.join(os.path.dirname(__file__), \"locales\", \"locales.csv\")"
+
+    substituteInPlace autostart.py --replace-fail \
+        "shutil.copyfile(os.path.join(\"flatpak\", \"autostart.desktop\"), AUTOSTART_DESKTOP_PATH)" \
+        "shutil.copyfile(os.path.join(os.path.dirname(__file__), \"flatpak\", \"autostart.desktop\"), AUTOSTART_DESKTOP_PATH)"
   '';
 
   preBuild = ''
@@ -219,6 +225,15 @@ EOF
   postInstall = ''
     cp -r ./ $out/lib/python3.11/site-packages/
     cp -r $src/locales $out/bin/locales
+    # cp -r $src/flatpak $out/bin/flatpak
+
+    install -D flatpak/icon_256.png $out/share/icons/hicolor/256x256/apps/com.core447.StreamController.png
+    install -D flatpak/launch.desktop $out/share/applications/com.core447.StreamController.desktop
+    install -D flatpak/com.core447.StreamController.metainfo.xml $out/share/metainfo/com.core447.StreamController.metainfo.xml
+
+    mkdir -p "$out/etc/udev/rules.d"
+
+    cp udev.rules $out/etc/udev/rules.d
   '';
 
   dontWrapGApps = true;
@@ -226,6 +241,7 @@ EOF
     makeWrapperArgs+=("''${gappsWrapperArgs[@]}")
   '';
 
+  passthru.python = python3;
 
   meta = {
     description = "StreamController is an elegant Linux application designed for the Elgato Stream Deck, offering advanced features like plug-ins and automatic page switching to enhance your streaming and productivity setup";
