@@ -133,6 +133,8 @@ python3.pkgs.buildPythonApplication rec {
     virtualenv
     webencodings
     websocket-client
+
+    obs-websocket-py
   ]);
 
   nativeBuildInputs = [

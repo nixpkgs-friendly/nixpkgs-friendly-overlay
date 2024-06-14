@@ -9,10 +9,21 @@ in
 
   stream-controller = callPackage ./stream-controller { };
 
-  stream-controller-with-plugins = (callPackage ./stream-controller/plugins { }) [ final.stream-controller-plugins.counter ];
+  stream-controller-with-plugins = (callPackage ./stream-controller/plugins { }) (with final.stream-controller-plugins; [
+    counter
+    deckPlugin
+    mediaPlugin
+    obsPlugin
+    osPlugin
+  ]);
 
   stream-controller-plugins = {
     counter = callPackage ./stream-controller/plugins/counter { };
+    deckPlugin = callPackage ./stream-controller/plugins/deck-plugin { };
+    mkPlugin = callPackage ./stream-controller/plugins/generic.nix { };
+    mediaPlugin = callPackage ./stream-controller/plugins/media-plugin { };
+    obsPlugin = callPackage ./stream-controller/plugins/obs-plugin { };
+    osPlugin = callPackage ./stream-controller/plugins/os-plugin { };
   };
 
   vimPlugins = import ./vim-plugins/default.nix final prev;
