@@ -175,20 +175,21 @@ python3.pkgs.buildPythonApplication rec {
     "meson-python"
     "packaging"
     "plumbum"
+    "prusalinkpy"
     "pulsectl" # Should probably be updated
     "pydantic"
     "pygobject"
     "pyproject-metadata"
     "rapidfuzz"
+    "requests"
     "requirements-parser"
     "smmap"
     "textual"
     "tqdm"
     "types-setuptools"
     "typing-extensions"
-    "virtualenv"
     "usb-monitor"
-    "prusalinkpy"
+    "virtualenv"
   ];
 
   pythonRemoveDeps = [
