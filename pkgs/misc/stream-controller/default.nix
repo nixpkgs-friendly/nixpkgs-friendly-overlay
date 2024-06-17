@@ -1,5 +1,6 @@
 {
   fetchFromGitHub,
+  fetchpatch,
   pkgs,
   python3,
   lib,
@@ -8,13 +9,13 @@
 
 python3.pkgs.buildPythonApplication rec {
   pname = "StreamController";
-  version = "1.5.0-beta.4";
+  version = "1.5.1-beta.4";
 
   src = fetchFromGitHub {
     owner = pname;
     repo = pname;
-    rev = version;
-    hash = "sha256-8vSM6j/IftwChWFTPNrURar+gzc5dYzFYqCYAFuc+aU=";
+    rev = "b813896d11f6f1e83301f92b2d56d9fb6425321a"; # main
+    hash = "sha256-4KskOeUqp16X/dCQlDfFC69zjWaXgMrNIRNcAmKvFu0=";
   };
 
   propagatedBuildInputs = (with pkgs; [
@@ -25,6 +26,8 @@ python3.pkgs.buildPythonApplication rec {
     libportal-gtk4
     gobject-introspection
     wrapGAppsHook4
+    gusb
+    hidapi
   ]) ++ (with python3.pkgs; [
     annotated-types
     async-lru
@@ -131,6 +134,8 @@ python3.pkgs.buildPythonApplication rec {
     virtualenv
     webencodings
     websocket-client
+
+    obs-websocket-py
   ]);
 
   nativeBuildInputs = [
@@ -152,20 +157,21 @@ python3.pkgs.buildPythonApplication rec {
     "meson-python"
     "packaging"
     "plumbum"
+    "prusalinkpy"
     "pulsectl" # Should probably be updated
     "pydantic"
     "pygobject"
     "pyproject-metadata"
     "rapidfuzz"
+    "requests"
     "requirements-parser"
     "smmap"
     "textual"
     "tqdm"
     "types-setuptools"
     "typing-extensions"
-    "virtualenv"
     "usb-monitor"
-    "prusalinkpy"
+    "virtualenv"
   ];
 
   pythonRemoveDeps = [
@@ -183,12 +189,19 @@ python3.pkgs.buildPythonApplication rec {
   format = "pyproject";
 
   postPatch = ''
-    substituteInPlace src/windows/Store/StoreBackend.py \
+    substituteInPlace src/backend/Store/StoreBackend.py \
       --replace-fail "from install import install" ""
 
     substituteInPlace main.py --replace-fail \
         "os.path.join(\"locales\", \"locales.csv\")" \
         "os.path.join(os.path.dirname(__file__), \"locales\", \"locales.csv\")"
+
+    substituteInPlace autostart.py --replace-fail \
+        "shutil.copyfile(os.path.join(\"flatpak\", \"autostart.desktop\"), AUTOSTART_DESKTOP_PATH)" \
+        "shutil.copyfile(os.path.join(os.path.dirname(__file__), \"flatpak\", \"autostart.desktop\"), AUTOSTART_DESKTOP_PATH)"
+
+    substituteInPlace src/backend/Store/StoreBackend.py --replace-fail \
+        "git rev-parse HEAD" "cat ./git-rev"
   '';
 
   preBuild = ''
@@ -218,7 +231,18 @@ EOF
 
   postInstall = ''
     cp -r ./ $out/lib/python3.11/site-packages/
-    cp -r $src/locales $out/bin/locales
+    cp -r ./locales $out/bin/locales
+
+    install -D flatpak/icon_256.png $out/share/icons/hicolor/256x256/apps/com.core447.StreamController.png
+    install -D flatpak/launch.desktop $out/share/applications/StreamController.desktop
+    install -D flatpak/com.core447.StreamController.metainfo.xml $out/share/metainfo/com.core447.StreamController.metainfo.xml
+
+    substituteInPlace $out/share/applications/StreamController.desktop \
+      --replace-fail "/app/bin/launch.sh" "$out/bin/StreamController"
+
+    mkdir -p "$out/etc/udev/rules.d"
+
+    cp udev.rules $out/etc/udev/rules.d
   '';
 
   dontWrapGApps = true;
@@ -226,6 +250,7 @@ EOF
     makeWrapperArgs+=("''${gappsWrapperArgs[@]}")
   '';
 
+  passthru.python = python3;
 
   meta = {
     description = "StreamController is an elegant Linux application designed for the Elgato Stream Deck, offering advanced features like plug-ins and automatic page switching to enhance your streaming and productivity setup";
