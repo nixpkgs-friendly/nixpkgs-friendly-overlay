@@ -22,7 +22,7 @@ in
     plugins = lib.mkOption {
       default = [];
       description = "List of plugins to add";
-    }
+    };
   };
 
   config = lib.mkIf cfg.enable {
