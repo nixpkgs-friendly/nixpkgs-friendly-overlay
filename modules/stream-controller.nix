@@ -3,7 +3,7 @@
 let
   cfg = config.programs.stream-controller;
 
-  streamController = pkgs.wrapped-stream-controller.override { stream-controller = cfg.package; } { inherit (pkgs) plugins; };
+  streamController = pkgs.wrapped-stream-controller.override { stream-controller = cfg.package; } { inherit (cfg) plugins; };
 in
 {
   options.programs.stream-controller = {
