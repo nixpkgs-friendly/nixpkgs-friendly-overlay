@@ -187,6 +187,9 @@ python3.pkgs.buildPythonApplication rec {
   format = "pyproject";
 
   postPatch = ''
+    substituteInPlace locales/LegacyLocaleManager.py --replace-fail \
+      "self.set_language(os_locale)" "self.set_language(self.FALLBACK_LOCALE if os_locale is None else os_locale)"
+
     substituteInPlace src/backend/Store/StoreBackend.py \
       --replace-fail "from install import install" ""
 
@@ -197,6 +200,9 @@ python3.pkgs.buildPythonApplication rec {
     substituteInPlace autostart.py --replace-fail \
         "shutil.copyfile(os.path.join(\"flatpak\", \"autostart.desktop\"), AUTOSTART_DESKTOP_PATH)" \
         "shutil.copyfile(os.path.join(os.path.dirname(__file__), \"flatpak\", \"autostart.desktop\"), AUTOSTART_DESKTOP_PATH)"
+
+    substituteInPlace src/backend/Store/StoreBackend.py --replace-fail \
+        "git rev-parse HEAD" "cat ./git-rev"
   '';
 
   preBuild = ''
@@ -226,8 +232,8 @@ EOF
 
   postInstall = ''
     cp -r ./ $out/lib/python3.11/site-packages/
-    cp -r $src/locales $out/bin/locales
-    # cp -r $src/flatpak $out/bin/flatpak
+    cp -r ./locales $out/bin/locales
+    # cp -r ./flatpak $out/bin/flatpak
 
     install -D flatpak/icon_256.png $out/share/icons/hicolor/256x256/apps/com.core447.StreamController.png
     install -D flatpak/launch.desktop $out/share/applications/com.core447.StreamController.desktop

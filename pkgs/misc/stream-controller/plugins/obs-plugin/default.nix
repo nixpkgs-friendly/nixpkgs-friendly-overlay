@@ -17,8 +17,8 @@ stream-controller.python.pkgs.buildPythonPackage rec {
     #substituteInPlace __install__.py --replace-fail \
     #  'join(toplevel, "backend", "requirements.txt")' "None"
 
-    substituteInPlace main.py --replace-fail \
-      'os.path.join(self.PATH, "backend", ".venv")' "None"
+    #substituteInPlace main.py --replace-fail \
+    #  'os.path.join(self.PATH, "backend", ".venv")' "None"
   '';
 
   pyproject = false;
@@ -42,6 +42,9 @@ stream-controller.python.pkgs.buildPythonPackage rec {
 
     echo "export PYTHONPATH=$PYTHONPATH:${lib.makeLibraryPath propagatedBuildInputs}" > $out/plugins/${pname}/backend/.venv/bin/activate
     echo "export PYTHONHOME=:${stream-controller.python.interpreter}" >> $out/plugins/${pname}/backend/.venv/bin/activate
+
+    touch $out/plugins/${pname}/git-rev
+    echo "${src.rev}" > $out/plugins/${pname}/git-rev
   '';
 
   meta = {

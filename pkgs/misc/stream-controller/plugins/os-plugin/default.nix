@@ -1,25 +1,16 @@
-{
-  fetchFromGitHub,
-  lib,
-  stdenv,
-  stream-controller,
-}:
+{ lib, fetchFromGitHub, stream-controller-plugins }:
 
-stdenv.mkDerivation rec {
+
+stream-controller-plugins.mkPlugin {
   pname = "com_core447_OSPlugin"; # id
   version = "1.0.0";
 
   src = fetchFromGitHub {
     owner = "StreamController";
     repo = "OSPlugin";
-    rev = "d208a196bf97369b55df923ab8a5130961485481";
-    hash = "sha256-w8vc0o6HU4Utx7nHIKleCPHu96RZ5E8B+3FVuZCFbbQ=";
+    rev = "d41fb1657ad4b33cb348f76074d2fad2861091c9";
+    hash = "sha256-6Ys0ER03znCw/QijJnA7cx2UBKMuddDFJML8Xm0h8gc=";
   };
-
-  installPhase = ''
-    mkdir -p $out/plugins/${pname}
-    cp -r ./ $out/plugins/${pname}
-  '';
 
   meta = {
     description = "Control your operating system";

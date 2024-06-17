@@ -9,13 +9,13 @@ in
 
   stream-controller = callPackage ./stream-controller { };
 
-  stream-controller-with-plugins = (callPackage ./stream-controller/plugins { }) (with final.stream-controller-plugins; [
+  stream-controller-with-plugins = (callPackage ./stream-controller/plugins { }) { plugins = with final.stream-controller-plugins; [
     counter
     deckPlugin
     mediaPlugin
     obsPlugin
     osPlugin
-  ]);
+  ];};
 
   stream-controller-plugins = {
     counter = callPackage ./stream-controller/plugins/counter { };

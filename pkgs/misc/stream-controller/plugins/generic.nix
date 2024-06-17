@@ -21,6 +21,9 @@ stdenv.mkDerivation rec {
     mkdir -p $out/plugins/${pname}
     cp -r ./ $out/plugins/${pname}
 
+    touch $out/plugins/${pname}/git-rev
+    echo "${src.rev}" > $out/plugins/${pname}/git-rev
+
     runHook postInstall
   '';
 
