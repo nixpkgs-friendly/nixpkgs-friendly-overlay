@@ -253,6 +253,7 @@ EOF
 
     install -D flatpak/icon_256.png $out/share/icons/hicolor/256x256/apps/com.core447.StreamController.png
     install -D flatpak/launch.desktop $out/share/applications/com.core447.StreamController.desktop
+    install -D flatpak/launch.desktop $out/share/applications/StreamController.desktop
     install -D flatpak/com.core447.StreamController.metainfo.xml $out/share/metainfo/com.core447.StreamController.metainfo.xml
 
     mkdir -p "$out/etc/udev/rules.d"
