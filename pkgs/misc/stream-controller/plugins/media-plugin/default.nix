@@ -7,7 +7,7 @@ stream-controller-plugins.mkPlugin {
   src = fetchFromGitHub {
     owner = "StreamController";
     repo = "MediaPlugin";
-    rev = "639dc0b9386d903c9988a6471646f60b3884fd53";
-    hash = "sha256-laIH2MUmVsT1Aydus5UjzTVwUgQUuo66EiGBrBmenNU=";
+    rev = "d29800a9c3c99511440f998e989107757e4f330a";
+    hash = "sha256-3yDxNFXtT40F5ga6T2sa3xXm65WAdUaD/2gJa56zaUE=";
   };
 }

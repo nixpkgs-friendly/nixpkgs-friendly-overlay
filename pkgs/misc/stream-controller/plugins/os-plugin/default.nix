@@ -8,8 +8,8 @@ stream-controller-plugins.mkPlugin {
   src = fetchFromGitHub {
     owner = "StreamController";
     repo = "OSPlugin";
-    rev = "d41fb1657ad4b33cb348f76074d2fad2861091c9";
-    hash = "sha256-6Ys0ER03znCw/QijJnA7cx2UBKMuddDFJML8Xm0h8gc=";
+    rev = "0104d1fe57ca4208836b55b341ed154753ba934a";
+    hash = "sha256-iYpjO1viszJOegCHacf5F3Iwg7PTRzU4oF9eGIcq/hc=";
   };
 
   meta = {

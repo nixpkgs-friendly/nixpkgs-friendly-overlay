@@ -1,5 +1,6 @@
 {
   fetchFromGitHub,
+  fetchpatch,
   pkgs,
   python3,
   lib,
@@ -8,14 +9,32 @@
 
 python3.pkgs.buildPythonApplication rec {
   pname = "StreamController";
-  version = "1.5.0-beta.4";
+  version = "1.5.1-beta.4";
 
   src = fetchFromGitHub {
     owner = pname;
     repo = pname;
-    rev = "cacab50464210f83f1702592aa5a5ddc2c98f45c"; # main
-    hash = "sha256-WXy6wHsCym1GY7g23slDIq7HifBr/VFBFULy0rYzJ0s=";
+    rev = "eb1c0678a50235462b1ce697653195a08caba619"; # main
+    hash = "sha256-wr5R+hX74Z4lPnGu4G37gmJJj0dK4F8QNwSLYhdDhME=";
   };
+
+  patches = [
+    # Default locale fix
+    (fetchpatch {
+      url = "https://github.com/StreamController/StreamController/commit/4652e2de943cb063181d648bcae93a194bd3ef55.patch";
+      hash = "sha256-XlNfeNhYQk4Aj7bfaKx7kfnFJHSbVVhmNvBphr5Mcf8=";
+    })
+    # HOLD_TIME fix
+    (fetchpatch {
+      url = "https://github.com/StreamController/StreamController/commit/4adbc9daf4ef14c1aa8e7ce6c867952ef6917c42.patch";
+      hash = "sha256-aF829epNNS3hwliYhJOSs3iMZENS2dGddEZyIJxNQc0=";
+    })
+    # row.event fix
+    (fetchpatch {
+      url = "https://github.com/StreamController/StreamController/commit/23f0621d94e1877680934835330b25e54acc0160.patch";
+      hash = "sha256-XX//piHZjOHjAW0vRtg5Vl2LN6BUdDIOPeIKDy4PXlM=";
+    })
+  ];
 
   propagatedBuildInputs = (with pkgs; [
     memray
@@ -187,9 +206,6 @@ python3.pkgs.buildPythonApplication rec {
   format = "pyproject";
 
   postPatch = ''
-    substituteInPlace locales/LegacyLocaleManager.py --replace-fail \
-      "self.set_language(os_locale)" "self.set_language(self.FALLBACK_LOCALE if os_locale is None else os_locale)"
-
     substituteInPlace src/backend/Store/StoreBackend.py \
       --replace-fail "from install import install" ""
 
@@ -233,7 +249,6 @@ EOF
   postInstall = ''
     cp -r ./ $out/lib/python3.11/site-packages/
     cp -r ./locales $out/bin/locales
-    # cp -r ./flatpak $out/bin/flatpak
 
     install -D flatpak/icon_256.png $out/share/icons/hicolor/256x256/apps/com.core447.StreamController.png
     install -D flatpak/launch.desktop $out/share/applications/com.core447.StreamController.desktop

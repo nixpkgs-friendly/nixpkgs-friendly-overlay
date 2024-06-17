@@ -8,18 +8,9 @@ stream-controller.python.pkgs.buildPythonPackage rec {
   src = fetchFromGitHub {
     owner = "StreamController";
     repo = "OBSPlugin";
-    rev = "c35499cbe623d1094c78fa33f8f7927bf01d5aa9";
-    hash = "sha256-GISbmD8flAiYZyO/weP2nLfnaNACa/4W11GWKUfr63o=";
+    rev = "8cd5b20307d59231ac9a976da5f993d2af49549a";
+    hash = "sha256-wE7SrsFaJSrud1sKnE2f8OiP3MRpDkSYdXFr2uLhQlU=";
   };
-
-  postPatch = ''
-    rm __install__.py
-    #substituteInPlace __install__.py --replace-fail \
-    #  'join(toplevel, "backend", "requirements.txt")' "None"
-
-    #substituteInPlace main.py --replace-fail \
-    #  'os.path.join(self.PATH, "backend", ".venv")' "None"
-  '';
 
   pyproject = false;
 
@@ -41,7 +32,6 @@ stream-controller.python.pkgs.buildPythonPackage rec {
     mkdir -p $out/plugins/${pname}/backend/.venv/bin
 
     echo "export PYTHONPATH=$PYTHONPATH:${lib.makeLibraryPath propagatedBuildInputs}" > $out/plugins/${pname}/backend/.venv/bin/activate
-    echo "export PYTHONHOME=:${stream-controller.python.interpreter}" >> $out/plugins/${pname}/backend/.venv/bin/activate
 
     touch $out/plugins/${pname}/git-rev
     echo "${src.rev}" > $out/plugins/${pname}/git-rev

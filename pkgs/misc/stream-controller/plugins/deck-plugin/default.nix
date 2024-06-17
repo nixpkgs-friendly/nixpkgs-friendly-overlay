@@ -7,7 +7,7 @@ stream-controller-plugins.mkPlugin {
   src = fetchFromGitHub {
     owner = "StreamController";
     repo = "DeckPlugin";
-    rev = "060a01556e54e8d739300ab82097c93971a44d1f";
-    hash = "sha256-CLzuN5YfPh2HQxCUSncBNfG8HTn1LuLLAhGjQjxGb88=";
+    rev = "63517f8d4056a7fb6cd679e32fee9b9cb7d6465d";
+    hash = "sha256-VzD3ZWvOQOCGnymtn7p1kVeYPf5xeqa17igINAUxsNk=";
   };
 }
