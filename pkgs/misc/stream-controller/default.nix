@@ -14,27 +14,9 @@ python3.pkgs.buildPythonApplication rec {
   src = fetchFromGitHub {
     owner = pname;
     repo = pname;
-    rev = "eb1c0678a50235462b1ce697653195a08caba619"; # main
-    hash = "sha256-wr5R+hX74Z4lPnGu4G37gmJJj0dK4F8QNwSLYhdDhME=";
+    rev = "b813896d11f6f1e83301f92b2d56d9fb6425321a"; # main
+    hash = "sha256-4KskOeUqp16X/dCQlDfFC69zjWaXgMrNIRNcAmKvFu0=";
   };
-
-  patches = [
-    # Default locale fix
-    (fetchpatch {
-      url = "https://github.com/StreamController/StreamController/commit/4652e2de943cb063181d648bcae93a194bd3ef55.patch";
-      hash = "sha256-XlNfeNhYQk4Aj7bfaKx7kfnFJHSbVVhmNvBphr5Mcf8=";
-    })
-    # HOLD_TIME fix
-    (fetchpatch {
-      url = "https://github.com/StreamController/StreamController/commit/4adbc9daf4ef14c1aa8e7ce6c867952ef6917c42.patch";
-      hash = "sha256-aF829epNNS3hwliYhJOSs3iMZENS2dGddEZyIJxNQc0=";
-    })
-    # row.event fix
-    (fetchpatch {
-      url = "https://github.com/StreamController/StreamController/commit/23f0621d94e1877680934835330b25e54acc0160.patch";
-      hash = "sha256-XX//piHZjOHjAW0vRtg5Vl2LN6BUdDIOPeIKDy4PXlM=";
-    })
-  ];
 
   propagatedBuildInputs = (with pkgs; [
     memray
