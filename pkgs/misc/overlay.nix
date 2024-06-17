@@ -9,6 +9,8 @@ in
 
   stream-controller = callPackage ./stream-controller { };
 
+  wrapped-stream-controller = callPackage ./stream-controller/plugins { };
+
   stream-controller-with-plugins = (callPackage ./stream-controller/plugins { }) { plugins = with final.stream-controller-plugins; [
     audioControl
     audioSwitcher
