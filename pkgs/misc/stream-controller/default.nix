@@ -9,7 +9,7 @@
 
 python3.pkgs.buildPythonApplication rec {
   pname = "StreamController";
-  version = "1.5.1-beta.5";
+  version = "1.5.1-beta";
 
   src = fetchFromGitHub {
     owner = pname;
@@ -170,6 +170,7 @@ python3.pkgs.buildPythonApplication rec {
     "tqdm"
     "types-setuptools"
     "typing-extensions"
+    "urllib3"
     "usb-monitor"
     "virtualenv"
   ];
@@ -199,9 +200,6 @@ python3.pkgs.buildPythonApplication rec {
     substituteInPlace autostart.py --replace-fail \
         "shutil.copyfile(os.path.join(\"flatpak\", \"autostart.desktop\"), AUTOSTART_DESKTOP_PATH)" \
         "shutil.copyfile(os.path.join(os.path.dirname(__file__), \"flatpak\", \"autostart.desktop\"), AUTOSTART_DESKTOP_PATH)"
-
-    substituteInPlace src/backend/Store/StoreBackend.py --replace-fail \
-        "git rev-parse HEAD" "cat ./git-rev"
   '';
 
   preBuild = ''
