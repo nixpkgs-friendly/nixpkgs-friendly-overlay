@@ -38,14 +38,6 @@ in
       hash = "sha256-iAs5YnaO8+GdPrcXupRVy80O45P23F2yRdXP2Dj7F3Y=";
     };
 
-    signageos.signageos-vscode-sops = extensionFromVscodeMarketplace {
-      # https://marketplace.visualstudio.com/items?itemName=signageos.signageos-vscode-sops
-      publisher = "signageos";
-      name = "signageos-vscode-sops";
-      version = "0.9.1";
-      hash = "sha256-b1Gp+tL5/e97xMuqkz4EvN0PxI7cJOObusEkcp+qKfM=";
-    };
-
   };
 }
 
