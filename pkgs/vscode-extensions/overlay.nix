@@ -38,6 +38,14 @@ in
       hash = "sha256-iAs5YnaO8+GdPrcXupRVy80O45P23F2yRdXP2Dj7F3Y=";
     };
 
+    gbtb.ponylang = extensionFromVscodeMarketplace {
+      # https://marketplace.visualstudio.com/items?itemName=gbtb.ponylang
+      publisher = "gbtb";
+      name = "ponylang";
+      version = "0.2.2";
+      hash = "sha256-ypSEb4j9Gig0Cpo4cM5IoGMmKv1f9MLTfJCXBZAzg3M=";
+    };
+
   };
 }
 
