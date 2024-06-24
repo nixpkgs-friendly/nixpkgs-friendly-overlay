@@ -3,13 +3,13 @@
 
 stream-controller-plugins.mkPlugin {
   pname = "com_core447_OSPlugin"; # id
-  version = "1.0.0";
+  version = "1.5.1-beta";
 
   src = fetchFromGitHub {
     owner = "StreamController";
     repo = "OSPlugin";
-    rev = "0104d1fe57ca4208836b55b341ed154753ba934a";
-    hash = "sha256-iYpjO1viszJOegCHacf5F3Iwg7PTRzU4oF9eGIcq/hc=";
+    rev = "3f44de60e91def8ecf93d1527370b601114681f2";
+    hash = "sha256-dJL0GReI3CCLnUuZF92wXqZdbgGfX0MMAv3Dy+586II=";
   };
 
   meta = {

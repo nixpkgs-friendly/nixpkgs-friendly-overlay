@@ -3,13 +3,13 @@
 
 stream-controller-plugins.mkPlugin {
   pname = "com_core447_AudioSwitcher"; # id
-  version = "1.0.0";
+  version = "1.5.1-beta";
 
   src = fetchFromGitHub {
     owner = "StreamController";
     repo = "AudioSwitcher";
-    rev = "a194fb5595b4fae5f93b079badfa60c10315ae66";
-    hash = "sha256-zJeQHPTePtpsC7uXd93hkQ1/gbF2AYfngr4HDpAOF1c=";
+    rev = "28ac24058916db19fe0681ea6ba56e0cac498cdb";
+    hash = "sha256-lfa2Vv9leDCZF4Yi+xbboXet+JLyMCFxHkU9vTuyvcA=";
   };
 
   meta = {

@@ -3,7 +3,7 @@
 
 stream-controller-plugins.mkPlugin {
   pname = "com_core447_VolumeMixer"; # id
-  version = "1.0.0";
+  version = "1.5.1-beta";
 
   src = fetchFromGitHub {
     owner = "StreamController";

@@ -3,13 +3,13 @@
 
 stream-controller-plugins.mkPlugin {
   pname = "com_core447_Counter"; # id
-  version = "1.0.0";
+  version = "1.5.1-beta";
 
   src = fetchFromGitHub {
     owner = "StreamController";
     repo = "Counter";
-    rev = "7f3351b55427fa97419b9bde740dd192d1b91791";
-    hash = "sha256-1Qtl8vdvFGLukKFTphUJgTOFaA6MYQuK1KpWGLIkFLA=";
+    rev = "685b21c92ed799e67d385f7e16d211aef3d952d9";
+    hash = "sha256-u6dHHg8HRMC9G5jqk9Xby672y2YxtkGCdK37e2h/0oY=";
   };
 
   meta = {
