@@ -27,12 +27,13 @@ symlinkJoin {
         "$out/bin/StreamController"
         ''--set PLUGIN_DIR "$out/plugins"''
       ];
-
     in ''
     ${lib.concatStringsSep " " wrapCommandLine}
 
     # Leave some breadcrumbs
     echo 'Plugins are at ${pluginsJoined}/plugins' > $out/plugins-README
+
+    sed -i "s#Exec=.*#Exec=$out/bin/StreamController#" $out/share/applications/StreamController.desktop
   '';
 
   meta = stream-controller.meta // {
