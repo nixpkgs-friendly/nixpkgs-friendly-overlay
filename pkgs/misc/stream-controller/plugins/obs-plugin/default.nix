@@ -3,13 +3,13 @@
 stream-controller.python.pkgs.buildPythonPackage rec {
 # stdenv.mkDerivation rec {
   pname = "com_core447_OBSPlugin";
-  version = "1.0.0";
+  version = "1.5.1-beta";
 
   src = fetchFromGitHub {
     owner = "StreamController";
     repo = "OBSPlugin";
-    rev = "8cd5b20307d59231ac9a976da5f993d2af49549a";
-    hash = "sha256-wE7SrsFaJSrud1sKnE2f8OiP3MRpDkSYdXFr2uLhQlU=";
+    rev = "1ba0ed75d6466192d8561ca88ad93822839d9b60";
+    hash = "sha256-8VjGsG4iSe7+blRd3w/1xIeIb3Ad3yyZq7utB/u+cgA=";
   };
 
   pyproject = false;

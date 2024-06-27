@@ -3,13 +3,13 @@
 
 stream-controller-plugins.mkPlugin {
   pname = "com_core447_MicMute"; # id
-  version = "1.0.0";
+  version = "1.5.1-beta";
 
   src = fetchFromGitHub {
     owner = "StreamController";
     repo = "MicMute";
-    rev = "2ffb9309b47e554f860cd5e55d10d35073c64b54";
-    hash = "sha256-g82nKj9NMGrS+IoZMXyxtcFOT+v/OMkcKvMGDbsje5I=";
+    rev = "a46e86451c7fed29ad2052c2244c9c2b37d05fc7";
+    hash = "sha256-JOpklP7R9tu1tQ15WxyIIwkpqdm2TsJ0ya2Vdo69KDk=";
   };
 
   meta = {

@@ -3,13 +3,13 @@
 
 stream-controller-plugins.mkPlugin {
   pname = "com_core447_Battery"; # id
-  version = "1.0.0";
+  version = "1.5.1-beta";
 
   src = fetchFromGitHub {
     owner = "StreamController";
     repo = "Battery";
-    rev = "62b10d9aec5dbb1a337c579996e4c3887d12aba7";
-    hash = "sha256-jfP0xuIGzKkv5bA1zDOED6VB7m4lrZArYDQRhtlw9JY=";
+    rev = "e6e8ed12c24780f7c735f45f5c1c3de314725192";
+    hash = "sha256-eOZaHN9dh6XBcDC5j+zriX2ooXEgzaS3F6IzUOpWm5s=";
   };
 
   meta = {
