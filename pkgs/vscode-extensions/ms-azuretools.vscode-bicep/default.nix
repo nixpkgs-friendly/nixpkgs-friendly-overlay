@@ -23,8 +23,8 @@ vscode-utils.buildVscodeMarketplaceExtension {
   #'';
 
   buildInputs = with pkgs; [
-    dotnetCorePackages.runtime_8_0
-    dotnetCorePackages.sdk_8_0
+    # dotnetCorePackages.runtime_8_0
+    # dotnetCorePackages.sdk_8_0
     azure-cli
     bicep
     bicep-lsp
