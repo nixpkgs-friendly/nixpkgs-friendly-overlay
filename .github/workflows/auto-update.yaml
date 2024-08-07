@@ -1,12 +1,7 @@
 name: Auto-update
 
 on:
-  # workflow_dispatch:
-  # pull_request:
-  #   types:
-  #     - opened
-  #   paths:
-  #     - '.github/workflows/auto-update.yml'
+  workflow_dispatch:
   schedule: # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
     - cron: '0 * * * *'
 jobs:
@@ -37,31 +32,3 @@ jobs:
           git config --global user.name 'UpdateBot'
           git config --global user.email 'superherointj@users.noreply.github.com'
           [ ! -z "$(git status --porcelain)" ] && (git add flake.lock; git commit -m "flake.lock updated $(date -u +%Y-%m-%d/%H:%M:%S-%Z)"; git push; echo "flake.lock update executed: $?") || echo "Nothing to commit."
-
-##################################
-
-# git checkout -b "auto-update-sources-$GITHUB_RUN_ID"
-# --set-upstream origin "auto-update-sources-$GITHUB_RUN_ID"
-
-# - name: Open pull request
-#   uses: repo-sync/pull-request@v2
-#   env:
-#     GITHUB_JOB: ${{ env.GITHUB_JOB }}
-#     GITHUB_RUN_ID: ${{ env.GITHUB_RUN_ID }}
-#   with:
-#     destination_branch: "main"
-#     source_branch: auto-update-sources-${{ github.run_id }}
-#     pr_title: "Update sources"
-#     pr_body: ":robot_face: Updating sources to the latest version.\n${{steps.update-sources.outputs.result}}"
-#     pr_reviewer: "superherointj"
-#     pr_assignee: "superherointj"
-#     github_token: ${{ secrets.GH_PAT_INTJ }}
-
-# - name: "Update sources"
-#   uses: actions/github-script@v6
-#   id: update-sources
-#   with:
-#     result-encoding: string
-#     script: |
-#       const script = require('./.github/workflows/auto-update.js')
-#       return await script({github, context, core, require})
