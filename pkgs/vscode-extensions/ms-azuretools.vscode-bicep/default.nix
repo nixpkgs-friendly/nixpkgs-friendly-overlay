@@ -1,18 +1,18 @@
 {
-  pkgs,
-  vscode-utils,
-  lib,
+  azure-cli,
+  bicep,
   bicep-lsp,
   #gnused,
-  ...
+  lib,
+  vscode-utils,
 }:
 
 vscode-utils.buildVscodeMarketplaceExtension {
   mktplcRef = {
     publisher = "ms-azuretools";
     name = "vscode-bicep";
-    version = "0.28.1";
-    hash = "sha256-js512zMxA0kNxbvR6Kgbezcn9o6AygyQN2P2bXyNiaM=";
+    version = "0.29.47";
+    hash = "sha256-HXxJsaYfO4ba73KaVeC8JKguYS7oHtY9e0U/0rb694s=";
   };
 
   #buildNativeInputs = [ gnused ];
@@ -31,8 +31,11 @@ vscode-utils.buildVscodeMarketplaceExtension {
   ];
 
   meta = {
+    description = "Visual Studio Code extension for Bicep language";
     downloadPage = "https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep";
     homepage = "https://github.com/Azure/bicep/tree/main/src/vscode-bicep";
+    license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ ] ++ lib.teams.stridtech.members;
   };
 }
 
