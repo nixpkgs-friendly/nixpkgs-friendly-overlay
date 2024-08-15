@@ -3,13 +3,13 @@
 
 stream-controller-plugins.mkPlugin {
   pname = "com_core447_Clocks"; # id
-  version = "1.5.1-beta";
+  version = "1.5.0-beta.5";
 
   src = fetchFromGitHub {
     owner = "StreamController";
     repo = "Clocks";
-    rev = "537af8606b606bef3ce78936a0e85e9986967b4b";
-    hash = "sha256-X6hK/xrBy42RXcZaPT7b6BcgnxPazBshL2ExABSUfis=";
+    rev = "382410fe55646e76420d5eea7598e405e69d7f3e";
+    hash = "sha256-s5tV70NTxg8Du5sRUABtQob7ItyPWHDWfeJG9Lz1vag=";
   };
 
   meta = {

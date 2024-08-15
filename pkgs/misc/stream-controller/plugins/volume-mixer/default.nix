@@ -3,13 +3,13 @@
 
 stream-controller-plugins.mkPlugin {
   pname = "com_core447_VolumeMixer"; # id
-  version = "1.5.1-beta";
+  version = "1.5.0-beta.5";
 
   src = fetchFromGitHub {
     owner = "StreamController";
     repo = "VolumeMixer";
-    rev = "f49d72184645c24d7d6dc7fe109e4a27cf7201ea";
-    hash = "sha256-ONQGWGk924Rc04PnfdaRGVqgFBAV6DrcmLDE+JVjZXM=";
+    rev = "d86db67804d59378562d93a8171280db756c2000";
+    hash = "sha256-f5BAv5/h6lz2reXnmY2DM8VRqVzyOm/NpRIlK5ooCw4=";
   };
 
   meta = {

@@ -3,7 +3,7 @@
 
 stream-controller-plugins.mkPlugin {
   pname = "com_core447_Counter"; # id
-  version = "1.5.1-beta";
+  version = "1.5.0-beta.5";
 
   src = fetchFromGitHub {
     owner = "StreamController";

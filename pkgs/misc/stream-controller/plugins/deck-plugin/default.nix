@@ -2,12 +2,12 @@
 
 stream-controller-plugins.mkPlugin {
   pname = "com_core447_DeckPlugin";
-  version = "1.5.1-beta";
+  version = "1.5.0-beta.5";
 
   src = fetchFromGitHub {
     owner = "StreamController";
     repo = "DeckPlugin";
-    rev = "7caa40335b08994902403ed651367913694e22d8";
-    hash = "sha256-7nkC+h6o6hJuugZ+IpwNtcpWkyVVO3L2rrsga5+HN4c=";
+    rev = "dd053be1d541034d53b7bebf87125979fd7cdc0c";
+    hash = "sha256-R9v7+7pNSpGHjONyQAUVzIcb9E28UfDAS0mOxu5ZmAA=";
   };
 }

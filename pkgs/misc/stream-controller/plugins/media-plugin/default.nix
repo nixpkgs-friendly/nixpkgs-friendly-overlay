@@ -2,12 +2,12 @@
 
 stream-controller-plugins.mkPlugin {
   pname = "com_core447_MediaPlugin";
-  version = "1.5.1-beta";
+  version = "1.5.0-beta.5";
 
   src = fetchFromGitHub {
     owner = "StreamController";
     repo = "MediaPlugin";
-    rev = "d59517f5ac2fc0a39a7c5cfb6f91d7b0852804b9";
-    hash = "sha256-Aw3cPZ6sO1ut+vStzDiXMWUwIfkcMn//eJ50eQDMSk8=";
+    rev = "c0d93146a899ab22d67cf897a1a2137ef55ea764";
+    hash = "sha256-rVCj2o/SKa4LBonSlcwGTEZdxz1Q+wOLSzCRGg8gxNw=";
   };
 }
