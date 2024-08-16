@@ -14,8 +14,8 @@ python3.pkgs.buildPythonApplication rec {
   src = fetchFromGitHub {
     owner = pname;
     repo = pname;
-    rev = "c4dfdab4519eac46eed3e31f2817fda8a05ed479"; # main
-    hash = "sha256-Q33sV95JpOMRG+JNq70fdF72WVj6BBhUMkf6bR71RhY=";
+    rev = "dbb6460a69137af192db09d504224ae9f1127cbd"; # main
+    hash = "sha256-+YYzHLRU5MNjF3iaKIDj9k4PVg+vnEZhbc3ZmNI7xyw=";
   };
 
   propagatedBuildInputs = (with pkgs; [
@@ -144,36 +144,7 @@ python3.pkgs.buildPythonApplication rec {
     python3.pkgs.pythonRelaxDepsHook
   ];
 
-  pythonRelaxDeps = [
-    "filelock"
-    "fonttools"
-    "gitpython"
-    "imageio"
-    "jinja2"
-    "joblib"
-    "levenshtein"
-    "matplotlib"
-    "memray" # should probably be updated
-    "meson-python"
-    "packaging"
-    "plumbum"
-    "prusalinkpy"
-    "pulsectl" # Should probably be updated
-    "pydantic"
-    "pygobject"
-    "pyproject-metadata"
-    "rapidfuzz"
-    "requests"
-    "requirements-parser"
-    "smmap"
-    "textual"
-    "tqdm"
-    "types-setuptools"
-    "typing-extensions"
-    "urllib3"
-    "usb-monitor"
-    "virtualenv"
-  ];
+  pythonRelaxDeps = true;
 
   pythonRemoveDeps = [
     "pipenv"
@@ -190,9 +161,6 @@ python3.pkgs.buildPythonApplication rec {
   format = "pyproject";
 
   postPatch = ''
-    substituteInPlace src/backend/Store/StoreBackend.py \
-      --replace-fail "from install import install" ""
-
     substituteInPlace main.py --replace-fail \
         "os.path.join(\"locales\", \"locales.csv\")" \
         "os.path.join(os.path.dirname(__file__), \"locales\", \"locales.csv\")"
@@ -228,7 +196,7 @@ EOF
   '';
 
   postInstall = ''
-    cp -r ./ $out/lib/python3.11/site-packages/
+    cp -r ./ $out/${python3.sitePackages}/
     cp -r ./locales $out/bin/locales
 
     install -D flatpak/icon_256.png $out/share/icons/hicolor/256x256/apps/com.core447.StreamController.png
