@@ -4,7 +4,7 @@ on:
   repository_dispatch:
     types: [auto_update]
   schedule: # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
-    - cron: '0 * * * *'
+    - cron: '* 4 * * *'
   workflow_dispatch:
 jobs:
   update-sources:
