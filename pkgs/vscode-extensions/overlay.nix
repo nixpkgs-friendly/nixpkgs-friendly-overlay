@@ -42,6 +42,14 @@ in
       hash = "sha256-iAs5YnaO8+GdPrcXupRVy80O45P23F2yRdXP2Dj7F3Y=";
     };
 
+    philhindle.errorlens = extensionFromVscodeMarketplace {
+      # https://marketplace.visualstudio.com/items?itemName=PhilHindle.errorlens
+      publisher = "PhilHindle";
+      name = "errorlens";
+      version = "1.1.3";
+      hash = "sha256-kMbet43DvTGIui7fcP8amCVzS0C/KY9VBVlZ+MlTxyM=";
+    };
+
   };
 }
 
