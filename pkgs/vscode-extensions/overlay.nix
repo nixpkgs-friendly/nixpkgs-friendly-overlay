@@ -8,6 +8,14 @@ in
 {
   vscode-extensions = prev.vscode-extensions // {
 
+    andrew-butson.vscode-openai = extensionFromVscodeMarketplace {
+      # https://marketplace.visualstudio.com/items?itemName=AndrewButson.vscode-openai
+      publisher = "AndrewButson";
+      name = "vscode-openai";
+      version = "1.6.11";
+      hash = "sha256-Yfsa33a1jvbgOBRK0aqcL6/IYc/jhcHmu8RHhA35J9A=";
+    };
+
     bradgashler.htmltagwrap = extensionFromVscodeMarketplace {
       # https://marketplace.visualstudio.com/items?itemName=bradgashler.htmltagwrap
       publisher = "bradgashler";
