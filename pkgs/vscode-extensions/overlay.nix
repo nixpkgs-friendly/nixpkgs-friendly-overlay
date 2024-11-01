@@ -40,6 +40,15 @@ in
       hash = "sha256-9V+ziWk9V4LyQiVNSC6DniJDun+EvcK30ykPjyNsvp0=";
     };
 
+    kcl.kcl-vscode-extension = extensionFromVscodeMarketplace {
+      # https://marketplace.visualstudio.com/items?itemName=kcl.kcl-vscode-extension
+      publisher = "kcl";
+      name = "kcl-vscode-extension";
+      version = "0.2.2";
+      hash = "sha256-iMRIe9IoVebu4KwIYw/558FPBL/NdDNDUy1le1luif8=";
+      # Requires: kcl kcl-language-server
+    };
+
     ms-azuretools.vscode-bicep = callPackage ./ms-azuretools.vscode-bicep { };
 
     npruehs.pony = extensionFromVscodeMarketplace {
