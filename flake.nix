@@ -85,6 +85,8 @@
           fluxcd = p.fluxcd;
           go = p.go;
           k3s = p.k3s;
+          k3s-tests-etcd = p.k3s.passthru.tests.etcd;
+          k3s-tests-multi-node = p.k3s.passthru.tests.multi-node;
           vcluster = p.vcluster;
           ### Musl ###
           # musl-erlang_nox = p.pkgsMusl.erlang_nox;
