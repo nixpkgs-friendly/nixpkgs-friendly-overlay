@@ -90,6 +90,7 @@
           k3s-tests-etcd = p.k3s.passthru.tests.etcd;
           k3s-tests-multi-node = p.k3s.passthru.tests.multi-node;
           kcl = p.kcl;
+          kcl-language-server = p.kcl-language-server;
           vcluster = p.vcluster;
           ### Musl ###
           # musl-erlang_nox = p.pkgsMusl.erlang_nox;
