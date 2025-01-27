@@ -67,6 +67,14 @@ in
       hash = "sha256-kMbet43DvTGIui7fcP8amCVzS0C/KY9VBVlZ+MlTxyM=";
     };
 
+    saoudrizwan.claude-dev = extensionFromVscodeMarketplace {
+      # https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev
+      publisher = "saoudrizwan";
+      name = "claude-dev";
+      version = "3.2.5";
+      hash = "sha256-aJnN5zjF6tvUSMqVklNgCgpsfBNi1vw0i66BBFgHB1o=";
+    };
+
   };
 }
 
