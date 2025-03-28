@@ -32,6 +32,14 @@ in
       hash = "sha256-ypSEb4j9Gig0Cpo4cM5IoGMmKv1f9MLTfJCXBZAzg3M=";
     };
 
+    geequlim.godot-tools = extensionFromVscodeMarketplace {
+      # https://marketplace.visualstudio.com/items?itemName=geequlim.godot-tools
+      publisher = "geequlim";
+      name = "godot-tools";
+      version = "2.5.1";
+      hash = "sha256-kAzRSNZw1zaECblJv7NzXnE2JXSy9hzdT2cGX+uwleY=";
+    };
+
     jeff-hykin.better-nix-syntax = extensionFromVscodeMarketplace {
       # https://marketplace.visualstudio.com/items?itemName=jeff-hykin.better-nix-syntax
       publisher = "jeff-hykin";
@@ -74,7 +82,6 @@ in
       version = "3.2.5";
       hash = "sha256-aJnN5zjF6tvUSMqVklNgCgpsfBNi1vw0i66BBFgHB1o=";
     };
-
   };
 }
 
