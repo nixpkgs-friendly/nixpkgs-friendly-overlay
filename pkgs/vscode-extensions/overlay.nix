@@ -24,6 +24,14 @@ in
       hash = "sha256-WOMfwxyeDLoSwF0xz9tbntDVrUWycJ4bW0rZjfLSzgM=";
     };
 
+    designliquido.designliquido-vscode = extensionFromVscodeMarketplace {
+      # https://marketplace.visualstudio.com/items?itemName=designliquido.designliquido-vscode
+      publisher = "designliquido";
+      name = "designliquido-vscode";
+      version = "0.12.22";
+      hash = "sha256-zZR4lWCMYApQzFdX0kbsSv7qXIIUDrvu9g5Jw58lj4c=";
+    };
+
     gbtb.ponylang = extensionFromVscodeMarketplace {
       # https://marketplace.visualstudio.com/items?itemName=gbtb.ponylang
       publisher = "gbtb";
