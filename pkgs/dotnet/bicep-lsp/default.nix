@@ -13,18 +13,22 @@
 
 buildDotnetModule rec {
   pname = "bicep-lsp";
-  version = "0.29.47";
+  version = "0.34.44";
 
   src = fetchFromGitHub {
     owner = "Azure";
     repo = "bicep";
     rev = "v${version}";
-    hash = "sha256-KdaoOejoM/3P1WwDCjDhChOpKA7c4UulPLK7IOVw3o4=";
+    hash = "sha256-vyPRLPTvQkwN7unlIHs6DvpjXnXyW1PDtH9hhIOgN1A=";
   };
 
   projectFile = "src/Bicep.LangServer/Bicep.LangServer.csproj";
 
-  nugetDeps = ./deps.nix;
+  postPatch = ''
+    substituteInPlace global.json --replace-warn "8.0.406" "8.0.407"
+  '';
+
+  nugetDeps = ./deps.json;
 
   # From: https://github.com/Azure/bicep/blob/v0.29.47/global.json#L7
   dotnet-sdk = dotnetCorePackages.sdk_8_0;
