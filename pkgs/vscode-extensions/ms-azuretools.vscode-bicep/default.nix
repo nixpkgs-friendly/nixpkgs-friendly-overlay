@@ -11,8 +11,8 @@ vscode-utils.buildVscodeMarketplaceExtension {
   mktplcRef = {
     publisher = "ms-azuretools";
     name = "vscode-bicep";
-    version = "0.29.47";
-    hash = "sha256-HXxJsaYfO4ba73KaVeC8JKguYS7oHtY9e0U/0rb694s=";
+    version = "0.34.44";
+    hash = "sha256-y+FdlnJeYBpu30s5g+39HczVN5ncaacHvybYLVebH34=";
   };
 
   #buildNativeInputs = [ gnused ];
@@ -22,7 +22,7 @@ vscode-utils.buildVscodeMarketplaceExtension {
   #  sed -i package.json -e 's/"ms-dotnettools.vscode-dotnet-runtime"//'
   #'';
 
-  buildInputs = with pkgs; [
+  buildInputs = [
     # dotnetCorePackages.runtime_8_0
     # dotnetCorePackages.sdk_8_0
     azure-cli
