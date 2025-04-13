@@ -25,7 +25,7 @@ buildDotnetModule rec {
   projectFile = "src/Bicep.LangServer/Bicep.LangServer.csproj";
 
   postPatch = ''
-    substituteInPlace global.json --replace-warn "8.0.406" "8.0.407"
+    substituteInPlace global.json --replace-warn "8.0.406" "${dotnetCorePackages.sdk_8_0.version}"
   '';
 
   nugetDeps = ./deps.json;
