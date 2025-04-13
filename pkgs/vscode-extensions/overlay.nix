@@ -73,7 +73,7 @@ in
       # Requires: kcl kcl-language-server
     };
 
-    ms-azuretools.vscode-bicep = callPackage ./ms-azuretools.vscode-bicep { };
+    # ms-azuretools.vscode-bicep = callPackage ./ms-azuretools.vscode-bicep { };
 
     npruehs.pony = extensionFromVscodeMarketplace {
       # https://marketplace.visualstudio.com/items?itemName=npruehs.pony
