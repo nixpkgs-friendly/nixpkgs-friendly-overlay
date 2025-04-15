@@ -42,6 +42,14 @@ in
       # Requires: kcl kcl-language-server
     }) (prev.vscode-extensions.kcl.kcl-vscode-extension or null);
 
+    kreativ-software.csharpextensions = pickLatest (extensionFromVscodeMarketplace {
+      # https://marketplace.visualstudio.com/items?itemName=kreativ-software.csharpextensions
+      publisher = "kreativ-software";
+      name = "csharpextensions";
+      version = "1.7.3";
+      hash = "sha256-qv2BbcT07cogjlLVFOKj0masRRU28krbQ5LWcFrcgQw=";
+    }) (prev.vscode-extensions.kreativ-software.csharpextensions or null);
+
     npruehs.pony = pickLatest (extensionFromVscodeMarketplace {
       # https://marketplace.visualstudio.com/items?itemName=npruehs.pony
       publisher = "npruehs";
