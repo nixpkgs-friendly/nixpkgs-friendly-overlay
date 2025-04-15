@@ -5,5 +5,5 @@ let
   pickLatest = (import ../../utils.nix).pickLatest; # Fix-Me
 in
 {
-  # bicep-lsp = callPackage ./bicep-lsp { };
+  # x = callPackage ./x { };
 }
