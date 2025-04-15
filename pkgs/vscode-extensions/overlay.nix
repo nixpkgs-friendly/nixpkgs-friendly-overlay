@@ -5,6 +5,7 @@ let
   pickLatest = (import ../../utils.nix).pickLatest; # Fix-Me
   extensionFromVscodeMarketplace = final.vscode-utils.extensionFromVscodeMarketplace;
 in
+# To-Do: Use "pickLatest" method for each extension here.
 {
   vscode-extensions = prev.vscode-extensions // {
 
