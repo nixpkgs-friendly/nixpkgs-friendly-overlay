@@ -48,14 +48,6 @@ in
       hash = "sha256-kAzRSNZw1zaECblJv7NzXnE2JXSy9hzdT2cGX+uwleY=";
     };
 
-    jeff-hykin.better-nix-syntax = extensionFromVscodeMarketplace {
-      # https://marketplace.visualstudio.com/items?itemName=jeff-hykin.better-nix-syntax
-      publisher = "jeff-hykin";
-      name = "better-nix-syntax";
-      version = "1.1.5";
-      hash = "sha256-9V+ziWk9V4LyQiVNSC6DniJDun+EvcK30ykPjyNsvp0=";
-    };
-
     kcl.kcl-vscode-extension = extensionFromVscodeMarketplace {
       # https://marketplace.visualstudio.com/items?itemName=kcl.kcl-vscode-extension
       publisher = "kcl";
