@@ -40,14 +40,6 @@ in
       hash = "sha256-ypSEb4j9Gig0Cpo4cM5IoGMmKv1f9MLTfJCXBZAzg3M=";
     };
 
-    geequlim.godot-tools = extensionFromVscodeMarketplace {
-      # https://marketplace.visualstudio.com/items?itemName=geequlim.godot-tools
-      publisher = "geequlim";
-      name = "godot-tools";
-      version = "2.5.1";
-      hash = "sha256-kAzRSNZw1zaECblJv7NzXnE2JXSy9hzdT2cGX+uwleY=";
-    };
-
     kcl.kcl-vscode-extension = extensionFromVscodeMarketplace {
       # https://marketplace.visualstudio.com/items?itemName=kcl.kcl-vscode-extension
       publisher = "kcl";
