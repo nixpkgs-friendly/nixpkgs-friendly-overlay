@@ -48,14 +48,6 @@ in
       hash = "sha256-kAzRSNZw1zaECblJv7NzXnE2JXSy9hzdT2cGX+uwleY=";
     };
 
-    woberg.godot-dotnet-tools = extensionFromVscodeMarketplace {
-      # https://marketplace.visualstudio.com/items?itemName=woberg.godot-dotnet-tools
-      publisher = "woberg";
-      name = "godot-dotnet-tools";
-      version = "0.5.1";
-      hash = "sha256-qZdQiW1RvzUR5+5QlVdMPBY82IOPUPs3GNOl6bOhnWM=";
-    };
-
     jeff-hykin.better-nix-syntax = extensionFromVscodeMarketplace {
       # https://marketplace.visualstudio.com/items?itemName=jeff-hykin.better-nix-syntax
       publisher = "jeff-hykin";
