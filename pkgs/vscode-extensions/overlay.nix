@@ -17,14 +17,6 @@ in
       hash = "sha256-Yfsa33a1jvbgOBRK0aqcL6/IYc/jhcHmu8RHhA35J9A=";
     };
 
-    bradgashler.htmltagwrap = extensionFromVscodeMarketplace {
-      # https://marketplace.visualstudio.com/items?itemName=bradgashler.htmltagwrap
-      publisher = "bradgashler";
-      name = "htmltagwrap";
-      version = "1.0.0";
-      hash = "sha256-WOMfwxyeDLoSwF0xz9tbntDVrUWycJ4bW0rZjfLSzgM=";
-    };
-
     designliquido.designliquido-vscode = extensionFromVscodeMarketplace {
       # https://marketplace.visualstudio.com/items?itemName=designliquido.designliquido-vscode
       publisher = "designliquido";
