@@ -28,8 +28,8 @@ in
       # https://marketplace.visualstudio.com/items?itemName=designliquido.designliquido-vscode
       publisher = "designliquido";
       name = "designliquido-vscode";
-      version = "0.12.22";
-      hash = "sha256-zZR4lWCMYApQzFdX0kbsSv7qXIIUDrvu9g5Jw58lj4c=";
+      version = "0.12.24";
+      hash = "sha256-MiVRVsyhjjxnyUeqC3sWpL4QGbSyoM53gWoK4C+qdK4=";
     };
 
     gbtb.ponylang = extensionFromVscodeMarketplace {
