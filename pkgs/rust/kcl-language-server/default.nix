@@ -1,35 +1,37 @@
 {
+  fetchFromGitHub,
   kcl,
   lib,
   pkg-config,
-  pkgs,
-  protobuf
+  protobuf,
+  rustPlatform,
 }:
 
-pkgs.rustPlatform.buildRustPackage rec {
+rustPlatform.buildRustPackage rec {
   pname = "kcl-language-server";
-  version = "0.10.8";
+  version = "0.11.1";
 
-  src = pkgs.fetchFromGitHub {
+  src = fetchFromGitHub {
     owner = "kcl-lang";
     repo = "kcl";
     rev = "v${version}";
-    hash = "sha256-ls/Qe/nw3UIfZTjt7r7tzUwxlb5y4jBK2FQlOsMCttM=";
+    hash = "sha256-14yFGa8y8w3wbCmx0JOSN0TShXLZZpTdVynEfUKkjuE=";
   };
 
   sourceRoot = "${src.name}/kclvm";
 
-  cargoLock.lockFile = "${src}/kclvm/Cargo.lock";
-  cargoLock.outputHashes = {
-    "inkwell-0.2.0" = "sha256-JxSlhShb3JPhsXK8nGFi2uGPp8XqZUSiqniLBrhr+sM=";
-    "protoc-bin-vendored-3.2.0" = "sha256-cYLAjjuYWat+8RS3vtNVS/NAJYw2NGeMADzGBL1L2Ww=";
-  };
+  cargoHash = "sha256-o7YFyqRWAMjq23mcAqDrcN4infdBgp1KNvviYOLR35s=";
 
   PROTOC = "${protobuf}/bin/protoc";
   PROTOC_INCLUDE = "${protobuf}/include";
 
   buildAndTestSubdir = "tools/src/LSP";
-  # cargoBuildFlags = [ "--release" ];
+
+  buildPhaseCargoFlags = [
+    "--profile"
+    "release"
+    "--offline"
+  ];
 
   nativeBuildInputs = [
     pkg-config
@@ -39,12 +41,13 @@ pkgs.rustPlatform.buildRustPackage rec {
   doCheck = false;
 
   meta = {
-    description = "Language Server Protocol for KCL Programming Language";
     changelog = "https://github.com/kcl-lang/kcl/releases/tag/v${version}";
-    license = lib.licenses.asl20;
+    description = "A high-performance implementation of KCL written in Rust that uses LLVM as the compiler backend";
     downloadPage = "https://github.com/kcl-lang/kcl/tree/v${version}/kclvm/tools/src/LSP";
-    maintainers = [ ];
+    homepage = "https://www.kcl-lang.io/";
+    license = lib.licenses.asl20;
+    platforms = lib.platforms.linux;
+    maintainers = kcl.meta.maintainers;
+    mainProgram = "kcl-language-server";
   };
 }
-
-# Credit: https://github.com/aldoborrero/mynixpkgs/blob/main/pkgs/by-name/kc/kcl-language-server/default.nix
