@@ -50,14 +50,6 @@ in
       hash = "sha256-qv2BbcT07cogjlLVFOKj0masRRU28krbQ5LWcFrcgQw=";
     }) (prev.vscode-extensions.kreativ-software.csharpextensions or null);
 
-    ms-vscode.cmake-tools = pickLatest (extensionFromVscodeMarketplace {
-      # https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools
-      publisher = "ms-vscode";
-      name = "cmake-tools";
-      version = "1.21.26";
-      hash = "sha256-PybEbRDGm5VeM1tj/APyH/cWd3jdiFp4z3cPeW8HVFE=";
-    }) (prev.vscode-extensions.ms-vscode.cmake-tools or null);
-
     ms-vscode.cpptools-themes = pickLatest (extensionFromVscodeMarketplace {
       # https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-themes
       publisher = "ms-vscode";
@@ -65,14 +57,6 @@ in
       version = "2.0.0";
       hash = "sha256-YWA5UsA+cgvI66uB9d9smwghmsqf3vZPFNpSCK+DJxc=";
     }) (prev.vscode-extensions.ms-vscode.cpptools-themes or null);
-
-    ms-vscode.makefile-tools = pickLatest (extensionFromVscodeMarketplace {
-      # https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools
-      publisher = "ms-vscode";
-      name = "makefile-tools";
-      version = "0.13.5";
-      hash = "sha256-2nOExx0vlV94KtcROX7TGStapNnU3ldLEDgqThdTcmY=";
-    }) (prev.vscode-extensions.ms-vscode.makefile-tools or null);
 
     npruehs.pony = pickLatest (extensionFromVscodeMarketplace {
       # https://marketplace.visualstudio.com/items?itemName=npruehs.pony
