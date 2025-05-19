@@ -58,6 +58,14 @@ in
       hash = "sha256-YWA5UsA+cgvI66uB9d9smwghmsqf3vZPFNpSCK+DJxc=";
     }) (prev.vscode-extensions.ms-vscode.cpptools-themes or null);
 
+    ms-vscode.makefile-tools = pickLatest (extensionFromVscodeMarketplace {
+      # https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools
+      publisher = "ms-vscode";
+      name = "makefile-tools";
+      version = "0.13.5";
+      hash = "sha256-2nOExx0vlV94KtcROX7TGStapNnU3ldLEDgqThdTcmY=";
+    }) (prev.vscode-extensions.ms-vscode.makefile-tools or null);
+
     npruehs.pony = pickLatest (extensionFromVscodeMarketplace {
       # https://marketplace.visualstudio.com/items?itemName=npruehs.pony
       publisher = "npruehs";
