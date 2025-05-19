@@ -7,7 +7,7 @@ let
 in
 
 {
-  vscode-extensions = prev.vscode-extensions // {
+  vscode-extensions = prev.lib.recursiveUpdate prev.vscode-extensions {
 
     andrew-butson.vscode-openai = pickLatest (extensionFromVscodeMarketplace {
       # https://marketplace.visualstudio.com/items?itemName=AndrewButson.vscode-openai
