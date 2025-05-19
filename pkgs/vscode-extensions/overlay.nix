@@ -50,6 +50,14 @@ in
       hash = "sha256-qv2BbcT07cogjlLVFOKj0masRRU28krbQ5LWcFrcgQw=";
     }) (prev.vscode-extensions.kreativ-software.csharpextensions or null);
 
+    ms-vscode.cmake-tools = pickLatest (extensionFromVscodeMarketplace {
+      # https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools
+      publisher = "ms-vscode";
+      name = "cmake-tools";
+      version = "1.21.26";
+      hash = "sha256-PybEbRDGm5VeM1tj/APyH/cWd3jdiFp4z3cPeW8HVFE=";
+    }) (prev.vscode-extensions.ms-vscode.cmake-tools or null);
+
     ms-vscode.cpptools-themes = pickLatest (extensionFromVscodeMarketplace {
       # https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-themes
       publisher = "ms-vscode";
