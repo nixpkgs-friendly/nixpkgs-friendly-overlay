@@ -18,27 +18,27 @@ final: prev:
         #   python-prev.auto-gpt-plugin-template or null
         # );
 
-        composer = pickLatest (callPyPkg ./composer { }) (python-prev.composer or null);
+        # composer = pickLatest (callPyPkg ./composer { }) (python-prev.composer or null);
 
         # coolname = pickLatest (callPyPkg ./coolname { }) (python-prev.coolname or null);
 
-        ddsketch = pickLatest (callPyPkg ./ddsketch { }) (python-prev.ddsketch or null);
+        # ddsketch = pickLatest (callPyPkg ./ddsketch { }) (python-prev.ddsketch or null);
 
         # ddtrace = pickLatest (callPyPkg ./ddtrace { }) (python-prev.ddtrace or null);
 
-        dspy-ai = pickLatest (callPyPkg ./dspy-ai { }) (python-prev.dspy-ai or null);
+        # dspy-ai = pickLatest (callPyPkg ./dspy-ai { }) (python-prev.dspy-ai or null);
 
-        envier = pickLatest (callPyPkg ./envier { }) (python-prev.envier or null); # Needs upstream
+        # envier = pickLatest (callPyPkg ./envier { }) (python-prev.envier or null); # Needs upstream
 
         # flake8-quotes = pickLatest (callPyPkg ./flake8-quotes { }) (python-prev.flake8-quotes or null);
 
-        loralib = pickLatest (callPyPkg ./loralib { }) (python-prev.loralib or null);
+        # loralib = pickLatest (callPyPkg ./loralib { }) (python-prev.loralib or null);
 
-        obs-websocket-py = pickLatest (callPyPkg ./obs-websocket-py { }) (python-prev.obs-websocket-py or null);
+        # obs-websocket-py = pickLatest (callPyPkg ./obs-websocket-py { }) (python-prev.obs-websocket-py or null);
 
-        openapi-python-client = pickLatest (callPyPkg ./openapi-python-client { }) (
-          python-prev.openapi-python-client or null
-        );
+        # openapi-python-client = pickLatest (callPyPkg ./openapi-python-client { }) (
+        #   python-prev.openapi-python-client or null
+        # );
 
         prusalinkpy = pickLatest (callPyPkg ./prusalinkpy { }) (python-prev.prusalinkpy or null);
 
@@ -59,7 +59,7 @@ final: prev:
           pythonImportsCheck = [ pname ];
         });
 
-        pytorch-ranger = pickLatest (callPyPkg ./pytorch-ranger { }) (python-prev.pytorch-ranger or null);
+        # pytorch-ranger = pickLatest (callPyPkg ./pytorch-ranger { }) (python-prev.pytorch-ranger or null);
 
         # scikit-optimize = python-prev.scikit-optimize.overrideAttrs (oa: {
         #   patches = [
@@ -93,9 +93,9 @@ final: prev:
         #   inherit (python-prev.pkgs.llvmPackages_rocm) openmp;
         # };
 
-        torch-optimizer = pickLatest (callPyPkg ./torch-optimizer { }) (
-          python-prev.torch-optimizer or null
-        );
+        # torch-optimizer = pickLatest (callPyPkg ./torch-optimizer { }) (
+        #   python-prev.torch-optimizer or null
+        # );
 
         usb-monitor = pickLatest (callPyPkg ./usb-monitor { }) (python-prev.usb-monitor or null);
 
