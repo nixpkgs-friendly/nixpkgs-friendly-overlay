@@ -5,8 +5,6 @@ let
   pickLatest = (import ../../utils.nix).pickLatest; # Fix-Me
 in
 {
-  #blueman = (import ./blueman) prev final;
-
   firefox-extensions = callPackage ./firefox-extensions { };
 
   stream-controller = callPackage ./stream-controller { };
