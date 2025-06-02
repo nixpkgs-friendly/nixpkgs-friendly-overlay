@@ -10,17 +10,17 @@ final: prev:
         pickLatest = (import ../../utils.nix).pickLatest;
       in
       {
-        abstract-singleton = pickLatest (callPyPkg ./abstract-singleton { }) (
-          python-prev.abstract-singleton or null
-        );
+        # abstract-singleton = pickLatest (callPyPkg ./abstract-singleton { }) (
+        #   python-prev.abstract-singleton or null
+        # );
 
-        auto-gpt-plugin-template = pickLatest (callPyPkg ./auto-gpt-plugin-template { }) (
-          python-prev.auto-gpt-plugin-template or null
-        );
+        # auto-gpt-plugin-template = pickLatest (callPyPkg ./auto-gpt-plugin-template { }) (
+        #   python-prev.auto-gpt-plugin-template or null
+        # );
 
         composer = pickLatest (callPyPkg ./composer { }) (python-prev.composer or null);
 
-        coolname = pickLatest (callPyPkg ./coolname { }) (python-prev.coolname or null);
+        # coolname = pickLatest (callPyPkg ./coolname { }) (python-prev.coolname or null);
 
         ddsketch = pickLatest (callPyPkg ./ddsketch { }) (python-prev.ddsketch or null);
 
@@ -30,7 +30,7 @@ final: prev:
 
         envier = pickLatest (callPyPkg ./envier { }) (python-prev.envier or null); # Needs upstream
 
-        flake8-quotes = pickLatest (callPyPkg ./flake8-quotes { }) (python-prev.flake8-quotes or null);
+        # flake8-quotes = pickLatest (callPyPkg ./flake8-quotes { }) (python-prev.flake8-quotes or null);
 
         loralib = pickLatest (callPyPkg ./loralib { }) (python-prev.loralib or null);
 
@@ -42,7 +42,7 @@ final: prev:
 
         prusalinkpy = pickLatest (callPyPkg ./prusalinkpy { }) (python-prev.prusalinkpy or null);
 
-        pyre-check = pickLatest (callPyPkg ./pyre-check { }) (python-prev.pyre-check or null);
+        # pyre-check = pickLatest (callPyPkg ./pyre-check { }) (python-prev.pyre-check or null);
 
         # Drop when StreamController uses the new levenshtein package
         python-levenshtein = python-prev.levenshtein.overrideAttrs (o: rec {
@@ -76,7 +76,7 @@ final: prev:
         #   ];
         # });
 
-        sourcery = pickLatest (callPyPkg ./sourcery { }) (python-prev.sourcery or null);
+        # sourcery = pickLatest (callPyPkg ./sourcery { }) (python-prev.sourcery or null);
 
         streamcontroller-plugin-tools = pickLatest (callPyPkg ./streamcontroller-plugin-tools { }) (python-prev.streamcontroller-plugin-tools or null);
 
@@ -84,7 +84,7 @@ final: prev:
 
         # tensorboard-data-server = callPyPkg ./tensorboard-data-server { };
 
-        testslide = pickLatest (callPyPkg ./testslide { }) (python-prev.testslide or null);
+        # testslide = pickLatest (callPyPkg ./testslide { }) (python-prev.testslide or null);
 
         # torch = callPyPkg ./torch {
         #   cudaSupport = python-prev.config.cudaSupport or false;
