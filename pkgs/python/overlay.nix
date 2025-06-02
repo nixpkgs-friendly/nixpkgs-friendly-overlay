@@ -20,8 +20,6 @@ final: prev:
 
         # composer = pickLatest (callPyPkg ./composer { }) (python-prev.composer or null);
 
-        # coolname = pickLatest (callPyPkg ./coolname { }) (python-prev.coolname or null);
-
         # ddsketch = pickLatest (callPyPkg ./ddsketch { }) (python-prev.ddsketch or null);
 
         # ddtrace = pickLatest (callPyPkg ./ddtrace { }) (python-prev.ddtrace or null);
@@ -30,15 +28,9 @@ final: prev:
 
         # envier = pickLatest (callPyPkg ./envier { }) (python-prev.envier or null); # Needs upstream
 
-        # flake8-quotes = pickLatest (callPyPkg ./flake8-quotes { }) (python-prev.flake8-quotes or null);
-
         # loralib = pickLatest (callPyPkg ./loralib { }) (python-prev.loralib or null);
 
         # obs-websocket-py = pickLatest (callPyPkg ./obs-websocket-py { }) (python-prev.obs-websocket-py or null);
-
-        # openapi-python-client = pickLatest (callPyPkg ./openapi-python-client { }) (
-        #   python-prev.openapi-python-client or null
-        # );
 
         prusalinkpy = pickLatest (callPyPkg ./prusalinkpy { }) (python-prev.prusalinkpy or null);
 
@@ -76,31 +68,14 @@ final: prev:
         #   ];
         # });
 
-        # sourcery = pickLatest (callPyPkg ./sourcery { }) (python-prev.sourcery or null);
-
         streamcontroller-plugin-tools = pickLatest (callPyPkg ./streamcontroller-plugin-tools { }) (python-prev.streamcontroller-plugin-tools or null);
 
-        # tensorboard = callPyPkg ./tensorboard { };
-
-        # tensorboard-data-server = callPyPkg ./tensorboard-data-server { };
-
         # testslide = pickLatest (callPyPkg ./testslide { }) (python-prev.testslide or null);
-
-        # torch = callPyPkg ./torch {
-        #   cudaSupport = python-prev.config.cudaSupport or false;
-        #   inherit (python-prev.pkgs.darwin.apple_sdk.frameworks) Accelerate CoreServices;
-        #   inherit (python-prev.pkgs.darwin) libobjc;
-        #   inherit (python-prev.pkgs.llvmPackages_rocm) openmp;
-        # };
 
         # torch-optimizer = pickLatest (callPyPkg ./torch-optimizer { }) (
         #   python-prev.torch-optimizer or null
         # );
 
-        usb-monitor = pickLatest (callPyPkg ./usb-monitor { }) (python-prev.usb-monitor or null);
-
-        # xformers may benefit from improvements from here.
-        # xformers = pickLatest (callPyPkg ./xformers { }) (python-prev.xformers or null);
       }
     )
   ];
