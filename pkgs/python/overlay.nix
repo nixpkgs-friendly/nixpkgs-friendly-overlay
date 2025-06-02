@@ -24,7 +24,7 @@ final: prev:
 
         ddsketch = pickLatest (callPyPkg ./ddsketch { }) (python-prev.ddsketch or null);
 
-        ddtrace = pickLatest (callPyPkg ./ddtrace { }) (python-prev.ddtrace or null);
+        # ddtrace = pickLatest (callPyPkg ./ddtrace { }) (python-prev.ddtrace or null);
 
         dspy-ai = pickLatest (callPyPkg ./dspy-ai { }) (python-prev.dspy-ai or null);
 
