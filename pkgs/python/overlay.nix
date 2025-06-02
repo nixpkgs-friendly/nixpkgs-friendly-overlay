@@ -68,8 +68,6 @@ final: prev:
         #   ];
         # });
 
-        streamcontroller-plugin-tools = pickLatest (callPyPkg ./streamcontroller-plugin-tools { }) (python-prev.streamcontroller-plugin-tools or null);
-
         # testslide = pickLatest (callPyPkg ./testslide { }) (python-prev.testslide or null);
 
         # torch-optimizer = pickLatest (callPyPkg ./torch-optimizer { }) (
