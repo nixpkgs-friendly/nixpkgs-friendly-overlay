@@ -17,6 +17,14 @@ in
       hash = "sha256-4mcWjmhw8+yB3anbWC2Lhc/QjUUHEOiMeghkqinyYHQ=";
     }) (prev.vscode-extensions."498-00".cppformat or null);
 
+    "498-00".pythonformat = pickLatest (extensionFromVscodeMarketplace {
+      # https://marketplace.visualstudio.com/items?itemName=498-00.pythonformat
+      publisher = "498-00";
+      name = "pythonformat";
+      version = "1.0.50";
+      hash = "sha256-zVfh3q+MtatY9ETFL9SZaCW9KfQMnNsk+lVgx5MYCZI=";
+    }) (prev.vscode-extensions."498-00".pythonformat or null);
+
     andrew-butson.vscode-openai = pickLatest (extensionFromVscodeMarketplace {
       # https://marketplace.visualstudio.com/items?itemName=AndrewButson.vscode-openai
       publisher = "AndrewButson";
