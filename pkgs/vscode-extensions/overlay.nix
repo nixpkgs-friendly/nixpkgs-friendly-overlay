@@ -74,5 +74,13 @@ in
       hash = "sha256-kMbet43DvTGIui7fcP8amCVzS0C/KY9VBVlZ+MlTxyM=";
     }) (prev.vscode-extensions.philhindle.errorlens or null);
 
+    vytautassurvila.csharp-ls = pickLatest (extensionFromVscodeMarketplace {
+      # https://marketplace.visualstudio.com/items?itemName=vytautassurvila.csharp-ls
+      publisher = "vytautassurvila";
+      name = "csharp-ls";
+      version = "0.0.27";
+      hash = "sha256-kl6W1UQ36cNQNj3cOsMyZbxD6glaRm3W0Z1W+xuEcjs=";
+    }) (prev.vscode-extensions.vytautassurvila.csharp-ls or null);
+
   };
 }
