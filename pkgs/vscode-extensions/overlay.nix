@@ -90,5 +90,13 @@ in
       hash = "sha256-+975OorwHN2/DJpjO6ECp+tRBAyDjEFkpaT3eb7ibBM=";
     }) (prev.vscode-extensions.pflannery.vscode-versionlens or null);
 
+    "498-00".cppformat = pickLatest (extensionFromVscodeMarketplace {
+      # https://marketplace.visualstudio.com/items?itemName=498-00.cppformat
+      publisher = "498-00";
+      name = "cppformat";
+      version = "1.0.10";
+      hash = "sha256-4mcWjmhw8+yB3anbWC2Lhc/QjUUHEOiMeghkqinyYHQ=";
+    }) (prev.vscode-extensions."498-00".cppformat or null);
+
   };
 }
