@@ -33,6 +33,14 @@ in
       hash = "sha256-ypSEb4j9Gig0Cpo4cM5IoGMmKv1f9MLTfJCXBZAzg3M=";
     }) (prev.vscode-extensions.gbtb.ponylang or null);
 
+    jeff-hykin.better-cpp-syntax = pickLatest (extensionFromVscodeMarketplace {
+      # https://marketplace.visualstudio.com/items?itemName=jeff-hykin.better-cpp-syntax
+      publisher = "jeff-hykin";
+      name = "better-cpp-syntax";
+      version = "1.27.1";
+      hash = "sha256-GO/ooq50KLFsiEuimqTbD/mauQYcD/p2keHYo/6L9gw=";
+    }) (prev.vscode-extensions.jeff-hykin.better-cpp-syntax or null);
+
     kcl.kcl-vscode-extension = pickLatest (extensionFromVscodeMarketplace {
       # https://marketplace.visualstudio.com/items?itemName=kcl.kcl-vscode-extension
       publisher = "kcl";
