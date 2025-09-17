@@ -82,5 +82,13 @@ in
       hash = "sha256-kl6W1UQ36cNQNj3cOsMyZbxD6glaRm3W0Z1W+xuEcjs=";
     }) (prev.vscode-extensions.vytautassurvila.csharp-ls or null);
 
+    pflannery.vscode-versionlens = pickLatest (extensionFromVscodeMarketplace {
+      # https://marketplace.visualstudio.com/items?itemName=pflannery.vscode-versionlens
+      publisher = "pflannery";
+      name = "vscode-versionlens";
+      version = "1.22.3";
+      hash = "sha256-+975OorwHN2/DJpjO6ECp+tRBAyDjEFkpaT3eb7ibBM=";
+    }) (prev.vscode-extensions.pflannery.vscode-versionlens or null);
+
   };
 }
