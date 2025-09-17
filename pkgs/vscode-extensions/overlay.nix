@@ -114,5 +114,13 @@ in
       hash = "sha256-kl6W1UQ36cNQNj3cOsMyZbxD6glaRm3W0Z1W+xuEcjs=";
     }) (prev.vscode-extensions.vytautassurvila.csharp-ls or null);
 
+    zignd.html-css-class-completion = pickLatest (extensionFromVscodeMarketplace {
+      # https://marketplace.visualstudio.com/items?itemName=Zignd.html-css-class-completion
+      publisher = "Zignd";
+      name = "html-css-class-completion";
+      version = "1.20.0";
+      hash = "sha256-3BEppTBc+gjZW5XrYLPpYUcx3OeHQDPW8z7zseJrgsE=";
+    }) (prev.vscode-extensions.zignd.html-css-class-completion or null);
+
   };
 }
