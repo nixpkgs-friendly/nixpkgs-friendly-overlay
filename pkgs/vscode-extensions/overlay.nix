@@ -90,6 +90,14 @@ in
       hash = "sha256-iAs5YnaO8+GdPrcXupRVy80O45P23F2yRdXP2Dj7F3Y=";
     }) (prev.vscode-extensions.npruehs.pony or null);
 
+    ohziinteractivestudio.ohzi-vscode-glb-viewer = pickLatest (extensionFromVscodeMarketplace {
+      # https://marketplace.visualstudio.com/items?itemName=ohziinteractivestudio.ohzi-vscode-glb-viewer
+      publisher = "ohziinteractivestudio";
+      name = "ohzi-vscode-glb-viewer";
+      version = "2.13.0";
+      hash = "sha256-vqCNPiD0/IP5i5oJDiJsKPhNHApILxyhFCbDHW//Tc0=";
+    }) (prev.vscode-extensions.ohziinteractivestudio.ohzi-vscode-glb-viewer or null);
+
     pflannery.vscode-versionlens = pickLatest (extensionFromVscodeMarketplace {
       # https://marketplace.visualstudio.com/items?itemName=pflannery.vscode-versionlens
       publisher = "pflannery";
