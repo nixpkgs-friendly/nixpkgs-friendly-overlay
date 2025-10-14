@@ -4,6 +4,7 @@ let
   callPackage = final.callPackage;
   pickLatest = (import ../../utils.nix).pickLatest; # Fix-Me
 in
-rec {
+{
+  nakama = import ./nakama/default.nix final prev;
 
 }
