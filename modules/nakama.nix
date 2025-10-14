@@ -8,6 +8,7 @@
 let
   cfg = config.services.nakama;
   settingsFormat = pkgs.formats.yaml { };
+  settingsConfigYaml = settingsFormat.generate "config.yaml" cfg.settings;
 in
 
 {
@@ -130,7 +131,6 @@ in
       default = "nakama";
       description = "Nakama group";
     };
-
   };
 
   config = lib.mkIf cfg.enable {
@@ -145,27 +145,36 @@ in
         }
       ];
       authentication = lib.mkOverride 10 ''
-        # type, database, DBuser, auth-method
-        local all all trust
-        host all all 127.0.0.1/32 trust
+        # type, database, DBuser, auth-method, optional_ident_map
+        local postgres  postgres  peer
+        host  nakama  nakama  127.0.0.1/32  trust
+        host  nakama  nakama  ::1/128 trust
       '';
-
     };
 
     systemd.services.nakama = {
       description = "Nakama service";
       wantedBy = [ "multi-user.target" ];
 
-      requires = lib.optionals cfg.useLocalPostgres [
-        "postgresql.service"
-      ];
+      requires = lib.optionals cfg.useLocalPostgres [ "postgresql.service" ];
 
-      after = [ "network-online.target" ]
-        ++ lib.optional config.networking.firewall.enable "firewall.service"
-        ++ lib.optional cfg.useLocalPostgres "postgresql.service";
+      preStart = ''
+        if ! [ -e ${cfg.settings.data_dir}/.db-created ]; then
+          ${lib.getExe cfg.package} migrate up --config ${settingsConfigYaml}
+          touch ${cfg.settings.data_dir}/.db-created
+        fi
+      '';
 
-      wants = [ "network-online.target" ]
-        ++ lib.optional config.networking.firewall.enable "firewall.service";
+      after = [
+        "network-online.target"
+      ]
+      ++ lib.optional config.networking.firewall.enable "firewall.service"
+      ++ lib.optional cfg.useLocalPostgres "postgresql.service";
+
+      wants = [
+        "network-online.target"
+      ]
+      ++ lib.optional config.networking.firewall.enable "firewall.service";
 
       environment = {
         USER = cfg.user;
@@ -174,7 +183,7 @@ in
 
       serviceConfig = {
         Type = "exec";
-        ExecStart = "${lib.getExe cfg.package} --config ${settingsFormat.generate "config.yaml" cfg.settings}";
+        ExecStart = "${lib.getExe cfg.package} --config ${settingsConfigYaml}";
         RestartSec = 10;
         Restart = "always";
         TimeoutStopSec = 30;
@@ -201,18 +210,12 @@ in
         7349 # grpc-api-server
         7350 # http-api-server
         7351 # http-api-server-embedded-console
-      ]
-      ++ lib.optionals (cfg.openFirewall && cfg.useLocalPostgres) [
-        config.services.postgresql.settings.port
       ];
       allowedUDPPorts = [
         7348 # grpc-api-server-embedded-console
         7349 # grpc-api-server
         7350 # http-api-server
         7351 # http-api-server-embedded-console
-      ]
-      ++ lib.optionals (cfg.openFirewall && cfg.useLocalPostgres) [
-        config.services.postgresql.settings.port
       ];
     };
 
@@ -222,15 +225,13 @@ in
     ];
 
     users.users.${cfg.user} = {
-      isSystemUser = true;
+      isNormalUser = true;
+      home = cfg.settings.data_dir;
       group = cfg.group;
       description = "Nakama daemon user";
     };
 
     users.groups.${cfg.group} = { };
-
-    environment.systemPackages = [ pkgs.nakama ];
-
   };
 
   meta.maintainers = pkgs.nakama.meta.maintainers;
