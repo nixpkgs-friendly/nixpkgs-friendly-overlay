@@ -84,10 +84,20 @@ in
           database = {
 
             address = lib.mkOption {
-              default = [ "nakama:nakama@localhost:5432" ];
-              defaultText = ''[ "nakama:nakama@localhost:5432" ]'';
+              default = [ "nakama?host=/var/run/postgresql&user=nakama" ];
+              defaultText = ''[ "nakama?host=/var/run/postgresql&user=nakama" ]'';
               type = lib.types.listOf lib.types.str;
-              description = "List of database nodes to connect to. It should follow the form of username:password@address:port/dbname (postgres:// protocol is appended to the path automatically).";
+              example = lib.literalExpression ''
+                [
+                  # For IPv4
+                  # "nakama:nakama@localhost:5432"
+                  # For Socket
+                  "nakama?host=/var/run/postgresql&user=nakama"
+                ];
+              '';
+              description = ''
+                List of database nodes to connect to. It should follow the form of username:password@address:port/dbname (postgres:// protocol is appended to the path automatically).
+              '';
             };
 
           };
@@ -146,9 +156,18 @@ in
       ];
       authentication = lib.mkOverride 10 ''
         # type, database, DBuser, auth-method, optional_ident_map
+
+        # User "postgres" is required for database administration
         local postgres  postgres  peer
-        host  nakama  nakama  127.0.0.1/32  trust
-        host  nakama  nakama  ::1/128 trust
+
+        # For Socket
+        local nakama  nakama  trust
+
+        # For IPv4
+        # host  nakama  nakama  127.0.0.1/32  trust
+
+        # For IPv6
+        # host  nakama  nakama  ::1/128 trust
       '';
     };
 
