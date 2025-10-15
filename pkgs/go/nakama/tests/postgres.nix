@@ -1,7 +1,5 @@
 {
   pkgs,
-  config,
-  lib,
   ...
 }:
 
@@ -17,7 +15,6 @@ pkgs.testers.runNixOSTest {
         ];
         services.nakama = {
           enable = true;
-          openFirewall = true;
           useLocalPostgres = true;
         };
       };
@@ -26,13 +23,11 @@ pkgs.testers.runNixOSTest {
   testScript = ''
     machine.wait_for_unit("postgresql.service")
 
-    machine.succeed("nakama migrate up --database.address nakama@127.0.0.1:5432")
-
     machine.wait_for_unit("nakama.service")
 
     machine.wait_until_succeeds("pgrep -x nakama")
 
-    machine.succeed("curl --silent http://127.0.0.1:7351 | grep -o \"<title>Nakama</title>\"")
+    machine.wait_until_succeeds("curl --silent http://localhost:7351 | grep -o \"<title>Nakama</title>\"")
   '';
 
 }
