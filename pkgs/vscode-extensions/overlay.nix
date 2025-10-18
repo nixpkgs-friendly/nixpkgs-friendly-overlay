@@ -102,8 +102,8 @@ in
       # https://marketplace.visualstudio.com/items?itemName=pflannery.vscode-versionlens
       publisher = "pflannery";
       name = "vscode-versionlens";
-      version = "1.22.3";
-      hash = "sha256-+975OorwHN2/DJpjO6ECp+tRBAyDjEFkpaT3eb7ibBM=";
+      version = "1.22.4";
+      hash = "sha256-yEhFRRwaqq4OH1oEjD2E+8y7DCVbvvvwa3r6ujq7IGg=";
     }) (prev.vscode-extensions.pflannery.vscode-versionlens or null);
 
     philhindle.errorlens = pickLatest (extensionFromVscodeMarketplace {
