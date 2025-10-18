@@ -94,7 +94,7 @@ in
       # https://marketplace.visualstudio.com/items?itemName=ohziinteractivestudio.ohzi-vscode-glb-viewer
       publisher = "ohziinteractivestudio";
       name = "ohzi-vscode-glb-viewer";
-      version = "2.13.0";
+      version = "3.1.0";
       hash = "sha256-vqCNPiD0/IP5i5oJDiJsKPhNHApILxyhFCbDHW//Tc0=";
     }) (prev.vscode-extensions.ohziinteractivestudio.ohzi-vscode-glb-viewer or null);
 
