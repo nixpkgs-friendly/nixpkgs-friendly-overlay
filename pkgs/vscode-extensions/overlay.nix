@@ -29,8 +29,8 @@ in
       # https://marketplace.visualstudio.com/items?itemName=AndrewButson.vscode-openai
       publisher = "AndrewButson";
       name = "vscode-openai";
-      version = "1.6.17";
-      hash = "sha256-nROvrAO34y9+SVb40+Day9LSKG0eJl0iU8pgQ9CuOko=";
+      version = "1.6.19";
+      hash = "sha256-0GCEcSYN4k61qBu1jOvscRnBh6fCtv3vN2q3AMhjxZI=";
     }) (prev.vscode-extensions.andrew-butson.vscode-openai or null);
 
     designliquido.designliquido-vscode = pickLatest (extensionFromVscodeMarketplace {
