@@ -37,8 +37,8 @@ in
       # https://marketplace.visualstudio.com/items?itemName=designliquido.designliquido-vscode
       publisher = "designliquido";
       name = "designliquido-vscode";
-      version = "0.12.24";
-      hash = "sha256-MiVRVsyhjjxnyUeqC3sWpL4QGbSyoM53gWoK4C+qdK4=";
+      version = "0.16.0";
+      hash = "sha256-13s+j04j3OWBVVgoILjGWgD+7N1PHbFoqMwpDgMKw9w=";
     }) (prev.vscode-extensions.designliquido.designliquido-vscode or null);
 
     gbtb.ponylang = pickLatest (extensionFromVscodeMarketplace {
